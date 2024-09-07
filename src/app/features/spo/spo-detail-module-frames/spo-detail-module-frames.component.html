@@ -1,0 +1,69 @@
+<!-- Navigation Tabs -->
+<nav>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/spo', spo.id, 'overview']" routerLinkActive="active">Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/spo', spo.id, 'module-frames']" routerLinkActive="active">Module Frames</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/spo', spo.id, 'text']" routerLinkActive="active">Text</a>
+    </li>
+  </ul>
+</nav>
+
+<div *ngIf="moduleFrameSet">
+  <h1>SPO Details</h1>
+
+  <div *ngFor="let section of moduleFrameSet.sections">
+    <h2>{{ section.name }}</h2>
+
+    <div *ngFor="let moduleType of section.moduleTypes">
+      <h3>{{ moduleType.name }}</h3>
+
+      <table>
+        <thead>
+        <tr>
+          <th>Quantity</th>
+          <th>Name</th>
+          <th>SWS</th>
+          <th>Course Type</th>
+          <th>Weight</th>
+          <th>Credits</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let moduleFrame of moduleType.moduleFrames">
+          <td>{{ moduleFrame.quantity }}</td>
+          <td>{{ moduleFrame.name }}</td>
+          <td>{{ moduleFrame.sws }}</td>
+          <td>{{ moduleFrame.courseType }}</td>
+          <td>{{ moduleFrame.weight }}</td>
+          <td>{{ moduleFrame.credits }}</td>
+          <td>
+            <!-- You could add edit/delete functionality here -->
+          </td>
+        </tr>
+        <tr *ngIf="isAddingModuleFrame[moduleType.id]">
+          <td><input type="number" [(ngModel)]="newModuleFrame.quantity" placeholder="Semester"/></td>
+          <td><input type="text" [(ngModel)]="newModuleFrame.name" placeholder="Name"/></td>
+          <td><input type="number" [(ngModel)]="newModuleFrame.sws" placeholder="SWS"/></td>
+          <td><input type="text" [(ngModel)]="newModuleFrame.courseType" placeholder="Course Type"/></td>
+          <td><input type="number" [(ngModel)]="newModuleFrame.weight" placeholder="Weight"/></td>
+          <td><input type="number" [(ngModel)]="newModuleFrame.credits" placeholder="Credits"/></td>
+          <td>
+            <button (click)="addModuleFrame(moduleType.id, section.id)" class="btn btn-success">Add</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <button (click)="toggleAddModuleFrame(moduleType.id)" class="btn btn-primary">
+        {{ isAddingModuleFrame[moduleType.id] ? 'Cancel' : 'Add Module Frame' }}
+      </button>
+    </div>
+  </div>
+</div>
+
+<button (click)="navigateToNewModuleFrame()" class="btn btn-primary">Add New Module</button>

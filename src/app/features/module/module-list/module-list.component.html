@@ -1,0 +1,23 @@
+<div class="module-list-container">
+  <h2>Module</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Abkürzung</th>
+      <th>Verwendungen</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let module of modules">
+      <td>{{ module.name }}</td>
+      <td>{{ module.abbreviation }}</td>
+      <td>
+        <div *ngFor="let spo of module.spos">
+          {{ spo.name }} <!-- Change to another property if needed -->
+        </div>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

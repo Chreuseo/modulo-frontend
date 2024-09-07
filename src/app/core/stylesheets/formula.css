@@ -1,0 +1,64 @@
+h2 {
+  text-align: center; /* Center the heading */
+  margin-bottom: 20px; /* Space below the heading */
+}
+
+/* Container for the form to provide padding and centering */
+form {
+  max-width: 600px; /* Maximum width for the form */
+  margin: 30px auto; /* Center the form horizontally */
+  padding: 20px; /* Internal padding */
+  border: 1px solid #ccc; /* Border around the form */
+  border-radius: 8px; /* Rounded corners */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-color: #f9f9f9; /* Light background color */
+}
+
+/* Style for each input field */
+input[type="text"],
+input[type="date"] {
+  width: 100%; /* Full width */
+  padding: 10px; /* Padding for input */
+  margin: 10px 0; /* Spacing around inputs */
+  border: 1px solid #ccc; /* Border for inputs */
+  border-radius: 4px; /* Slightly rounded corners */
+  box-sizing: border-box; /* Ensure padding and border are included in the total width/height */
+}
+
+/* Label styles */
+label {
+  font-weight: bold; /* Bold labels */
+  margin: 10px 0 5px; /* Spacing for labels */
+  display: block; /* Block display for labels to stack */
+}
+
+/* Button styles */
+button {
+  background-color: #007bff; /* Bootstrap primary color */
+  color: #fff; /* White text color */
+  border: none; /* No border */
+  border-radius: 4px; /* Rounded corners */
+  padding: 10px 15px; /* Padding for buttons */
+  cursor: pointer; /* Pointer cursor on hover */
+  margin-right: 10px; /* Space between buttons */
+}
+
+button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+/* Style for the discard button */
+button[type="button"] {
+  background-color: #dc3545; /* Bootstrap danger color */
+}
+
+button[type="button"]:hover {
+  background-color: #c82333; /* Darker shade on hover */
+}
+
+/* Optional: Add responsive styling or media queries */
+@media (max-width: 600px) {
+  form {
+    width: 90%; /* Responsive width for smaller screens */
+  }
+}

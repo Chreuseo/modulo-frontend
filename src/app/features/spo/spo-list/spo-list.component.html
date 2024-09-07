@@ -1,0 +1,34 @@
+<button (click)="navigateToNewSpo()" class="btn btn-primary">Add New SPO</button>
+
+<div class="spo-list-container">
+  <h2>SPOs</h2>
+  <table>
+    <thead>
+    <tr>
+      <th (click)="sortBy('name')">Name</th>
+      <th (click)="sortBy('degree.name')">Abschluss</th>
+      <th (click)="sortBy('validFrom')">Gültig von</th>
+      <th (click)="sortBy('validUntil')">Gültig bis</th>
+      <th>Actions</th> <!-- Column for actions -->
+    </tr>
+    <tr>
+      <th *ngIf="sortedBy === 'name'">{{sortDirection === 'asc' ? '↑' : '↓'}}</th>
+      <th *ngIf="sortedBy === 'degree.name'">{{sortDirection === 'asc' ? '↑' : '↓'}}</th>
+      <th *ngIf="sortedBy === 'validFrom'">{{sortDirection === 'asc' ? '↑' : '↓'}}</th>
+      <th *ngIf="sortedBy === 'validUntil'">{{sortDirection === 'asc' ? '↑' : '↓'}}</th>
+      <th></th> <!-- Empty column for action icons -->
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let spo of spoList">
+      <td>{{spo.name}}</td>
+      <td>{{spo.degree.name}}</td>
+      <td>{{spo.validFrom | date: 'shortDate'}}</td>
+      <td>{{spo.validUntil | date: 'shortDate'}}</td>
+      <td>
+        <button (click)="navigateToSpoDetail(spo.id)" class="btn btn-info">View Details</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,14 @@
+<h2>Gefährdungsstufe Mutterschutz</h2>
+<ul>
+  <li *ngFor="let protection of maternityProtections">
+    {{ protection.name }}
+    <button (click)="deleteMaternityProtection(protection.id)">Löschen</button>
+  </li>
+</ul>
+<div class="settings-add-container">
+  <input
+    type="text"
+    [(ngModel)]="newMaternityProtectionName"
+    placeholder="Gefährdungsstufe hinzufügen" />
+  <button (click)="addMaternityProtection()">Hinzufügen</button>
+</div>

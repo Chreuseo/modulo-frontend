@@ -1,0 +1,85 @@
+<!-- Navigation Tabs -->
+<nav>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/spo', spo.id, 'overview']" routerLinkActive="active">Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/spo', spo.id, 'module-frames']" routerLinkActive="active">Module Frames</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/spo', spo.id, 'text']" routerLinkActive="active">Text</a>
+    </li>
+  </ul>
+</nav>
+
+
+<div class="spo-detail">
+  <h2>Spo Detail</h2>
+
+  <div>
+    <label>Name:</label>
+    <input type="text" [(ngModel)]="spo.name" [disabled]="!isEditing"/>
+  </div>
+
+  <div>
+    <label>Publication Date:</label>
+    <input type="date" [(ngModel)]="spo.publication" [disabled]="!isEditing"/>
+  </div>
+
+  <div>
+    <label>Valid From:</label>
+    <input type="date" [(ngModel)]="spo.validFrom" [disabled]="!isEditing"/>
+  </div>
+
+  <div>
+    <label>Valid Until:</label>
+    <input type="date" [(ngModel)]="spo.validUntil" [disabled]="!isEditing"/>
+  </div>
+
+  <div>
+    <label>Degree:</label>
+    <select [(ngModel)]="spo.degree" [disabled]="!isEditing">
+      <option *ngFor="let degree of degrees" [ngValue]="degree">{{ degree.name }}</option>
+    </select>
+  </div>
+
+  <div>
+    <h3>Sections</h3>
+    <ul>
+      <li *ngFor="let section of sortedSections; let i = index">
+        {{ section.name }}
+        <button (click)="moveUp(i, spo.sectionDTOs)" *ngIf="isEditing && i > 0">↑</button>
+        <button (click)="moveDown(i, spo.sectionDTOs)" *ngIf="isEditing && i < spo.sectionDTOs.length - 1">↓</button>
+        <button (click)="deleteSection(section.id)" class="btn btn-danger" *ngIf="isEditing">-</button>
+      </li>
+    </ul>
+    <!-- Row to add new section -->
+    <div *ngIf="isEditing">
+      <input [(ngModel)]="newSectionName" placeholder="New Section Name" />
+      <button (click)="addSection()" class="btn btn-success">Add Section</button>
+    </div>
+  </div>
+
+  <div>
+    <h3>Module Types</h3>
+    <ul>
+      <li *ngFor="let moduleType of sortedModuleTypes; let i = index">
+        {{ moduleType.name }}
+        <button (click)="moveUp(i, spo.moduleTypeDTOs)" *ngIf="isEditing && i > 0">↑</button>
+        <button (click)="moveDown(i, spo.moduleTypeDTOs)" *ngIf="isEditing && i < spo.moduleTypeDTOs.length - 1">↓</button>
+        <button (click)="deleteModuleType(moduleType.id)" class="btn btn-danger" *ngIf="isEditing">-</button>
+      </li>
+    </ul>
+    <!-- Row to add new module type -->
+    <div *ngIf="isEditing">
+      <input [(ngModel)]="newModuleTypeName" placeholder="New Module Type Name" />
+      <button (click)="addModuleType()" class="btn btn-success">Add Module Type</button>
+    </div>
+  </div>
+
+  <div>
+    <button (click)="toggleEdit()">{{ isEditing ? 'Cancel' : 'Edit' }}</button>
+    <button (click)="save()" *ngIf="isEditing">Save</button>
+  </div>
+</div>

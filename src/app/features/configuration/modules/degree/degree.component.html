@@ -1,0 +1,14 @@
+<h2>Abschlüsse</h2>
+<ul>
+  <li *ngFor="let degree of degrees">
+    {{ degree.name }}
+    <button (click)="deleteDegree(degree.id)">Löschen</button>
+  </li>
+</ul>
+<div class="settings-add-container">
+  <input
+    type="text"
+    [(ngModel)]="newDegreeName"
+    placeholder="Abschluss hinzufügen" />
+  <button (click)="addDegree()">Hinzufügen</button>
+</div>

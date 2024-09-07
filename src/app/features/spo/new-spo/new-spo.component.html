@@ -1,0 +1,39 @@
+<h2>Neue SPO</h2>
+<form [formGroup]="spoForm" (ngSubmit)="saveSpo()">
+  <div>
+    <label for="name">Name:</label>
+    <input id="name" formControlName="name">
+  </div>
+
+  <div>
+    <label for="degree">Degree:</label>
+    <select id="degree" formControlName="degree" (change)="onDegreeChange($event)">
+      <option *ngFor="let degree of degrees" [value]="degree.id">
+        {{ degree.name }}
+      </option>
+    </select>
+  </div>
+
+
+  <div>
+    <label for="publication">Veröffentlichung:</label>
+    <input type="date" id="publication" formControlName="publication">
+  </div>
+
+  <div>
+    <label for="validFrom">Gültig ab:</label>
+    <input type="date" id="validFrom" formControlName="validFrom">
+  </div>
+
+  <div>
+    <label for="validUntil">Gültig bis:</label>
+    <input type="date" id="validUntil" formControlName="validUntil">
+  </div>
+
+  <div>
+    <button type="button" (click)="discard()">Discard</button>
+    <button type="button" (click)="saveAndBack()">Save and Back</button>
+    <button type="button" (click)="saveAndNew()">Save and New</button>
+    <button type="button" (click)="saveAndOpen()">Save and Open</button>
+  </div>
+</form>

@@ -1,0 +1,31 @@
+// src/app/features/module/module-list/module-list.component.ts
+
+import { Component, OnInit } from '@angular/core';
+import { ModuleImplementationService } from '../../../core/services/module-implementation.service';
+import { ModuleImplementationDTOFlat } from '../../../core/models/module-implementation-dto-flat.model'; // Adjust import path as necessary
+
+@Component({
+  selector: 'app-module-list',
+  templateUrl: './module-list.component.html',
+  styleUrls: ['../../../core/stylesheets/list-view.css']
+})
+export class ModuleListComponent implements OnInit {
+  public modules: ModuleImplementationDTOFlat[] = [];
+
+  constructor(private moduleService: ModuleImplementationService) {}
+
+  ngOnInit(): void {
+    this.loadModules();
+  }
+
+  loadModules(): void {
+    this.moduleService.getAll().subscribe(
+      (data: ModuleImplementationDTOFlat[]) => {
+        this.modules = data;
+      },
+      (error) => {
+        console.error('Error fetching module implementations:', error);
+      }
+    );
+  }
+}

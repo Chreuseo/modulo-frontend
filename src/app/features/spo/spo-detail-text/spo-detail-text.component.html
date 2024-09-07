@@ -1,0 +1,76 @@
+<!-- Navigation Tabs -->
+<nav>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/spo', spo.id, 'overview']" routerLinkActive="active">Overview</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/spo', spo.id, 'module-frames']" routerLinkActive="active">Module Frames</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/spo', spo.id, 'text']" routerLinkActive="active">Text</a>
+    </li>
+  </ul>
+</nav>
+
+<!-- app/components/spo-detail-text/spo-detail-text.component.html -->
+
+<form [formGroup]="spoForm">
+  <div>
+    <label for="header">Header:</label>
+    <input id="header" formControlName="header" [disabled]="isDisabled" />
+  </div>
+  <div>
+    <label for="footer">Footer:</label>
+    <input id="footer" formControlName="footer" [disabled]="isDisabled" />
+  </div>
+
+  <!-- Edit and Save Buttons -->
+  <div>
+    <button type="button" (click)="onEdit()" *ngIf="isDisabled">Edit</button>
+    <button type="button" (click)="onSave()" *ngIf="!isDisabled">Save</button>
+  </div>
+</form>
+
+
+  <h3>Paragraphs</h3>
+  <table>
+    <thead>
+    <tr>
+      <th>Title</th>
+      <th>Text</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let paragraph of paragraphs">
+      <td>
+        <span *ngIf="editableParagraph?.id !== paragraph.id">{{ paragraph.title }}</span>
+        <input *ngIf="editableParagraph?.id === paragraph.id" [(ngModel)]="editableParagraph.title" />
+      </td>
+      <td>
+        <span *ngIf="editableParagraph?.id !== paragraph.id">{{ paragraph.text }}</span>
+        <textarea *ngIf="editableParagraph?.id === paragraph.id" [(ngModel)]="editableParagraph.text"></textarea>
+      </td>
+      <td>
+        <button *ngIf="editableParagraph?.id !== paragraph.id" (click)="editParagraph(paragraph)">Edit</button>
+        <button *ngIf="editableParagraph?.id === paragraph.id" (click)="saveParagraph()">Save</button>
+        <button (click)="deleteParagraph(paragraph.id)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+<h4>Add New Paragraph</h4>
+<form (ngSubmit)="addParagraph()" #newParagraphForm="ngForm">
+  <div>
+    <label for="newTitle">Title:</label>
+    <input id="newTitle" [(ngModel)]="newParagraph.title" name="title" required />
+  </div>
+  <div>
+    <label for="newText">Text:</label>
+    <textarea id="newText" [(ngModel)]="newParagraph.text" name="text" required></textarea>
+  </div>
+  <button type="submit" [disabled]="!newParagraphForm.form.valid">Add</button>
+</form>
+

@@ -1,0 +1,14 @@
+<h2>Verfügbare Moduldauer</h2>
+<ul>
+  <li *ngFor="let duration of durations">
+    {{ duration.name }}
+    <button (click)="deleteDuration(duration.id)">Löschen</button>
+  </li>
+</ul>
+<div class="settings-add-container">
+  <input
+    type="text"
+    [(ngModel)]="newDurationName"
+    placeholder="Wählbare Moduldauer hinzufügen" />
+  <button (click)="addDuration()">Hinzufügen</button>
+</div>
