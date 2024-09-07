@@ -17,10 +17,7 @@ import { SpoDetailModuleFramesComponent } from './features/spo/spo-detail-module
 import { SpoDetailTextComponent } from './features/spo/spo-detail-text/spo-detail-text.component';
 import { NewModuleFrameComponent } from './features/spo/new-module-frame/new-module-frame.component';
 import { ModuleFrameDetailComponent } from './features/spo/module-frame-detail/module-frame-detail.component';
-import { DegreeComponent } from './features/configuration/modules/degree/degree.component';
-import { LanguageComponent } from './features/configuration/modules/language/language.component';
-import { DurationComponent } from './features/configuration/modules/duration/duration.component';
-import { MaternityProtectionComponent } from './features/configuration/modules/maternity-protection/maternity-protection.component';
+
 
 @NgModule({
   declarations: [
@@ -35,11 +32,7 @@ import { MaternityProtectionComponent } from './features/configuration/modules/m
     SpoDetailModuleFramesComponent,
     SpoDetailTextComponent,
     NewModuleFrameComponent,
-    ModuleFrameDetailComponent,
-    DegreeComponent,
-    LanguageComponent,
-    DurationComponent,
-    MaternityProtectionComponent
+    ModuleFrameDetailComponent
   ],
   imports: [
     BrowserModule,
