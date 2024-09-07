@@ -1,0 +1,90 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
+  margin: 0;
+  padding: 20px;
+  background-color: #f8f9fa; /* Soft background color */
+}
+
+/* Form Styles */
+form {
+  background-color: #fff; /* White background for forms */
+  padding: 20px;
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin-bottom: 20px; /* Space between forms and tables */
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold; /* Bold labels for clarity */
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd; /* Light gray border */
+  border-radius: 4px; /* Slightly rounded input fields */
+}
+
+input[disabled], textarea[disabled] {
+  background-color: #f0f0f0; /* Gray background for disabled inputs */
+}
+
+/* Button Styles */
+button {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+button[disabled] {
+  background-color: #ccc; /* Gray for disabled buttons */
+  cursor: not-allowed; /* Change cursor for disabled state */
+}
+
+/* Table Styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+table thead {
+  background-color: #007bff; /* Same color as nav */
+  color: #fff;
+}
+
+table th, table td {
+  border: 1px solid #ddd; /* Light gray borders */
+  padding: 10px;
+  text-align: left;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f2f2f2; /* Light gray for even rows */
+}
+
+table tbody tr:hover {
+  background-color: #e9ecef; /* Light gray on row hover */
+}
+
+/* Heading Styles */
+h3 {
+  color: #333; /* Dark gray for headings */
+  margin-top: 20px;
+}
+
+h4 {
+  margin-top: 20px;
+  color: #555; /* Slightly lighter gray for subheadings */
+}
