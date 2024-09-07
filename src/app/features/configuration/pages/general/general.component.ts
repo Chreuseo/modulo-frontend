@@ -7,6 +7,8 @@ import {DurationService} from "../../../../core/services/duration.service";
 import {DurationDTO} from "../../../../core/models/duration-dto.model";
 import {MaternityProtectionDTO} from "../../../../core/models/maternity-protection-dto.model";
 import {MaternityProtectionService} from "../../../../core/services/maternity-protection.service";
+import {CourseTypeDTO} from "../../../../core/models/course-type-dto.model";
+import {CourseTypeService} from "../../../../core/services/course-type.service";
 
 @Component({
   selector: 'app-general',
@@ -26,11 +28,16 @@ export class GeneralComponent implements OnInit {
   maternityProtections: MaternityProtectionDTO[] = [];
   newMaternityProtectionName: string = '';
 
+  courseTypes: CourseTypeDTO[] = [];
+  newCourseTypeName: string = '';
+  newCourseTypeAbbreviation: string = '';
+
 
   constructor(private degreeService: DegreeService,
               private languageService: LanguageService,
               private durationService: DurationService,
               private maternityProtectionService: MaternityProtectionService,
+              private courseTypeService: CourseTypeService,
               ) {}
 
   ngOnInit(): void {
@@ -38,6 +45,7 @@ export class GeneralComponent implements OnInit {
     this.loadLanguages();
     this.loadDurations();
     this.loadMaternityProtections();
+    this.loadCourseTypes();
   }
 
   loadDegrees(): void {
@@ -131,6 +139,29 @@ export class GeneralComponent implements OnInit {
   deleteMaternityProtection(id: number): void {
     this.maternityProtectionService.deleteMaternityProtection(id).subscribe(() => {
       this.loadMaternityProtections(); // Refresh the list after deletion
+    });
+  }
+
+  loadCourseTypes(): void {
+    this.courseTypeService.getAllCourseTypes().subscribe(types => {
+      this.courseTypes = types;
+    });
+  }
+
+  addCourseType(): void {
+    if (this.newCourseTypeName.trim()) {
+      const newType: CourseTypeDTO = { id: 0, name: this.newCourseTypeName.trim() , abbreviation: this.newCourseTypeAbbreviation.trim(), enabled: false};
+      this.courseTypeService.addCourseType(newType).subscribe(() => {
+        this.loadCourseTypes();
+        this.newCourseTypeName = ''; // Clear the input field
+        this.newCourseTypeAbbreviation = ''; // Clear the input field
+      });
+    }
+  }
+
+  deleteCourseType(id: number): void {
+    this.courseTypeService.deleteCourseType(id).subscribe(() => {
+      this.loadCourseTypes(); // Refresh the list after deletion
     });
   }
 }

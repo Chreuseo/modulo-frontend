@@ -76,4 +76,43 @@
       placeholder="Gefährdungsstufe hinzufügen" />
     <button (click)="addMaternityProtection()">Hinzufügen</button>
   </div>
+
+  <hr/>
+
+  <!-- Course Types Section -->
+  <h2>Verfügbare Arten der Lehrveranstaltung</h2>
+
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Abbreviation</th>
+      <th>Aktionen</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let courseType of courseTypes">
+      <td>{{ courseType.name }}</td>
+      <td>{{ courseType.abbreviation }}</td>
+      <td>
+        <button (click)="deleteCourseType(courseType.id)">Löschen</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="settings-add-container">
+    <input
+      type="text"
+      [(ngModel)]="newCourseTypeName"
+      placeholder="Name der Lehrveranstaltung hinzufügen" />
+
+    <input
+      type="text"
+      [(ngModel)]="newCourseTypeAbbreviation"
+      placeholder="Abbreviation der Lehrveranstaltung hinzufügen" />
+
+    <button (click)="addCourseType()">Hinzufügen</button>
+  </div>
+
 </div>
