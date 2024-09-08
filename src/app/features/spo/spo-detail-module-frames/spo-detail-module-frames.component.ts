@@ -5,6 +5,8 @@ import { ModuleFrameService } from '../../../core/services/module-frame.service'
 import { SpoDTO } from '../../../core/models/spo-dto.model';
 import { ModuleFrameSetDTO } from "../../../core/models/module-frame-set-dto.model";
 import { ModuleFrameDTO } from "../../../core/models/module-frame-dto.model";
+import {CourseTypeDTO} from "../../../core/models/course-type-dto.model";
+import {CourseTypeService} from "../../../core/services/course-type.service";
 
 @Component({
   selector: 'app-spo-detail-module-frames',
@@ -18,13 +20,14 @@ export class SpoDetailModuleFramesComponent implements OnInit {
   spo!: SpoDTO;
   moduleFrameSet!: ModuleFrameSetDTO;
   newModuleFrame!: ModuleFrameDTO; // Initialize as undefined and create after loading SPO
+  courseTypes: CourseTypeDTO[] = []; // store the fetched course types
   newModuleFrames: { [key: number]: ModuleFrameDTO } = {}; // Separate newModuleFrame for each moduleType
-  isAddingModuleFrame: { [key: number]: boolean } = {}; // Track display of additional input fields for each moduleType
-
+  isAddingModuleFrame: { [sectionId: number]: { [moduleTypeId: number]: boolean } } = {};
   constructor(
     private route: ActivatedRoute,
     private spoService: SpoService,
     private moduleFrameService: ModuleFrameService,
+    private courseTypeService: CourseTypeService, // Inject the Course
     private router: Router // For navigation purposes
   ) {}
 
@@ -42,17 +45,22 @@ export class SpoDetailModuleFramesComponent implements OnInit {
   loadSpoDetail(id: number): void {
     this.spoService.getSpo(id).subscribe(spo => {
       this.spo = spo;
-      this.initializeNewModuleFrame(); // Initialize newModuleFrame after fetching the SPO
+      this.loadCourseTypes(); // Load course types
     });
   }
 
   loadModuleFrameSet(spoId: number): void {
     this.moduleFrameService.getModuleFrameSetBySpoId(spoId).subscribe(moduleFrameSet => {
       this.moduleFrameSet = moduleFrameSet;
-      // Initialize isAddingModuleFrame for each module type
+
+      // Initialize isAddingModuleFrame as a nested object
+      this.isAddingModuleFrame = {}; // Reset it at the beginning
+
+      // Iterate through sections and module types to configure the nested structure
       this.moduleFrameSet.sections.forEach(section => {
+        this.isAddingModuleFrame[section.id] = {}; // Initialize the section key
         section.moduleTypes.forEach(moduleType => {
-          this.isAddingModuleFrame[moduleType.id] = false; // Initialize to false for all module types
+          this.isAddingModuleFrame[section.id][moduleType.id] = false; // Initialize to false for each module type
         });
       });
     });
@@ -66,17 +74,24 @@ export class SpoDetailModuleFramesComponent implements OnInit {
       moduleType: null!,
       quantity: 0,
       name: '',
+      courseTypes: this.courseTypes,
       sws: 0,
-      courseType: '',
       weight: 0,
       credits: 0,
       allExamsMandatory: false,
     };
   }
 
-  toggleAddModuleFrame(moduleTypeId: number): void {
-    this.isAddingModuleFrame[moduleTypeId] = !this.isAddingModuleFrame[moduleTypeId];
-    if (!this.isAddingModuleFrame[moduleTypeId]) {
+  toggleAddModuleFrame(sectionId: number, moduleTypeId: number): void {
+    // Check if sectionId exists, if not initialize it
+    if (!this.isAddingModuleFrame[sectionId]) {
+      this.isAddingModuleFrame[sectionId] = {};
+    }
+
+    // Toggle the specific moduleTypeId within the given sectionId
+    this.isAddingModuleFrame[sectionId][moduleTypeId] = !this.isAddingModuleFrame[sectionId][moduleTypeId];
+
+    if (!this.isAddingModuleFrame[sectionId][moduleTypeId]) {
       // Reset newModuleFrame when cancelled
       this.resetNewModuleFrame();
     }
@@ -106,7 +121,7 @@ export class SpoDetailModuleFramesComponent implements OnInit {
       quantity: 0,
       name: '',
       sws: 0,
-      courseType: '',
+      courseTypes: this.courseTypes,
       weight: 0,
       credits: 0,
       allExamsMandatory: false,
@@ -116,5 +131,12 @@ export class SpoDetailModuleFramesComponent implements OnInit {
   navigateToNewModuleFrame(): void {
     // Navigate to the new route for adding a new Module Frame
     this.router.navigate(['/module-frame/new', this.spo.id]); // Use the ID from the response
+  }
+
+  loadCourseTypes(): void {
+    this.courseTypeService.getAllCourseTypes().subscribe(courseTypes => {
+      this.courseTypes = courseTypes; // Store the fetched course types
+      this.initializeNewModuleFrame(); // Initialize newModuleFrame after fetching the SPO
+    });
   }
 }
