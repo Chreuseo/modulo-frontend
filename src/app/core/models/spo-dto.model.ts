@@ -2,6 +2,7 @@
 import { SectionDTO } from './section-dto.model';
 import { ModuleTypeDTO } from './module-type-dto.model';
 import { DegreeDTO } from './degree-dto.model';
+import {ExamTypeDTO} from "./exam-type-dto.model";
 
 export interface SpoDTO {
   id: number; // Java long maps to TypeScript number
@@ -13,5 +14,6 @@ export interface SpoDTO {
   validUntil: Date; // Java Date maps to TypeScript Date
   sectionDTOs: SectionDTO[]; // List<SectionDTO> maps to SectionDTO[]
   moduleTypeDTOs: ModuleTypeDTO[]; // List<ModuleTypeDTO> maps to ModuleTypeDTO[]
+  examTypeDTOs: ExamTypeDTO[]; // List<ExamTypeToSpoDTO> maps to any[]
   degree: DegreeDTO; // Full DegreeDTO
 }

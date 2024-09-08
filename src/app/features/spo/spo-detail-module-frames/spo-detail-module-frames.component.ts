@@ -72,12 +72,12 @@ export class SpoDetailModuleFramesComponent implements OnInit {
       spoId: this.spo.id, // Use the fetched spo object
       section: null!,
       moduleType: null!,
-      quantity: 0,
+      quantity: 1,
       name: '',
       courseTypes: this.courseTypes,
-      sws: 0,
-      weight: 0,
-      credits: 0,
+      sws: 4,
+      weight: 4,
+      credits: 5,
       allExamsMandatory: false,
     };
   }
@@ -118,12 +118,12 @@ export class SpoDetailModuleFramesComponent implements OnInit {
       spoId: this.spo.id, // Use the fetched spo to initialize
       section: null!,
       moduleType: null!,
-      quantity: 0,
+      quantity: 1,
       name: '',
-      sws: 0,
+      sws: 4,
       courseTypes: this.courseTypes,
-      weight: 0,
-      credits: 0,
+      weight: 4,
+      credits: 5,
       allExamsMandatory: false,
     };
   }
