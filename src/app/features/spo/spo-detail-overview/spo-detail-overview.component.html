@@ -76,7 +76,38 @@
       <input [(ngModel)]="newModuleTypeName" placeholder="New Module Type Name" />
       <button (click)="addModuleType()" class="btn btn-success">Add Module Type</button>
     </div>
+    <!-- Exam Types Management -->
+    <h3>Exam Types</h3>
+    <table class="table exam-types-table">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Abbreviation</th> <!-- New column for Abbreviation -->
+        <th>Length</th> <!-- New column for Length -->
+        <th>Action</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let examType of spo.examTypeDTOs; let i = index">
+        <td>{{ examType.name }}</td>
+        <td>{{ examType.abbreviation }}</td> <!-- New column for Abbreviation -->
+        <td>{{ examType.length }}</td> <!-- New column for Length -->
+        <td *ngIf="isEditing">
+          <button (click)="deleteExamType(examType.id)" class="btn btn-danger">-</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div *ngIf="isEditing" class="add-exam-type">
+      <h4>Add New Exam Type</h4>
+      <input [(ngModel)]="newExamTypeName" placeholder="New Exam Type Name" />
+      <input [(ngModel)]="newExamTypeAbbreviation" placeholder="New Exam Type Abbreviation" />
+      <input [(ngModel)]="newExamTypeLength" placeholder="New Exam Type Length" />
+      <button (click)="addExamType()" class="btn btn-success">Add Exam Type</button>
+    </div>
   </div>
+
 
   <div>
     <button (click)="toggleEdit()">{{ isEditing ? 'Cancel' : 'Edit' }}</button>

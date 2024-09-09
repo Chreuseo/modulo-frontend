@@ -28,7 +28,8 @@
           <th>Quantity</th>
           <th>Name</th>
           <th>SWS</th>
-          <th>Course Type</th>
+          <th>Course Types</th>
+          <th>Exam Types</th>
           <th>Weight</th>
           <th>Credits</th>
           <th>Actions</th>
@@ -39,18 +40,78 @@
           <td>{{ moduleFrame.quantity }}</td>
           <td>{{ moduleFrame.name }}</td>
           <td>{{ moduleFrame.sws }}</td>
-          <td>{{ moduleFrame.courseType }}</td>
+          <td>
+            <div *ngFor="let courseType of moduleFrame.courseTypes">
+              <label>
+                <input
+                  type="checkbox"
+                  [(ngModel)]="courseType.enabled"
+                  disabled="true"
+                />
+                {{ courseType.abbreviation }}
+              </label>
+            </div>
+          </td>
+          <td>
+            <div *ngFor="let examType of moduleFrame.examTypes">
+              <label>
+                <input
+                  type="checkbox"
+                  [(ngModel)]="examType.enabled"
+                  disabled="true"
+                />
+              </label>
+              {{ examType.abbreviation }}
+              <label>
+                <input
+                  type="checkbox"
+                  [(ngModel)]="examType.mandatory"
+                  disabled="true"
+                />
+              </label>
+              mandatory
+            </div>
+          </td>
           <td>{{ moduleFrame.weight }}</td>
           <td>{{ moduleFrame.credits }}</td>
           <td>
             <!-- You could add edit/delete functionality here -->
           </td>
         </tr>
-        <tr *ngIf="isAddingModuleFrame[moduleType.id]">
+        <tr *ngIf="isAddingModuleFrame[section.id] && isAddingModuleFrame[section.id][moduleType.id]">
           <td><input type="number" [(ngModel)]="newModuleFrame.quantity" placeholder="Semester"/></td>
           <td><input type="text" [(ngModel)]="newModuleFrame.name" placeholder="Name"/></td>
           <td><input type="number" [(ngModel)]="newModuleFrame.sws" placeholder="SWS"/></td>
-          <td><input type="text" [(ngModel)]="newModuleFrame.courseType" placeholder="Course Type"/></td>
+          <td>
+            <div *ngFor="let courseType of newModuleFrame.courseTypes">
+              <label>
+                <input
+                  type="checkbox"
+                  [(ngModel)]="courseType.enabled"
+                />
+                {{ courseType.abbreviation }}
+              </label>
+            </div>
+          </td>
+          <td>
+            <div *ngFor="let examType of newModuleFrame.examTypes">
+              <label>
+                <input
+                  type="checkbox"
+                  [(ngModel)]="examType.enabled"
+                />
+                {{ examType.abbreviation }}
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  [(ngModel)]="examType.mandatory"
+                  disabled={{!examType.enabled}}
+                />
+                mandatory
+              </label>
+            </div>
+          </td>
           <td><input type="number" [(ngModel)]="newModuleFrame.weight" placeholder="Weight"/></td>
           <td><input type="number" [(ngModel)]="newModuleFrame.credits" placeholder="Credits"/></td>
           <td>
@@ -59,9 +120,10 @@
         </tr>
         </tbody>
       </table>
-      <button (click)="toggleAddModuleFrame(moduleType.id)" class="btn btn-primary">
-        {{ isAddingModuleFrame[moduleType.id] ? 'Cancel' : 'Add Module Frame' }}
+      <button (click)="toggleAddModuleFrame(section.id, moduleType.id)" class="btn btn-primary">
+        {{ isAddingModuleFrame[section.id][moduleType.id] ? 'Cancel' : 'Add Module Frame' }}
       </button>
+
     </div>
   </div>
 </div>

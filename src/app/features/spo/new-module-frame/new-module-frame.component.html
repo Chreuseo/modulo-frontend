@@ -3,7 +3,7 @@
   <form>
     <div>
       <label for="spo">SPO:</label>
-      <input type="text" id="spo" value="{{ spo?.name }} {{ spo?.degree?.name}} - veröffentlicht am {{spo?.publication}}" readonly />
+      <input type="text" id="spo" value="{{ spo.name }} {{ spo.degree.name}} - veröffentlicht am {{spo.publication}}" readonly />
     </div>
 
 
@@ -25,9 +25,6 @@
 
     <label for="sws">SWS:</label>
     <input type="number" id="sws" [(ngModel)]="moduleFrame.sws" name="sws" placeholder="SWS" />
-
-    <label for="courseType">Course Type:</label>
-    <input type="text" id="courseType" [(ngModel)]="moduleFrame.courseType" name="courseType" placeholder="Course Type" />
 
     <label for="weight">Weight:</label>
     <input type="number" id="weight" [(ngModel)]="moduleFrame.weight" name="weight" placeholder="Weight" />

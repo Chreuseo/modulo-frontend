@@ -1,5 +1,7 @@
 import {SectionDTO} from "./section-dto.model";
 import {ModuleTypeDTO} from "./module-type-dto.model";
+import {CourseTypeDTO} from "./course-type-dto.model";
+import {ExamTypeDTO} from "./exam-type-dto.model";
 
 
 export interface ModuleFrameDTO {
@@ -10,8 +12,8 @@ export interface ModuleFrameDTO {
   quantity: number;
   name: string;
   sws: number;                 // Semester Weekly Hours
-  courseType: string;
   weight: number;
   credits: number;
-  allExamsMandatory: boolean;
+  courseTypes: CourseTypeDTO[]; // Reference to the existing CourseTypeDTO
+  examTypes: ExamTypeDTO[];     // Reference to the existing ExamTypeDTO
 }

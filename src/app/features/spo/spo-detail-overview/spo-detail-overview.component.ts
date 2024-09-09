@@ -8,12 +8,15 @@ import { SectionService } from "../../../core/services/section.service";
 import { ModuleTypeService } from "../../../core/services/module-type.service";
 import { ModuleTypeDTO } from "../../../core/models/module-type-dto.model";
 import { SectionDTO } from "../../../core/models/section-dto.model";
+import {ExamTypeDTO} from "../../../core/models/exam-type-dto.model";
+import {ExamTypeService} from "../../../core/services/exam-type.service";
 
 @Component({
   selector: 'app-spo-detail-overview',
   templateUrl: './spo-detail-overview.component.html',
   styleUrls: ['../../../core/stylesheets/details.css',
-    '../../../core/stylesheets/sub-nav.css']
+    '../../../core/stylesheets/sub-nav.css',
+    '../../../core/stylesheets/exam-type-table.css']
 })
 export class SpoDetailOverviewComponent implements OnInit {
   spoId!: number;
@@ -23,13 +26,17 @@ export class SpoDetailOverviewComponent implements OnInit {
 
   newSectionName: string = ''; // For new section input
   newModuleTypeName: string = ''; // For new module type input
+  newExamTypeName: string = ''; // For new exam type input
+  newExamTypeAbbreviation: string = ''; // For new exam type abbreviation input
+  newExamTypeLength: string = ''; // For new exam type length input
 
   constructor(
     private route: ActivatedRoute,
     private spoService: SpoService,
     private degreeService: DegreeService,
     private sectionService: SectionService,
-    private moduleTypeService: ModuleTypeService
+    private moduleTypeService: ModuleTypeService,
+    private examTypeService: ExamTypeService
   ) { }
 
   ngOnInit(): void {
@@ -148,6 +155,30 @@ export class SpoDetailOverviewComponent implements OnInit {
     }
   }
 
+  addExamType(): void {
+    if (this.newExamTypeName.trim() !== '') {
+      const newExamType: ExamTypeDTO = {
+        id: 0, // ID will be generated
+        name: this.newExamTypeName,
+        abbreviation: this.newExamTypeAbbreviation, // Assuming abbreviation is optional or can be an empty string. Adjust as needed.
+        length: this.newExamTypeLength, // Assuming length is optional or can be an empty string. Adjust as needed.
+        spoId: this.spo.id,
+        enabled: true, // Setting default value; modify as per your requirements
+        mandatory: false // Setting default value; modify as per your requirements
+      };
+
+      this.examTypeService.add(newExamType).subscribe((addedExamType: ExamTypeDTO) => {
+        this.spo.examTypeDTOs.push(addedExamType);
+        this.newExamTypeName = ''; // Clear input field after adding
+        this.newExamTypeAbbreviation = ''; // Clear input field after adding
+        this.newExamTypeLength = ''; // Clear input field
+      }, (error) => {
+        console.error('Error adding exam type', error);
+      });
+    }
+  }
+
+
   updateIndices(list: any[] = this.spo.sectionDTOs): void {
     list.forEach((item, index) => {
       item.index = index; // Update index based on current order
@@ -176,5 +207,14 @@ export class SpoDetailOverviewComponent implements OnInit {
         console.error('Error deleting module type:', error);
       }
     );
+  }
+
+  deleteExamType(examTypeId: number): void {
+    this.examTypeService.remove(examTypeId).subscribe(() => {
+      this.spo.examTypeDTOs = this.spo.examTypeDTOs.filter(e => e.id !== examTypeId); // Remove deleted exam type from UI
+      console.log(`Exam type with id ${examTypeId} deleted.`);
+    }, (error) => {
+      console.error('Error deleting exam type:', error);
+    });
   }
 }
