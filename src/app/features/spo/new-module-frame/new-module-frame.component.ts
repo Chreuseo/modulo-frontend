@@ -27,9 +27,9 @@ export class NewModuleFrameComponent {
     name: '',
     sws: 0,
     courseTypes: [],
+    examTypes: [],
     weight: 0,
     credits: 0,
-    allExamsMandatory: false,
   };
 
   constructor(
@@ -83,13 +83,12 @@ export class NewModuleFrameComponent {
       spoId: this.spoId,
       section: null!,
       moduleType: null!,
+      examTypes: null!,
       quantity: 0,
       name: '',
       sws: 0,
       courseTypes: [],
       weight: 0,
-      credits: 0,
-      allExamsMandatory: false,
-    };
+      credits: 0,};
   }
 }

@@ -7,6 +7,8 @@ import { ModuleFrameSetDTO } from "../../../core/models/module-frame-set-dto.mod
 import { ModuleFrameDTO } from "../../../core/models/module-frame-dto.model";
 import {CourseTypeDTO} from "../../../core/models/course-type-dto.model";
 import {CourseTypeService} from "../../../core/services/course-type.service";
+import {ExamTypeDTO} from "../../../core/models/exam-type-dto.model";
+import {ExamTypeService} from "../../../core/services/exam-type.service";
 
 @Component({
   selector: 'app-spo-detail-module-frames',
@@ -21,13 +23,14 @@ export class SpoDetailModuleFramesComponent implements OnInit {
   moduleFrameSet!: ModuleFrameSetDTO;
   newModuleFrame!: ModuleFrameDTO; // Initialize as undefined and create after loading SPO
   courseTypes: CourseTypeDTO[] = []; // store the fetched course types
-  newModuleFrames: { [key: number]: ModuleFrameDTO } = {}; // Separate newModuleFrame for each moduleType
+  examTypes: ExamTypeDTO[] = []
   isAddingModuleFrame: { [sectionId: number]: { [moduleTypeId: number]: boolean } } = {};
   constructor(
     private route: ActivatedRoute,
     private spoService: SpoService,
     private moduleFrameService: ModuleFrameService,
     private courseTypeService: CourseTypeService, // Inject the Course
+    private examTypeService: ExamTypeService, // Inject the ExamType
     private router: Router // For navigation purposes
   ) {}
 
@@ -75,10 +78,10 @@ export class SpoDetailModuleFramesComponent implements OnInit {
       quantity: 1,
       name: '',
       courseTypes: this.courseTypes,
+      examTypes: this.examTypes,
       sws: 4,
       weight: 4,
       credits: 5,
-      allExamsMandatory: false,
     };
   }
 
@@ -122,9 +125,9 @@ export class SpoDetailModuleFramesComponent implements OnInit {
       name: '',
       sws: 4,
       courseTypes: this.courseTypes,
+      examTypes: this.examTypes,
       weight: 4,
-      credits: 5,
-      allExamsMandatory: false,
+      credits: 5
     };
   }
 
@@ -136,6 +139,13 @@ export class SpoDetailModuleFramesComponent implements OnInit {
   loadCourseTypes(): void {
     this.courseTypeService.getAllCourseTypes().subscribe(courseTypes => {
       this.courseTypes = courseTypes; // Store the fetched course types
+      this.loadExamTypes(); // Initialize newModuleFrame after fetching the SPO
+    });
+  }
+
+  loadExamTypes(): void {
+    this.examTypeService.getBySpo(this.spo.id).subscribe(examTypes => {
+      this.examTypes = examTypes; // Store the fetched exam types
       this.initializeNewModuleFrame(); // Initialize newModuleFrame after fetching the SPO
     });
   }

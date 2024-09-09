@@ -170,6 +170,8 @@ export class SpoDetailOverviewComponent implements OnInit {
       this.examTypeService.add(newExamType).subscribe((addedExamType: ExamTypeDTO) => {
         this.spo.examTypeDTOs.push(addedExamType);
         this.newExamTypeName = ''; // Clear input field after adding
+        this.newExamTypeAbbreviation = ''; // Clear input field after adding
+        this.newExamTypeLength = ''; // Clear input field
       }, (error) => {
         console.error('Error adding exam type', error);
       });

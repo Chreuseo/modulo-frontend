@@ -29,6 +29,7 @@
           <th>Name</th>
           <th>SWS</th>
           <th>Course Types</th>
+          <th>Exam Types</th>
           <th>Weight</th>
           <th>Credits</th>
           <th>Actions</th>
@@ -51,6 +52,26 @@
               </label>
             </div>
           </td>
+          <td>
+            <div *ngFor="let examType of moduleFrame.examTypes">
+              <label>
+                <input
+                  type="checkbox"
+                  [(ngModel)]="examType.enabled"
+                  disabled="true"
+                />
+              </label>
+              {{ examType.abbreviation }}
+              <label>
+                <input
+                  type="checkbox"
+                  [(ngModel)]="examType.mandatory"
+                  disabled="true"
+                />
+              </label>
+              mandatory
+            </div>
+          </td>
           <td>{{ moduleFrame.weight }}</td>
           <td>{{ moduleFrame.credits }}</td>
           <td>
@@ -69,6 +90,25 @@
                   [(ngModel)]="courseType.enabled"
                 />
                 {{ courseType.abbreviation }}
+              </label>
+            </div>
+          </td>
+          <td>
+            <div *ngFor="let examType of newModuleFrame.examTypes">
+              <label>
+                <input
+                  type="checkbox"
+                  [(ngModel)]="examType.enabled"
+                />
+                {{ examType.abbreviation }}
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  [(ngModel)]="examType.mandatory"
+                  disabled={{!examType.enabled}}
+                />
+                mandatory
               </label>
             </div>
           </td>
