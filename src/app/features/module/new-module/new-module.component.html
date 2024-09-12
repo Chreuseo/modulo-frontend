@@ -1,0 +1,21 @@
+<!-- new-module.component.html -->
+
+<form [formGroup]="moduleForm" (ngSubmit)="saveModule()">
+  <div>
+    <label for="name">Name:</label>
+    <input id="name" formControlName="name" />
+  </div>
+
+  <div>
+    <label for="abbreviation">Abbreviation:</label>
+    <input id="abbreviation" formControlName="abbreviation" />
+  </div>
+
+
+  <div>
+    <button type="button" (click)="discard()">Discard</button>
+    <button type="button" (click)="saveAndBack()">Save and Back</button>
+    <button type="button" (click)="saveAndNew()">Save and New</button>
+    <button type="button" (click)="saveAndOpen()">Save and Open</button>
+  </div>
+</form>

@@ -2,7 +2,8 @@
 
 import { Component, OnInit } from '@angular/core';
 import { ModuleImplementationService } from '../../../core/services/module-implementation.service';
-import { ModuleImplementationDTOFlat } from '../../../core/models/module-implementation-dto-flat.model'; // Adjust import path as necessary
+import { ModuleImplementationDTOFlat } from '../../../core/models/module-implementation-dto-flat.model';
+import {Router} from "@angular/router"; // Adjust import path as necessary
 
 @Component({
   selector: 'app-module-list',
@@ -12,7 +13,8 @@ import { ModuleImplementationDTOFlat } from '../../../core/models/module-impleme
 export class ModuleListComponent implements OnInit {
   public modules: ModuleImplementationDTOFlat[] = [];
 
-  constructor(private moduleService: ModuleImplementationService) {}
+  constructor(private moduleService: ModuleImplementationService,
+              private router: Router) {}
 
   ngOnInit(): void {
     this.loadModules();
@@ -27,5 +29,13 @@ export class ModuleListComponent implements OnInit {
         console.error('Error fetching module implementations:', error);
       }
     );
+  }
+
+  navigateToNewModule() {
+    this.router.navigate(['/new-module']);
+  }
+
+  navigateToModuleDetail(id: number): void {
+    this.router.navigate(['/module', id]);
   }
 }

@@ -9,6 +9,8 @@ import {MaternityProtectionDTO} from "../../../../core/models/maternity-protecti
 import {MaternityProtectionService} from "../../../../core/services/maternity-protection.service";
 import {CourseTypeDTO} from "../../../../core/models/course-type-dto.model";
 import {CourseTypeService} from "../../../../core/services/course-type.service";
+import {CycleDTO} from "../../../../core/models/cycle-dto.model";
+import {CycleService} from "../../../../core/services/cycle.service";
 
 @Component({
   selector: 'app-general',
@@ -32,12 +34,16 @@ export class GeneralComponent implements OnInit {
   newCourseTypeName: string = '';
   newCourseTypeAbbreviation: string = '';
 
+  cycles: CycleDTO[] = [];
+  newCycleName: string = '';
+
 
   constructor(private degreeService: DegreeService,
               private languageService: LanguageService,
               private durationService: DurationService,
               private maternityProtectionService: MaternityProtectionService,
               private courseTypeService: CourseTypeService,
+              private cycleService: CycleService
               ) {}
 
   ngOnInit(): void {
@@ -46,6 +52,7 @@ export class GeneralComponent implements OnInit {
     this.loadDurations();
     this.loadMaternityProtections();
     this.loadCourseTypes();
+    this.loadCycles();
   }
 
   loadDegrees(): void {
@@ -162,6 +169,28 @@ export class GeneralComponent implements OnInit {
   deleteCourseType(id: number): void {
     this.courseTypeService.deleteCourseType(id).subscribe(() => {
       this.loadCourseTypes(); // Refresh the list after deletion
+    });
+  }
+
+  loadCycles(): void {
+    this.cycleService.getAllCycles().subscribe(cycles => {
+      this.cycles = cycles;
+    });
+  }
+
+  addCycle(): void {
+    if (this.newCycleName.trim()) {
+      const newCycle: CycleDTO = { id: 0, name: this.newCycleName.trim() };
+      this.cycleService.addCycle(newCycle).subscribe(() => {
+        this.loadCycles();
+        this.newCycleName = ''; // Clear the input field
+      });
+    }
+  }
+
+  deleteCycle(id: number): void {
+    this.cycleService.deleteCycle(id).subscribe(() => {
+      this.loadCycles(); // Refresh the list after deletion
     });
   }
 }

@@ -1,3 +1,5 @@
+<button (click)="navigateToNewModule()"  class="btn btn-primary">Add New Module</button>
+
 <div class="module-list-container">
   <h2>Module</h2>
   <table>
@@ -6,6 +8,7 @@
       <th>Name</th>
       <th>Abkürzung</th>
       <th>Verwendungen</th>
+      <th>Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -16,6 +19,9 @@
         <div *ngFor="let spo of module.spos">
           {{ spo.name }} <!-- Change to another property if needed -->
         </div>
+      </td>
+      <td>
+        <button (click)="navigateToModuleDetail(module.id)" class="btn btn-info">View Details</button>
       </td>
     </tr>
     </tbody>

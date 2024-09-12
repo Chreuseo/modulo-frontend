@@ -10,6 +10,8 @@ import { ModuleTypeDTO } from "../../../core/models/module-type-dto.model";
 import { SectionDTO } from "../../../core/models/section-dto.model";
 import {ExamTypeDTO} from "../../../core/models/exam-type-dto.model";
 import {ExamTypeService} from "../../../core/services/exam-type.service";
+import {ModuleRequirementService} from "../../../core/services/module-requirement.service";
+import {ModuleRequirementDTO} from "../../../core/models/module-requirement-dto.model";
 
 @Component({
   selector: 'app-spo-detail-overview',
@@ -29,6 +31,7 @@ export class SpoDetailOverviewComponent implements OnInit {
   newExamTypeName: string = ''; // For new exam type input
   newExamTypeAbbreviation: string = ''; // For new exam type abbreviation input
   newExamTypeLength: string = ''; // For new exam type length input
+  newModuleRequirementName: string = ''; // For new module requirement input
 
   constructor(
     private route: ActivatedRoute,
@@ -36,7 +39,8 @@ export class SpoDetailOverviewComponent implements OnInit {
     private degreeService: DegreeService,
     private sectionService: SectionService,
     private moduleTypeService: ModuleTypeService,
-    private examTypeService: ExamTypeService
+    private examTypeService: ExamTypeService,
+    private moduleRequirementService: ModuleRequirementService
   ) { }
 
   ngOnInit(): void {
@@ -162,6 +166,7 @@ export class SpoDetailOverviewComponent implements OnInit {
         name: this.newExamTypeName,
         abbreviation: this.newExamTypeAbbreviation, // Assuming abbreviation is optional or can be an empty string. Adjust as needed.
         length: this.newExamTypeLength, // Assuming length is optional or can be an empty string. Adjust as needed.
+        description: '', // Setting default value; modify as per your requirements
         spoId: this.spo.id,
         enabled: true, // Setting default value; modify as per your requirements
         mandatory: false // Setting default value; modify as per your requirements
@@ -216,5 +221,36 @@ export class SpoDetailOverviewComponent implements OnInit {
     }, (error) => {
       console.error('Error deleting exam type:', error);
     });
+  }
+
+  // Add new methods for module requirements
+
+  addModuleRequirement(): void {
+    if (this.newModuleRequirementName.trim() !== '') {
+      const newModReq: ModuleRequirementDTO = {
+        id: 0,
+        name: this.newModuleRequirementName,
+        spoId: this.spo.id
+      };
+
+      this.moduleRequirementService.addModuleRequirement(newModReq).subscribe((addedRequirement: ModuleRequirementDTO) => {
+        this.spo.moduleRequirementDTOs.push(addedRequirement);
+        this.newModuleRequirementName = ''; // Clear input field after adding
+      }, (error) => {
+        console.error('Error adding module requirement', error);
+      });
+    }
+  }
+
+  deleteModuleRequirement(moduleRequirementId: number): void {
+    this.moduleRequirementService.remove(moduleRequirementId).subscribe(
+      () => {
+        this.spo.moduleRequirementDTOs = this.spo.moduleRequirementDTOs.filter(m => m.id !== moduleRequirementId); // Remove deleted module requirement from UI
+        console.log(`Module requirement with id ${moduleRequirementId} deleted.`);
+      },
+      (error) => {
+        console.error('Error deleting module requirement:', error);
+      }
+    );
   }
 }

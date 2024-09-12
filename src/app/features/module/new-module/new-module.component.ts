@@ -1,0 +1,60 @@
+// new-module.component.ts
+
+import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {ModuleImplementationService} from "../../../core/services/module-implementation.service";
+import {ModuleImplementationDTOFlat} from "../../../core/models/module-implementation-dto-flat.model";
+
+@Component({
+  selector: 'app-new-module',
+  templateUrl: './new-module.component.html',
+  styleUrls: ['../../../core/stylesheets/formula.css']})
+export class NewModuleComponent {
+  moduleForm!: FormGroup;
+
+  constructor(private fb: FormBuilder, private moduleService: ModuleImplementationService) {}
+
+  ngOnInit(): void {
+    this.initializeForm();
+  }
+
+  initializeForm() {
+    this.moduleForm = this.fb.group({
+      id: 0,
+      name: [''],
+      abbreviation: [''],
+    });
+  }
+
+  saveModule(){
+    const module: ModuleImplementationDTOFlat = this.moduleForm.value;
+    this.moduleService.addModuleImplementation(module).subscribe(
+      (response) => {
+        console.log('Module added successfully', response);
+        // Handle success as needed, such as showing a success message
+      },
+      (error) => {
+        console.error('Error adding module', error);
+        // Handle error as needed, such as showing an error message
+      })
+  }
+
+  saveAndNew() {
+    this.saveModule();
+    this.moduleForm.reset();
+  }
+
+  discard() {
+    this.moduleForm.reset();
+  }
+
+  saveAndOpen() {
+    this.saveModule();
+    // Navigate to the module details page
+  }
+
+  saveAndBack() {
+    this.saveModule();
+    // Navigate back to the module list page
+  }
+}

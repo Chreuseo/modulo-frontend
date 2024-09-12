@@ -12,6 +12,8 @@ import {
 } from "./features/spo/spo-detail-module-frames/spo-detail-module-frames.component";
 import {SpoDetailTextComponent} from "./features/spo/spo-detail-text/spo-detail-text.component";
 import {NewModuleFrameComponent} from "./features/spo/new-module-frame/new-module-frame.component";
+import {NewModuleComponent} from "./features/module/new-module/new-module.component";
+import {ModuleDetailComponent} from "./features/module/module-detail/module-detail.component";
 
 const routes: Routes = [
   { path: 'spo', component: SpoListComponent },
@@ -21,6 +23,8 @@ const routes: Routes = [
   { path: 'spo/:id/text', component: SpoDetailTextComponent},
   { path: 'module-frame/new/:spoId', component: NewModuleFrameComponent },
   { path: 'module', component: ModuleListComponent },
+  { path : 'module/:id', component: ModuleDetailComponent },
+  { path: 'new-module', component: NewModuleComponent },
   { path: 'user', component: UserListComponent},
   { path: 'configuration', component: GeneralComponent },
   { path: 'my', component: MyComponent},

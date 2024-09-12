@@ -1,0 +1,47 @@
+<!-- src/app/module-detail/module-detail.component.html -->
+
+<div *ngIf="moduleImplementation">
+  <h2>Module Details</h2>
+
+  <div>
+    <label>Name:</label>
+    <input [(ngModel)]="moduleImplementation.name" [disabled]="!isEditing">
+  </div>
+
+  <div>
+    <label>Abbreviation:</label>
+    <input [(ngModel)]="moduleImplementation.abbreviation" [disabled]="!isEditing">
+  </div>
+
+  <div>
+    <label>Course Type:</label>
+    <input [(ngModel)]="moduleImplementation.courseType" [disabled]="!isEditing">
+  </div>
+
+  <div>
+    <label>Cycle:</label>
+    <select [(ngModel)]="moduleImplementation.cycle" [disabled]="!isEditing">
+      <option *ngFor="let cycle of cycles" [ngValue]="cycle">{{cycle.name}}</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Duration:</label>
+    <select [(ngModel)]="moduleImplementation.duration" [disabled]="!isEditing">
+      <option *ngFor="let duration of durations" [ngValue]="duration">{{duration.name}}</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Language:</label>
+    <select [(ngModel)]="moduleImplementation.language" [disabled]="!isEditing">
+      <option *ngFor="let language of languages" [ngValue]="language">{{language.name}}</option>
+    </select>
+  </div>
+
+  <div>
+    <button (click)="toggleEdit()" *ngIf="!isEditing">Edit</button>
+    <button (click)="save()" *ngIf="isEditing">Save</button>
+    <button (click)="cancel()" *ngIf="isEditing">Cancel</button>
+  </div>
+</div>

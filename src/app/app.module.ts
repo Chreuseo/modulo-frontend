@@ -17,6 +17,8 @@ import { SpoDetailModuleFramesComponent } from './features/spo/spo-detail-module
 import { SpoDetailTextComponent } from './features/spo/spo-detail-text/spo-detail-text.component';
 import { NewModuleFrameComponent } from './features/spo/new-module-frame/new-module-frame.component';
 import { ModuleFrameDetailComponent } from './features/spo/module-frame-detail/module-frame-detail.component';
+import { NewModuleComponent } from './features/module/new-module/new-module.component';
+import { ModuleDetailComponent } from './features/module/module-detail/module-detail.component';
 
 
 @NgModule({
@@ -32,7 +34,9 @@ import { ModuleFrameDetailComponent } from './features/spo/module-frame-detail/m
     SpoDetailModuleFramesComponent,
     SpoDetailTextComponent,
     NewModuleFrameComponent,
-    ModuleFrameDetailComponent
+    ModuleFrameDetailComponent,
+    NewModuleComponent,
+    ModuleDetailComponent
   ],
   imports: [
     BrowserModule,
