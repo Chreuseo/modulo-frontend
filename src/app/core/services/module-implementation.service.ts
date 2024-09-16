@@ -30,6 +30,10 @@ export class ModuleImplementationService extends BaseService {
     return this.get<ModuleImplementationDTO>(`${this.endpoint}/${id}`);
   }
 
+  getFlatById(id: number): Observable<ModuleImplementationDTOFlat> {
+    return this.get<ModuleImplementationDTOFlat>(`${this.endpoint}/flat/${id}`);
+  }
+
   updateModuleImplementation(moduleImplementation: ModuleImplementationDTO): Observable<ModuleImplementationDTO> {
     return this.put<ModuleImplementationDTO>(`${this.endpoint}/update`, moduleImplementation);
   }

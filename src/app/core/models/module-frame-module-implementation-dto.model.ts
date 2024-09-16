@@ -3,10 +3,10 @@ import {ModuleRequirementDTO} from "./module-requirement-dto.model";
 import {ExamTypeDTO} from "./exam-type-dto.model";
 import {ModuleFrameDTO} from "./module-frame-dto.model";
 
-export interface ModuleMappingDTO {
+export interface ModuleFrameModuleImplementationDTO {
   id: number;
   moduleImplementationDTOFlat: ModuleImplementationDTOFlat;
-  moduleFrameDTOFlat: ModuleFrameDTO;
-  moduleRequirementDTO: ModuleRequirementDTO;
+  moduleFrameDTO: ModuleFrameDTO;
+  moduleRequirementDTO: ModuleRequirementDTO | null;
   examTypeDTOs: ExamTypeDTO[];
 }

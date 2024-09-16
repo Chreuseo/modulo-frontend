@@ -20,7 +20,7 @@ export class NewModuleFrameComponent {
 
   moduleFrame: ModuleFrameDTO = {
     id: 0,
-    spoId: 0,
+    spoDTOFlat: this.spo,
     section: null!,
     moduleType: null!,
     quantity: 0,
@@ -49,7 +49,7 @@ export class NewModuleFrameComponent {
   loadSpoDetail(spoId: number): void {
     this.spoService.getSpo(spoId).subscribe(spo => {
       this.spo = spo;
-      this.moduleFrame.spoId = this.spo.id; // Set the SPO ID for the module frame
+      this.moduleFrame.spoDTOFlat = this.spo; // Set the SPO ID for the module frame
       this.sectionDTOs = this.spo.sectionDTOs; // Populate sectionDTOs from the SPO
       this.moduleTypeDTOs = this.spo.moduleTypeDTOs; // Populate moduleTypeDTOs from the SPO
     });
@@ -80,7 +80,7 @@ export class NewModuleFrameComponent {
   resetForm(): void {
     this.moduleFrame = {
       id: 0,
-      spoId: this.spoId,
+      spoDTOFlat: this.spo,
       section: null!,
       moduleType: null!,
       examTypes: null!,

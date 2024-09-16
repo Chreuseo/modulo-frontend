@@ -3,6 +3,38 @@
 <div *ngIf="moduleImplementation">
   <h2>Module Details</h2>
 
+  <label>Verwendungen:</label>
+  <table>
+    <thead>
+    <tr>
+      <th>Studiengang</th>
+      <th>Modul gemäß Spo</th>
+      <th>Examina</th>
+      <th>Voraussetzungen</th>
+    </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let moduleFrameModuleImplementation of moduleFrameModuleImplementations">
+        <td>{{ moduleFrameModuleImplementation.moduleFrameDTO.spoDTOFlat.name }}</td>
+        <td>{{ moduleFrameModuleImplementation.moduleFrameDTO.name }}</td>
+        <td>
+          <div *ngFor="let examType of moduleFrameModuleImplementation.examTypeDTOs">
+            <label>
+              <input type="checkbox" [checked]="examType.enabled" disabled="true">
+              {{ examType.abbreviation }} - {{ examType.name}}
+            </label>
+            <label>Length:</label>
+            <input [value]="examType.length" disabled="true">
+            <label>Description:</label>
+            <input [value]="examType.description" disabled="true">
+          </div>
+        </td>
+        <td>{{ moduleFrameModuleImplementation.moduleRequirementDTO?.name }}</td>
+    </tbody>
+  </table>
+
+  <button (click)="navigateToNewModuleFrame()">Studiengang hinzufügen</button>
+
   <div>
     <label>Name:</label>
     <input [(ngModel)]="moduleImplementation.name" [disabled]="!isEditing">

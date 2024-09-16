@@ -1,0 +1,62 @@
+<div>
+  <h2>Modulzuordnung zu einer SPO</h2>
+
+  <div>
+    <label>Studiengang:</label>
+    <select [(ngModel)]="selectedSpo" (change)="onSpoChange()">
+      <option *ngFor="let spo of spos" [ngValue]="spo">{{spo.name}}</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Modul:</label>
+    <select [(ngModel)]="selectedModuleFrame" (change)="onModuleFrameChange()">
+      <ng-container *ngFor="let section of moduleFrameSet.sections">
+        <option [disabled]="true">--- {{ section.name }}</option>
+        <ng-container *ngFor="let moduleType of section.moduleTypes">
+          <option [disabled]="true">----- {{ moduleType.name }}</option>
+          <option *ngFor="let moduleFrame of moduleType.moduleFrames" [ngValue]="moduleFrame">
+            {{ moduleFrame.name }}
+          </option>
+        </ng-container>
+      </ng-container>
+    </select>
+  </div>
+
+  <div>
+    <label>Examina:</label>
+    <div *ngFor="let examType of examTypes" class="exam-type-row">
+      <label>
+        <input
+          type="checkbox"
+          [(ngModel)]="examType.enabled"
+          [disabled]="examType.mandatory"
+        />
+        {{ examType.abbreviation }}
+      </label>
+      <label>
+        <input
+          type="checkbox"
+          [(ngModel)]="examType.mandatory"
+          disabled="true"
+        />
+        mandatory
+      </label>
+      <label>Description:</label>
+      <input [(ngModel)]="examType.description" [disabled]="!examType.enabled" />
+      <label>Length:</label>
+      <input [(ngModel)]="examType.length" [disabled]="!examType.enabled" />
+    </div>
+  </div>
+
+  <div>
+    <label>Voraussetzungen</label>
+    <select [(ngModel)]="selectedModuleRequirement">
+      <option *ngFor="let moduleRequirement of moduleRequirements" [ngValue]="moduleRequirement">
+        {{ moduleRequirement.name }}
+      </option>
+    </select>
+  </div>
+
+  <button (click)="onSave()">Save</button>
+</div>

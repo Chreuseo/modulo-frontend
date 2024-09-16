@@ -6,9 +6,6 @@ import { LanguageDTO } from './language-dto.model';
 import { MaternityProtectionDTO } from './maternity-protection-dto.model';
 import {CycleDTO} from "./cycle-dto.model";
 import {UserDTOFlat} from "./user-dto-flat.model";
-import {ModuleRequirementDTO} from "./module-requirement-dto.model";
-import {ModuleMappingDTO} from "./module-frame-module-implementation-dto.model";
-import {ExamTypeDTO} from "./exam-type-dto.model";
 
 export interface ModuleImplementationDTO {
   id: number;                                       // Using number for Long

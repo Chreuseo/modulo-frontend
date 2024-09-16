@@ -4,6 +4,7 @@ import {BaseService} from "./base.service";
 import {ModuleFrameSetDTO} from "../models/module-frame-set-dto.model";
 import {ModuleFrameDTO} from "../models/module-frame-dto.model";
 import {HttpClient} from "@angular/common/http";
+import {ModuleFrameModuleImplementationDTO} from "../models/module-frame-module-implementation-dto.model";
 
 @Injectable({
   providedIn: 'root',

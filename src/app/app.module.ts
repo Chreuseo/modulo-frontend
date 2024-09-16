@@ -19,6 +19,7 @@ import { NewModuleFrameComponent } from './features/spo/new-module-frame/new-mod
 import { ModuleFrameDetailComponent } from './features/spo/module-frame-detail/module-frame-detail.component';
 import { NewModuleComponent } from './features/module/new-module/new-module.component';
 import { ModuleDetailComponent } from './features/module/module-detail/module-detail.component';
+import { NewModuleFrameModuleImplementationComponent } from './features/module/new-module-frame-module-implementation/new-module-frame-module-implementation.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ModuleDetailComponent } from './features/module/module-detail/module-de
     NewModuleFrameComponent,
     ModuleFrameDetailComponent,
     NewModuleComponent,
-    ModuleDetailComponent
+    ModuleDetailComponent,
+    NewModuleFrameModuleImplementationComponent
   ],
   imports: [
     BrowserModule,

@@ -20,6 +20,10 @@ export class ExamTypeService extends BaseService {
     return this.get<ExamTypeDTO[]>(`${this.endpoint}/spo/${spoId}`);
   }
 
+  getByModuleFrame(spoId: number): Observable<ExamTypeDTO[]> {
+    return this.get<ExamTypeDTO[]>(`${this.endpoint}/module-frame/${spoId}`);
+  }
+
   add(examType: ExamTypeDTO): Observable<ExamTypeDTO> {
     return this.post<ExamTypeDTO>(this.endpoint + '/add', examType);
   }

@@ -72,7 +72,7 @@ export class SpoDetailModuleFramesComponent implements OnInit {
   initializeNewModuleFrame(): void {
     this.newModuleFrame = {
       id: 0,
-      spoId: this.spo.id, // Use the fetched spo object
+      spoDTOFlat: this.spo, // Use the fetched spo object
       section: null!,
       moduleType: null!,
       quantity: 1,
@@ -118,7 +118,7 @@ export class SpoDetailModuleFramesComponent implements OnInit {
   resetNewModuleFrame(): void {
     this.newModuleFrame = {
       id: 0,
-      spoId: this.spo.id, // Use the fetched spo to initialize
+      spoDTOFlat: this.spo, // Use the fetched spo to initialize
       section: null!,
       moduleType: null!,
       quantity: 1,

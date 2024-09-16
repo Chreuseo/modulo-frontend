@@ -9,31 +9,40 @@ import {ModuleImplementationService} from "../../../core/services/module-impleme
 import {CycleService} from "../../../core/services/cycle.service";
 import {DurationService} from "../../../core/services/duration.service";
 import {LanguageService} from "../../../core/services/language.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {MaternityProtectionDTO} from "../../../core/models/maternity-protection-dto.model";
 import {MaternityProtectionService} from "../../../core/services/maternity-protection.service";
+import {
+  ModuleFrameModuleImplementationService
+} from "../../../core/services/module-frame-module-implementation.service";
+import {ModuleFrameModuleImplementationDTO} from "../../../core/models/module-frame-module-implementation-dto.model";
 
 @Component({
   selector: 'app-module-detail',
   templateUrl: './module-detail.component.html',
-  styleUrls: ['../../../core/stylesheets/details.css']
+  styleUrls: ['../../../core/stylesheets/details.css',
+    '../../../core/stylesheets/formula.css',
+    '../../../core/stylesheets/module-frames.css']
 })
 export class ModuleDetailComponent implements OnInit {
   id: number = 0;
-  moduleImplementation: ModuleImplementationDTO | null = null;
+  moduleImplementation!: ModuleImplementationDTO;
   cycles: CycleDTO[] = [];
   durations: DurationDTO[] = [];
   languages: LanguageDTO[] = [];
   maternityProtection: MaternityProtectionDTO[] = [];
   isEditing: boolean = false;
+  moduleFrameModuleImplementations!: ModuleFrameModuleImplementationDTO[];
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private moduleService: ModuleImplementationService,
     private cycleService: CycleService,
     private durationService: DurationService,
     private languageService: LanguageService,
-    private maternityProtectionService: MaternityProtectionService
+    private maternityProtectionService: MaternityProtectionService,
+    private moduleFrameModuleImplementationService: ModuleFrameModuleImplementationService
   ) {}
 
   ngOnInit(): void {
@@ -41,10 +50,17 @@ export class ModuleDetailComponent implements OnInit {
 
     if (idValue) {
       this.id = +idValue;
+      this.fetchModuleFrameModuleImplementations();
       this.loadCycles();
     } else {
       console.error('Spo ID not found in route parameters.');
     }
+  }
+
+  fetchModuleFrameModuleImplementations(): void {
+    this.moduleFrameModuleImplementationService.getByModuleImplementationId(this.id).subscribe(data => {
+      this.moduleFrameModuleImplementations = data;
+    });
   }
 
   fetchModuleImplementation(): void {
@@ -111,5 +127,9 @@ export class ModuleDetailComponent implements OnInit {
   cancel(): void {
     this.fetchModuleImplementation(); // Re-fetch the original data
     this.toggleEdit();
+  }
+
+  navigateToNewModuleFrame(): void {
+    this.router.navigate(['/module', this.id, 'new-module-frame']);
   }
 }
