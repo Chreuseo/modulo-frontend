@@ -10,6 +10,8 @@ import {CycleService} from "../../../core/services/cycle.service";
 import {DurationService} from "../../../core/services/duration.service";
 import {LanguageService} from "../../../core/services/language.service";
 import {ActivatedRoute} from "@angular/router";
+import {MaternityProtectionDTO} from "../../../core/models/maternity-protection-dto.model";
+import {MaternityProtectionService} from "../../../core/services/maternity-protection.service";
 
 @Component({
   selector: 'app-module-detail',
@@ -22,6 +24,7 @@ export class ModuleDetailComponent implements OnInit {
   cycles: CycleDTO[] = [];
   durations: DurationDTO[] = [];
   languages: LanguageDTO[] = [];
+  maternityProtection: MaternityProtectionDTO[] = [];
   isEditing: boolean = false;
 
   constructor(
@@ -29,7 +32,8 @@ export class ModuleDetailComponent implements OnInit {
     private moduleService: ModuleImplementationService,
     private cycleService: CycleService,
     private durationService: DurationService,
-    private languageService: LanguageService
+    private languageService: LanguageService,
+    private maternityProtectionService: MaternityProtectionService
   ) {}
 
   ngOnInit(): void {
@@ -43,8 +47,8 @@ export class ModuleDetailComponent implements OnInit {
     }
   }
 
-  fetchModuleImplementation(id: number): void {
-    this.moduleService.getById(id).subscribe(data => {
+  fetchModuleImplementation(): void {
+    this.moduleService.getById(this.id).subscribe(data => {
       // Assign fetched data
       this.moduleImplementation = data;
 
@@ -57,6 +61,9 @@ export class ModuleDetailComponent implements OnInit {
       }
       if (data.language) {
         this.moduleImplementation.language = this.languages.find(language => language.id === data.language?.id) || null;
+      }
+      if (data.maternityProtection) {
+        this.moduleImplementation.maternityProtection = this.maternityProtection.find(maternityProtection => maternityProtection.id === data.maternityProtection?.id) || null;
       }
     });
   }
@@ -78,7 +85,14 @@ export class ModuleDetailComponent implements OnInit {
   loadLanguages(): void {
     this.languageService.getAllLanguages().subscribe(data => {
       this.languages = data;
-      this.fetchModuleImplementation(this.id);
+      this.loadMaternityProtection();
+    });
+  }
+
+  loadMaternityProtection(): void {
+    this.maternityProtectionService.getAllMaternityProtections().subscribe(data => {
+      this.maternityProtection = data;
+      this.fetchModuleImplementation();
     });
   }
 
@@ -91,12 +105,11 @@ export class ModuleDetailComponent implements OnInit {
       this.moduleService.updateModuleImplementation(this.moduleImplementation).subscribe(() => {
         this.toggleEdit(); // Exit edit mode after saving
       });
-      this.toggleEdit(); // Exit edit mode after saving
     }
   }
 
   cancel(): void {
-    this.fetchModuleImplementation(1); // Re-fetch the original data
+    this.fetchModuleImplementation(); // Re-fetch the original data
     this.toggleEdit();
   }
 }

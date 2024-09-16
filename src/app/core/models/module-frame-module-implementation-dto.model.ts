@@ -8,4 +8,5 @@ export interface ModuleMappingDTO {
   moduleImplementationDTOFlat: ModuleImplementationDTOFlat;
   moduleFrameDTOFlat: ModuleFrameDTO;
   moduleRequirementDTO: ModuleRequirementDTO;
+  examTypeDTOs: ExamTypeDTO[];
 }

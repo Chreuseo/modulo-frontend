@@ -14,8 +14,7 @@
   </div>
 
   <div>
-    <label>Course Type:</label>
-    <input [(ngModel)]="moduleImplementation.courseType" [disabled]="!isEditing">
+    <label>Verwendungen:</label>
   </div>
 
   <div>
@@ -37,6 +36,53 @@
     <select [(ngModel)]="moduleImplementation.language" [disabled]="!isEditing">
       <option *ngFor="let language of languages" [ngValue]="language">{{language.name}}</option>
     </select>
+  </div>
+
+  <div>
+    <label>Maternity Protection:</label>
+    <select [(ngModel)]="moduleImplementation.maternityProtection" [disabled]="!isEditing">
+      <option *ngFor="let maternityProtection of maternityProtection" [ngValue]="maternityProtection">{{maternityProtection.name}}</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Allowed Resources:</label>
+    <input [(ngModel)]="moduleImplementation.allowedResources" [disabled]="!isEditing">
+  </div>
+
+  <div>
+    <label>Workload:</label>
+    <input [(ngModel)]="moduleImplementation.workload" [disabled]="!isEditing">
+  </div>
+
+  <div>
+    <label>Inhaltliche Voraussetzungen:</label>
+    <input [(ngModel)]="moduleImplementation.requiredCompetences" [disabled]="!isEditing">
+  </div>
+
+  <div>
+    <label>Qualifikationsziele:</label>
+    <input [(ngModel)]="moduleImplementation.qualificationTargets" [disabled]="!isEditing">
+  </div>
+
+  <div>
+    <label>Lehrinhalte:</label>
+    <input [(ngModel)]="moduleImplementation.content" [disabled]="!isEditing">
+  </div>
+
+  <div>
+    <label>Sonstige Leistungsnachweise:</label>
+    <input [(ngModel)]="moduleImplementation.additionalExams" [disabled]="!isEditing">
+  </div>
+
+  <div>
+    <label>Medienformen:</label>
+    <input [(ngModel)]="moduleImplementation.mediaTypes" [disabled]="!isEditing">
+  </div>
+
+  <div>
+    <label>Literatur:</label>
+    <input [(ngModel)]="moduleImplementation.literature" [disabled]="!isEditing">
   </div>
 
   <div>
