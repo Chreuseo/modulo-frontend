@@ -10,7 +10,7 @@ import {ModuleFrameModuleImplementationDTO} from "../models/module-frame-module-
 export class ModuleFrameModuleImplementationService extends BaseService {
 
   // Define the endpoint for the service
-  private readonly endpoint = 'api/module-frame-module-implementations';
+  private readonly endpoint = 'module-frame-module-implementations';
 
   constructor(http: HttpClient) {
     super(http); // Pass the HttpClient to the base class

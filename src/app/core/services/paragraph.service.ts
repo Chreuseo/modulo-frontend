@@ -10,7 +10,7 @@ import {ParagraphDTO} from "../models/paragraph-dto.model";
   providedIn: 'root'
 })
 export class ParagraphService extends BaseService {
-  private endpoint: string = 'api/paragraphs';
+  private endpoint: string = 'paragraphs';
 
   constructor(protected override http: HttpClient) {
     super(http);

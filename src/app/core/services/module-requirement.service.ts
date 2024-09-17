@@ -10,7 +10,7 @@ import {ModuleRequirementDTO} from "../models/module-requirement-dto.model";
 })
 export class ModuleRequirementService extends BaseService {
 
-  private readonly endpoint = 'api/module-requirements';
+  private readonly endpoint = 'module-requirements';
 
   constructor(protected override http: HttpClient) {
     super(http);

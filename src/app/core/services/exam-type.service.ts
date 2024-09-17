@@ -10,7 +10,7 @@ import {ExamTypeDTO} from "../models/exam-type-dto.model";
 })
 export class ExamTypeService extends BaseService {
 
-  private endpoint = 'api/exam-types'; // Adjust according to your backend setup
+  private endpoint = 'exam-types'; // Adjust according to your backend setup
 
   constructor(protected override http: HttpClient) {
     super(http);

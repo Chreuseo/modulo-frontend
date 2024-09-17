@@ -11,7 +11,7 @@ import {ModuleFrameModuleImplementationDTO} from "../models/module-frame-module-
 })
 export class ModuleFrameService extends BaseService {
 
-  private endpoint = 'api/module-frames';
+  private endpoint = 'module-frames';
 
   constructor(protected override http: HttpClient) {
     super(http);

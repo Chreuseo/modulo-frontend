@@ -9,7 +9,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class SectionService extends BaseService {
 
-  private readonly endpoint = 'api/section';
+  private readonly endpoint = 'section';
 
   constructor(protected override http: HttpClient) {
     super(http);

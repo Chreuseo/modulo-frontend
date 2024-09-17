@@ -9,7 +9,7 @@ import {LanguageDTO} from "../models/language-dto.model";
 })
 export class LanguageService extends BaseService {
 
-  private readonly endpoint = 'api/language'; // Base endpoint
+  private readonly endpoint = 'language'; // Base endpoint
 
   constructor(protected override http: HttpClient) {
     super(http);

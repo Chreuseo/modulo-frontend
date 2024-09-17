@@ -9,7 +9,7 @@ import {DurationDTO} from "../models/duration-dto.model";
 })
 export class DurationService extends BaseService {
 
-  private readonly endpoint = 'api/duration'; // Base endpoint for durations
+  private readonly endpoint = 'duration'; // Base endpoint for durations
 
   constructor(protected override http: HttpClient) {
     super(http);

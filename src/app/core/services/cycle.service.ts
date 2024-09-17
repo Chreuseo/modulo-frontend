@@ -10,7 +10,7 @@ import {CycleDTO} from "../models/cycle-dto.model";
 })
 export class CycleService extends BaseService {
 
-  private readonly endpoint = 'api/cycle'; // Base endpoint for durations
+  private readonly endpoint = 'cycle'; // Base endpoint for durations
 
   constructor(protected override http: HttpClient) {
     super(http);

@@ -9,7 +9,7 @@ import {UserDTOFlat} from "../models/user-dto-flat.model"; // Adjust the import 
 })
 export class UserService extends BaseService {
 
-  private readonly endpoint = 'api/users'; // Adjust this endpoint to match your API
+  private readonly endpoint = 'users'; // Adjust this endpoint to match your API
 
   constructor(http: HttpClient) {
     super(http);

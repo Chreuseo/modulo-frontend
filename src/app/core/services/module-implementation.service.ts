@@ -11,7 +11,7 @@ import {ModuleImplementationDTO} from "../models/module-implementation-dto.model
   providedIn: 'root',
 })
 export class ModuleImplementationService extends BaseService {
-  private endpoint = 'api/module-implementation'; // Specify endpoint for module implementations
+  private endpoint = 'module-implementation'; // Specify endpoint for module implementations
 
   constructor(http: HttpClient) {
     super(http);

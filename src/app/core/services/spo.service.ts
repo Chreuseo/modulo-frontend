@@ -9,7 +9,7 @@ import {SpoDTO} from "../models/spo-dto.model"; // Adjust the import based on yo
   providedIn: 'root'
 })
 export class SpoService extends BaseService {
-  private readonly endpoint = 'api/spo'; // Define your SPO endpoint
+  private readonly endpoint = 'spo'; // Define your SPO endpoint
 
   constructor(http: HttpClient) {
     super(http);

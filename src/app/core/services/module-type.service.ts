@@ -10,7 +10,7 @@ import {HttpClient} from "@angular/common/http";
 })
 export class ModuleTypeService extends BaseService {
 
-  private readonly endpoint = 'api/module-type';
+  private readonly endpoint = 'module-type';
 
   constructor(protected override http: HttpClient) {
     super(http);

@@ -9,7 +9,7 @@ import {MaternityProtectionDTO} from "../models/maternity-protection-dto.model";
 })
 export class MaternityProtectionService extends BaseService {
 
-  private readonly endpoint = 'api/maternity-protection'; // Base endpoint for maternity protections
+  private readonly endpoint = 'maternity-protection'; // Base endpoint for maternity protections
 
   constructor(protected override http: HttpClient) {
     super(http);

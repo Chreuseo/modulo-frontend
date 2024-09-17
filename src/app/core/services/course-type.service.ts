@@ -10,7 +10,7 @@ import {CourseTypeDTO} from "../models/course-type-dto.model";
 })
 export class CourseTypeService extends BaseService {
 
-  private readonly endpoint = 'api/course-types';
+  private readonly endpoint = 'course-types';
 
   constructor(protected override http: HttpClient) {
     super(http);
