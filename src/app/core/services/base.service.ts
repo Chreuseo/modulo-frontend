@@ -8,7 +8,8 @@ import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
   providedIn: 'root'
 })
 export abstract class BaseService {
-  protected baseUrl: string = 'http://localhost:8080'; // Default API URL
+  protected baseUrl: string = 'https://modulo.christopheuskirchen.de/api'; // Default API URL
+  //protected baseUrl: string = 'http://localhost:8080'; // Default API URL
 
   constructor(protected http: HttpClient) {}
 
