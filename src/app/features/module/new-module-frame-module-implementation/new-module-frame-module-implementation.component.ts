@@ -123,6 +123,6 @@ export class NewModuleFrameModuleImplementationComponent {
 
   onSave(): void {
     this.addModuleFrame();
-    this.router.navigate(['/module-implementation', this.moduleImplementationId]);
+    this.router.navigate(['/module', this.moduleImplementationId]);
   }
 }
