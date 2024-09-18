@@ -54,7 +54,7 @@ export class SpoListComponent implements OnInit {
   }
 
   navigateToNewSpo() {
-    this.router.navigate(['/new-spo']);
+    this.router.navigate(['/spo/new']);
   }
 
   navigateToSpoDetail(id: number): void {

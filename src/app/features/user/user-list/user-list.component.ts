@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {UserDTOFlat} from "../../../core/models/user-dto-flat.model";
 import {UserService} from "../../../core/services/user.service";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -14,7 +15,8 @@ export class UserListComponent implements OnInit {
   loading: boolean = false;   // Track the loading state
   error: string | null = null; // For error handling
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private router: Router) { }
 
   ngOnInit(): void {
     this.fetchUsers(); // Call function on component initialization
@@ -33,5 +35,27 @@ export class UserListComponent implements OnInit {
         this.loading = false; // Set loading to false even on error
       }
     });
+  }
+
+  navigateToNewUser(): void {
+    this.router.navigate(['/user/new']); // Navigate to the new user route
+  }
+
+  navigateToUserDetail(id: number): void {
+    this.router.navigate(['/user', id]); // Navigate to the user detail route with the user id
+  }
+
+  deleteUser(id: number): void {
+    if (confirm('Are you sure you want to delete this user?')) {
+      this.userService.deleteUser(id).subscribe({
+        next: () => {
+          this.users = this.users.filter((user) => user.id !== id); // Remove the deleted user from the list
+        },
+        error: (err) => {
+          console.error('Error deleting user:', err);
+          alert('An error occurred. Please try again later.'); // Notify the user of the error
+        }
+      });
+    }
   }
 }

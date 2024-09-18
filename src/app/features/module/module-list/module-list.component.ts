@@ -32,7 +32,7 @@ export class ModuleListComponent implements OnInit {
   }
 
   navigateToNewModule() {
-    this.router.navigate(['/new-module']);
+    this.router.navigate(['/module/new']);
   }
 
   navigateToModuleDetail(id: number): void {
