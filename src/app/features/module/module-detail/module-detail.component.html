@@ -71,30 +71,25 @@
 
   <h3>Lecturers</h3>
   <table>
-    <thead>
-    <tr>
-      <th>Name</th>
-      <th>Action</th>
-    </tr>
-    </thead>
     <tbody>
     <tr *ngFor="let lecturer of moduleImplementation.lecturers">
       <td>{{ lecturer.name }}</td>
       <td>
-        <button (click)="removeLecturer(lecturer.id)">Remove</button>
+        <button *ngIf="isEditing" (click)="removeLecturer(lecturer.id)">Remove</button>
+      </td>
+    </tr>
+    <tr *ngIf="isEditing">
+      <td>
+        <select [(ngModel)]="selectedLecturer">
+          <option *ngFor="let user of userDTOs" [ngValue]="user">{{ user.name }}</option>
+        </select>
+      </td>
+      <td>
+        <button (click)="addLecturer()">Add</button>
       </td>
     </tr>
     </tbody>
   </table>
-
-  <div>
-    <label>Add Lecturer:</label>
-    <select [(ngModel)]="selectedLecturer">
-      <option *ngFor="let user of userDTOs" [ngValue]="user">{{ user.name }}</option>
-    </select>
-    <button (click)="addLecturer()">Add</button>
-  </div>
-
 
   <div>
     <label>Erstprüfer:</label>
