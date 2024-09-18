@@ -23,8 +23,8 @@
     <tr *ngFor="let spo of spoList">
       <td>{{spo.name}}</td>
       <td>{{spo.degree.name}}</td>
-      <td>{{spo.validFrom | date: 'shortDate'}}</td>
-      <td>{{spo.validUntil | date: 'shortDate'}}</td>
+      <td>{{spo.validFrom | date: 'MM/yy'}}</td>
+      <td>{{spo.validUntil | date: 'MM/yy' }}</td>
       <td>
         <button (click)="navigateToSpoDetail(spo.id)" class="btn btn-info">View Details</button>
       </td>

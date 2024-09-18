@@ -19,10 +19,10 @@
         <td>
           {{ moduleFrameModuleImplementation.moduleFrameDTO.spoDTOFlat.name }}
           <div *ngIf="moduleFrameModuleImplementation.moduleFrameDTO.spoDTOFlat.validFrom">
-            Gültig von {{ moduleFrameModuleImplementation.moduleFrameDTO.spoDTOFlat.validFrom }}
+            Gültig seit {{ moduleFrameModuleImplementation.moduleFrameDTO.spoDTOFlat.validFrom | date: 'MM/yy' }}
           </div>
           <div *ngIf="moduleFrameModuleImplementation.moduleFrameDTO.spoDTOFlat.validUntil">
-            Gültig bis {{ moduleFrameModuleImplementation.moduleFrameDTO.spoDTOFlat.validUntil }}
+            Gültig bis {{ moduleFrameModuleImplementation.moduleFrameDTO.spoDTOFlat.validUntil | date: 'MM/yy' }}
           </div>
         </td>
         <td>{{ moduleFrameModuleImplementation.moduleFrameDTO.name }}</td>

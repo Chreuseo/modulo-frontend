@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {ModuleImplementationDTO} from "../../../core/models/module-implementation-dto.model";
 import {ModuleImplementationService} from "../../../core/services/module-implementation.service";
 import {SpoService} from "../../../core/services/spo.service";
 import {ModuleFrameService} from "../../../core/services/module-frame.service";
@@ -11,7 +10,6 @@ import {ModuleRequirementService} from "../../../core/services/module-requiremen
 import {ExamTypeDTO} from "../../../core/models/exam-type-dto.model";
 import {ExamTypeService} from "../../../core/services/exam-type.service";
 import {ModuleFrameDTO} from "../../../core/models/module-frame-dto.model";
-import {ModuleFrameModuleImplementationDTO} from "../../../core/models/module-frame-module-implementation-dto.model";
 import {
   ModuleFrameModuleImplementationService
 } from "../../../core/services/module-frame-module-implementation.service";
@@ -123,6 +121,8 @@ export class NewModuleFrameModuleImplementationComponent {
 
   onSave(): void {
     this.addModuleFrame();
-    this.router.navigate(['/module', this.moduleImplementationId]);
+    this.router.navigate(['/module', this.moduleImplementationId]).then(() => {
+      window.location.reload();
+    });
   }
 }
