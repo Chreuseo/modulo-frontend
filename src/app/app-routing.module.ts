@@ -17,19 +17,23 @@ import {ModuleDetailComponent} from "./features/module/module-detail/module-deta
 import {
   NewModuleFrameModuleImplementationComponent
 } from "./features/module/new-module-frame-module-implementation/new-module-frame-module-implementation.component";
+import {NewUserComponent} from "./features/user/new-user/new-user.component";
+import {UserDetailComponent} from "./features/user/user-detail/user-detail.component";
 
 const routes: Routes = [
   { path: 'spo', component: SpoListComponent },
-  { path: 'new-spo', component: NewSpoComponent },
+  { path: 'spo/new', component: NewSpoComponent },
   { path: 'spo/:id/overview', component: SpoDetailOverviewComponent },  // Route for Spo detail view
   { path: 'spo/:id/module-frames', component: SpoDetailModuleFramesComponent },  // Route for Spo detail view
   { path: 'spo/:id/text', component: SpoDetailTextComponent},
   { path: 'module-frame/new/:spoId', component: NewModuleFrameComponent },
   { path: 'module', component: ModuleListComponent },
   { path : 'module/:id', component: ModuleDetailComponent },
-  { path: 'new-module', component: NewModuleComponent },
+  { path: 'module/new', component: NewModuleComponent },
   { path: 'module/:id/new-module-frame', component: NewModuleFrameModuleImplementationComponent},
   { path: 'user', component: UserListComponent},
+  { path: 'user/new', component: NewUserComponent},
+  { path: 'user/:id', component: UserDetailComponent},
   { path: 'configuration', component: GeneralComponent },
   { path: 'my', component: MyComponent},
   { path: '', redirectTo: '/spo', pathMatch: 'full' }

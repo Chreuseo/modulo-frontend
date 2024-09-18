@@ -1,3 +1,5 @@
+<button (click)="navigateToNewUser()" class="btn btn-primary">Add New User</button>
+
 <div class="user-list">
   <h2>User List</h2>
 
@@ -10,6 +12,7 @@
       <th>Name</th>
       <th>Kürzel</th>
       <th>Email</th>
+      <th>Aktionen</th>
     </tr>
     </thead>
     <tbody>
@@ -17,6 +20,10 @@
       <td>{{ user.name }}</td>
       <td>{{ user.code }}</td>
       <td>{{ user.mail }}</td>
+      <td>
+        <button (click)="navigateToUserDetail(user.id)" class="btn btn-primary">Details</button>
+        <button (click)="deleteUser(user.id)" class="btn btn-danger">Delete</button>
+      </td>
     </tr>
     </tbody>
   </table>
