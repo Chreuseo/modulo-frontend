@@ -16,6 +16,8 @@ import {
   ModuleFrameModuleImplementationService
 } from "../../../core/services/module-frame-module-implementation.service";
 import {ModuleFrameModuleImplementationDTO} from "../../../core/models/module-frame-module-implementation-dto.model";
+import {UserService} from "../../../core/services/user.service";
+import {UserDTOFlat} from "../../../core/models/user-dto-flat.model";
 
 @Component({
   selector: 'app-module-detail',
@@ -31,8 +33,10 @@ export class ModuleDetailComponent implements OnInit {
   durations: DurationDTO[] = [];
   languages: LanguageDTO[] = [];
   maternityProtection: MaternityProtectionDTO[] = [];
+  userDTOs: UserDTOFlat[] = [];
   isEditing: boolean = false;
   moduleFrameModuleImplementations!: ModuleFrameModuleImplementationDTO[];
+  selectedLecturer!: UserDTOFlat; // To keep the currently selected lecturer to add
 
   constructor(
     private route: ActivatedRoute,
@@ -42,7 +46,8 @@ export class ModuleDetailComponent implements OnInit {
     private durationService: DurationService,
     private languageService: LanguageService,
     private maternityProtectionService: MaternityProtectionService,
-    private moduleFrameModuleImplementationService: ModuleFrameModuleImplementationService
+    private moduleFrameModuleImplementationService: ModuleFrameModuleImplementationService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -81,6 +86,15 @@ export class ModuleDetailComponent implements OnInit {
       if (data.maternityProtection) {
         this.moduleImplementation.maternityProtection = this.maternityProtection.find(maternityProtection => maternityProtection.id === data.maternityProtection?.id) || null;
       }
+      if (data.responsible) {
+        this.moduleImplementation.responsible = this.userDTOs.find(user => user.id === data.responsible?.id) || null;
+      }
+      if (data.firstExaminant) {
+        this.moduleImplementation.firstExaminant = this.userDTOs.find(user => user.id === data.firstExaminant?.id) || null;
+      }
+      if (data.secondExaminant) {
+        this.moduleImplementation.secondExaminant = this.userDTOs.find(user => user.id === data.secondExaminant?.id) || null;
+      }
     });
   }
 
@@ -108,6 +122,13 @@ export class ModuleDetailComponent implements OnInit {
   loadMaternityProtection(): void {
     this.maternityProtectionService.getAllMaternityProtections().subscribe(data => {
       this.maternityProtection = data;
+      this.loadUserDTOs();
+    });
+  }
+
+  loadUserDTOs(): void {
+    this.userService.getAllUsers().subscribe(data => {
+      this.userDTOs = data;
       this.fetchModuleImplementation();
     });
   }
@@ -132,4 +153,19 @@ export class ModuleDetailComponent implements OnInit {
   navigateToNewModuleFrame(): void {
     this.router.navigate(['/module', this.id, 'new-module-frame']);
   }
+
+  addLecturer(): void {
+    if (this.selectedLecturer) {
+      this.moduleService.addLecturer(this.id, this.selectedLecturer.id).subscribe(() => {
+        this.fetchModuleImplementation(); // Refresh the module implementation to get updated lecturers
+      });
+    }
+  }
+
+  removeLecturer(lecturerId: number): void {
+    this.moduleService.removeLecturer(this.id, lecturerId).subscribe(() => {
+      this.fetchModuleImplementation(); // Refresh the module implementation to get updated lecturers
+    });
+  }
+
 }

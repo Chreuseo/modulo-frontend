@@ -37,4 +37,14 @@ export class ModuleImplementationService extends BaseService {
   updateModuleImplementation(moduleImplementation: ModuleImplementationDTO): Observable<ModuleImplementationDTO> {
     return this.put<ModuleImplementationDTO>(`${this.endpoint}/update`, moduleImplementation);
   }
+
+  // Add lecturer to module implementation
+  addLecturer(moduleImplementationId: number, lecturerId: number): Observable<ModuleImplementationDTO> {
+    return this.post<ModuleImplementationDTO>(`${this.endpoint}/${moduleImplementationId}/lecturer/add/${lecturerId}`, {});
+  }
+
+  // Remove lecturer from module implementation
+  removeLecturer(moduleImplementationId: number, lecturerId: number): Observable<void> {
+    return this.delete<void>(`${this.endpoint}/${moduleImplementationId}/lecturer/remove/${lecturerId}`);
+  }
 }
