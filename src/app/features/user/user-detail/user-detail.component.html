@@ -2,11 +2,6 @@
   <h2>User Details</h2>
   <form [formGroup]="userForm" (ngSubmit)="saveUser()">
     <div>
-      <label for="id">ID:</label>
-      <input id="id" formControlName="id" type="text" />
-    </div>
-
-    <div>
       <label for="mail">Email:</label>
       <input id="mail" formControlName="mail" type="email" />
     </div>
