@@ -63,8 +63,54 @@
   </div>
 
   <div>
-    <label>Verwendungen:</label>
+    <label>Modulverantwortlicher:</label>
+    <select [(ngModel)]="moduleImplementation.responsible" [disabled]="!isEditing">
+      <option *ngFor="let moduleManager of userDTOs" [ngValue]="moduleManager">{{moduleManager.name}}</option>
+    </select>
   </div>
+
+  <h3>Lecturers</h3>
+  <table>
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let lecturer of moduleImplementation.lecturers">
+      <td>{{ lecturer.name }}</td>
+      <td>
+        <button (click)="removeLecturer(lecturer.id)">Remove</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div>
+    <label>Add Lecturer:</label>
+    <select [(ngModel)]="selectedLecturer">
+      <option *ngFor="let user of userDTOs" [ngValue]="user">{{ user.name }}</option>
+    </select>
+    <button (click)="addLecturer()">Add</button>
+  </div>
+
+
+  <div>
+    <label>Erstprüfer:</label>
+    <select [(ngModel)]="moduleImplementation.firstExaminant" [disabled]="!isEditing">
+      <option *ngFor="let firstExaminer of userDTOs" [ngValue]="firstExaminer">{{firstExaminer.name}}</option>
+    </select>
+  </div>
+
+  <div>
+    <label>Zweitprüfer:</label>
+    <select [(ngModel)]="moduleImplementation.secondExaminant" [disabled]="!isEditing">
+      <option *ngFor="let secondExaminer of userDTOs" [ngValue]="secondExaminer">{{secondExaminer.name}}</option>
+    </select>
+  </div>
+
+
 
   <div>
     <label>Cycle:</label>

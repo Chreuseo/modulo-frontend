@@ -15,6 +15,7 @@ export interface ModuleImplementationDTO {
   firstExaminant: UserDTOFlat | null;                         // Assuming UserDTO structure
   secondExaminant: UserDTOFlat | null;                        // Assuming UserDTO structure
   responsible: UserDTOFlat | null;                            // Assuming UserDTO structure
+  lecturers: UserDTOFlat[];                                    // Assuming UserDTO structure
   cycle: CycleDTO | null;                                 // Assuming CycleDTO structure
   duration: DurationDTO | null;                           // Assuming DurationDTO structure
   language: LanguageDTO | null;
