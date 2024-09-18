@@ -9,24 +9,41 @@
     <tr>
       <th>Studiengang</th>
       <th>Modul gemäß Spo</th>
+      <th>Moduldetails gemäß SPO</th>
       <th>Examina</th>
       <th>Voraussetzungen</th>
     </tr>
     </thead>
     <tbody>
       <tr *ngFor="let moduleFrameModuleImplementation of moduleFrameModuleImplementations">
-        <td>{{ moduleFrameModuleImplementation.moduleFrameDTO.spoDTOFlat.name }}</td>
+        <td>
+          {{ moduleFrameModuleImplementation.moduleFrameDTO.spoDTOFlat.name }}
+          <div *ngIf="moduleFrameModuleImplementation.moduleFrameDTO.spoDTOFlat.validFrom">
+            Gültig von {{ moduleFrameModuleImplementation.moduleFrameDTO.spoDTOFlat.validFrom }}
+          </div>
+          <div *ngIf="moduleFrameModuleImplementation.moduleFrameDTO.spoDTOFlat.validUntil">
+            Gültig bis {{ moduleFrameModuleImplementation.moduleFrameDTO.spoDTOFlat.validUntil }}
+          </div>
+        </td>
         <td>{{ moduleFrameModuleImplementation.moduleFrameDTO.name }}</td>
+        <td>
+          <label>SWS: </label>
+          <input [value]="moduleFrameModuleImplementation.moduleFrameDTO.sws" disabled="disabled">
+          <label>ECTS: </label>
+          <input [value]="moduleFrameModuleImplementation.moduleFrameDTO.credits" disabled="disabled">
+          <label>Gewichtung: </label>
+          <input [value]="moduleFrameModuleImplementation.moduleFrameDTO.weight" disabled="disabled">
+        </td>
         <td>
           <div *ngFor="let examType of moduleFrameModuleImplementation.examTypeDTOs">
             <label>
-              <input type="checkbox" [checked]="examType.enabled" disabled="true">
+              <input type="checkbox" [checked]="examType.enabled" disabled="disabled">
               {{ examType.abbreviation }} - {{ examType.name}}
             </label>
             <label>Length:</label>
-            <input [value]="examType.length" disabled="true">
+            <input [value]="examType.length" disabled="disabled">
             <label>Description:</label>
-            <input [value]="examType.description" disabled="true">
+            <input [value]="examType.description" disabled="disabled">
           </div>
         </td>
         <td>{{ moduleFrameModuleImplementation.moduleRequirementDTO?.name }}</td>
