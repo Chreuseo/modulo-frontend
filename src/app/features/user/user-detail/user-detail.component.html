@@ -39,7 +39,7 @@
     <button type="button" (click)="toggleEdit()">
       {{ isEditing ? 'Cancel' : 'Edit' }}
     </button>
-    <button *ngIf="isEditing" type="submit" [disabled]="!isEditing">Save</button>
+    <button *ngIf="isEditing" type="submit" (click)="saveUser()" [disabled]="!isEditing">Save</button>
     <button type="button" (click)="goBack()">Back</button>
   </form>
 </div>
