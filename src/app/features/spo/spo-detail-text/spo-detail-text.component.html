@@ -14,15 +14,24 @@
 </nav>
 
 <!-- app/components/spo-detail-text/spo-detail-text.component.html -->
-
-<form [formGroup]="spoForm">
+<div>
   <div>
-    <label for="header">Header:</label>
-    <input id="header" formControlName="header" [disabled]="isDisabled" />
+    <label>Header:</label>
+    <div *ngIf="isDisabled" [innerHTML]="this.spo.header"></div>
+    <quill-editor
+      *ngIf="!isDisabled"
+      [(ngModel)]="this.spo.header"
+      [modules]="quillModules">
+    </quill-editor>
   </div>
   <div>
-    <label for="footer">Footer:</label>
-    <input id="footer" formControlName="footer" [disabled]="isDisabled" />
+    <label>Footer:</label>
+    <div *ngIf="isDisabled" [innerHTML]="this.spo.footer"></div>
+    <quill-editor
+      *ngIf="!isDisabled"
+      [(ngModel)]="this.spo.footer"
+      [modules]="quillModules">
+    </quill-editor>
   </div>
 
   <!-- Edit and Save Buttons -->
@@ -30,8 +39,7 @@
     <button type="button" (click)="onEdit()" *ngIf="isDisabled">Edit</button>
     <button type="button" (click)="onSave()" *ngIf="!isDisabled">Save</button>
   </div>
-</form>
-
+</div>
 
   <h3>Paragraphs</h3>
   <table>
@@ -49,8 +57,8 @@
         <input *ngIf="editableParagraph?.id === paragraph.id" [(ngModel)]="editableParagraph.title" />
       </td>
       <td>
-        <span *ngIf="editableParagraph?.id !== paragraph.id">{{ paragraph.text }}</span>
-        <textarea *ngIf="editableParagraph?.id === paragraph.id" [(ngModel)]="editableParagraph.text"></textarea>
+        <span *ngIf="editableParagraph?.id !== paragraph.id" [innerHTML]="paragraph.text"></span>
+        <quill-editor *ngIf="editableParagraph?.id === paragraph.id" [(ngModel)]="editableParagraph.text"></quill-editor>
       </td>
       <td>
         <button *ngIf="editableParagraph?.id !== paragraph.id" (click)="editParagraph(paragraph)">Edit</button>
@@ -62,15 +70,17 @@
   </table>
 
 <h4>Add New Paragraph</h4>
-<form (ngSubmit)="addParagraph()" #newParagraphForm="ngForm">
-  <div>
-    <label for="newTitle">Title:</label>
-    <input id="newTitle" [(ngModel)]="newParagraph.title" name="title" required />
-  </div>
-  <div>
-    <label for="newText">Text:</label>
-    <textarea id="newText" [(ngModel)]="newParagraph.text" name="text" required></textarea>
-  </div>
-  <button type="submit" [disabled]="!newParagraphForm.form.valid">Add</button>
-</form>
+<div>
+  <label for="newTitle">Title:</label>
+  <input id="newTitle" [(ngModel)]="newParagraph.title" name="title" required />
+</div>
+<div>
+  <label>Text:</label>
+  <quill-editor
+    [(ngModel)]="newParagraph.text"
+    [modules]="quillModules">
+  </quill-editor>
+</div>
+<button type="submit" (click)="addParagraph()">Add</button>
+
 
