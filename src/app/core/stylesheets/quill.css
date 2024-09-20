@@ -1,0 +1,5 @@
+.quill-editor[disabled] {
+  pointer-events: none;  /* Prevent any interaction */
+  background-color: #f0f0f0; /* Change background */
+  color: #999; /* Change text color */
+}
