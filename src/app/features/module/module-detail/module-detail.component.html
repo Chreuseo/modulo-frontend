@@ -139,28 +139,44 @@
     <label>Allowed Resources:</label>
     <div *ngIf="!isEditing" [innerHTML]="moduleImplementation.allowedResources"></div>
     <div *ngIf="!isEditing && !moduleImplementation.allowedResources">-</div>
-    <quill-editor *ngIf="isEditing" [(ngModel)]="moduleImplementation.allowedResources"></quill-editor>
+    <quill-editor
+      *ngIf="isEditing"
+      [(ngModel)]="moduleImplementation.allowedResources"
+      [modules]="quillModules">
+    </quill-editor>
   </div>
 
   <div>
     <label>Workload:</label>
     <div *ngIf="!isEditing" [innerHTML]="moduleImplementation.workload"></div>
     <div *ngIf="!isEditing && !moduleImplementation.workload">-</div>
-    <quill-editor *ngIf="isEditing" [(ngModel)]="moduleImplementation.workload"></quill-editor>
+    <quill-editor
+      *ngIf="isEditing"
+      [(ngModel)]="moduleImplementation.workload"
+      [modules]="quillModules">
+    </quill-editor>
   </div>
 
   <div>
     <label>Inhaltliche Voraussetzungen:</label>
     <div *ngIf="!isEditing" [innerHTML]="moduleImplementation.requiredCompetences"></div>
     <div *ngIf="!isEditing && !moduleImplementation.requiredCompetences">-</div>
-    <quill-editor *ngIf="isEditing" [(ngModel)]="moduleImplementation.requiredCompetences"></quill-editor>
+    <quill-editor
+      *ngIf="isEditing"
+      [(ngModel)]="moduleImplementation.requiredCompetences"
+      [modules]="quillModules">
+    </quill-editor>
   </div>
 
   <div>
     <label>Qualifikationsziele:</label>
     <div *ngIf="!isEditing" [innerHTML]="moduleImplementation.qualificationTargets"></div>
     <div *ngIf="!isEditing && !moduleImplementation.qualificationTargets">-</div>
-    <quill-editor *ngIf="isEditing" [(ngModel)]="moduleImplementation.qualificationTargets"></quill-editor>
+    <quill-editor
+      *ngIf="isEditing"
+      [(ngModel)]="moduleImplementation.qualificationTargets"
+      [modules]="quillModules">
+    </quill-editor>
   </div>
 
   <div>
