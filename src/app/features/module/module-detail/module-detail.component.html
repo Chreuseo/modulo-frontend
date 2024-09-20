@@ -167,28 +167,44 @@
     <label>Lehrinhalte:</label>
     <div *ngIf="!isEditing" [innerHTML]="moduleImplementation.content"></div>
     <div *ngIf="!isEditing && !moduleImplementation.content">-</div>
-    <quill-editor *ngIf="isEditing" [(ngModel)]="moduleImplementation.content"></quill-editor>
+    <quill-editor
+      *ngIf="isEditing"
+      [(ngModel)]="moduleImplementation.content"
+      [modules]="quillModules">
+    </quill-editor>
   </div>
 
   <div>
     <label>Sonstige Leistungsnachweise:</label>
     <div *ngIf="!isEditing" [innerHTML]="moduleImplementation.additionalExams"></div>
     <div *ngIf="!isEditing && !moduleImplementation.additionalExams">-</div>
-    <quill-editor *ngIf="isEditing" [(ngModel)]="moduleImplementation.additionalExams"></quill-editor>
+    <quill-editor
+      *ngIf="isEditing"
+      [(ngModel)]="moduleImplementation.additionalExams"
+      [modules]="quillModules">
+    </quill-editor>
   </div>
 
   <div>
     <label>Medienformen:</label>
     <div *ngIf="!isEditing" [innerHTML]="moduleImplementation.mediaTypes"></div>
     <div *ngIf="!isEditing && !moduleImplementation.mediaTypes">-</div>
-    <quill-editor *ngIf="isEditing" [(ngModel)]="moduleImplementation.mediaTypes"></quill-editor>
+    <quill-editor
+      *ngIf="isEditing"
+      [(ngModel)]="moduleImplementation.mediaTypes"
+      [modules]="quillModules">
+    </quill-editor>
   </div>
 
   <div>
     <label>Literatur:</label>
     <div *ngIf="!isEditing" [innerHTML]="moduleImplementation.literature"></div>
     <div *ngIf="!isEditing && !moduleImplementation.literature">-</div>
-    <quill-editor *ngIf="isEditing" [(ngModel)]="moduleImplementation.literature"></quill-editor>
+    <quill-editor
+      *ngIf="isEditing"
+      [(ngModel)]="moduleImplementation.literature"
+      [modules]="quillModules">
+    </quill-editor>
   </div>
 
   <div>

@@ -58,7 +58,11 @@
       </td>
       <td>
         <span *ngIf="editableParagraph?.id !== paragraph.id" [innerHTML]="paragraph.text"></span>
-        <quill-editor *ngIf="editableParagraph?.id === paragraph.id" [(ngModel)]="editableParagraph.text"></quill-editor>
+        <quill-editor
+          *ngIf="editableParagraph?.id === paragraph.id"
+          [(ngModel)]="editableParagraph.text"
+          [modules]="quillModules">
+        </quill-editor>
       </td>
       <td>
         <button *ngIf="editableParagraph?.id !== paragraph.id" (click)="editParagraph(paragraph)">Edit</button>
