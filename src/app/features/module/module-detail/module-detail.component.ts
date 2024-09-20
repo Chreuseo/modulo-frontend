@@ -18,6 +18,7 @@ import {
 import {ModuleFrameModuleImplementationDTO} from "../../../core/models/module-frame-module-implementation-dto.model";
 import {UserService} from "../../../core/services/user.service";
 import {UserDTOFlat} from "../../../core/models/user-dto-flat.model";
+import {quillModules} from "../../../shared/components/quill-config";
 
 @Component({
   selector: 'app-module-detail',
@@ -37,6 +38,8 @@ export class ModuleDetailComponent implements OnInit {
   isEditing: boolean = false;
   moduleFrameModuleImplementations!: ModuleFrameModuleImplementationDTO[];
   selectedLecturer!: UserDTOFlat; // To keep the currently selected lecturer to add
+
+  quillModules = quillModules;
 
   constructor(
     private route: ActivatedRoute,
