@@ -171,4 +171,10 @@ export class ModuleDetailComponent implements OnInit {
     });
   }
 
+  deleteSpo(moduleFrameModuleImplementationId: number): void {
+    this.moduleFrameModuleImplementationService.remove(moduleFrameModuleImplementationId).subscribe(() => {
+      this.fetchModuleFrameModuleImplementations();
+    });
+  }
+
 }
