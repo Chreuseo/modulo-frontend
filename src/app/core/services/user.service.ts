@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { BaseService } from './base.service';
 import {UserDTOFlat} from "../models/user-dto-flat.model";
-import {UserDTO} from "../models/user-dto.model"; // Adjust the import path accordingly
+import {UserDTO} from "../models/user-dto.model";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class UserService extends BaseService {
 
   private readonly endpoint = 'users'; // Adjust this endpoint to match your API
 
-  constructor(http: HttpClient) {
+  constructor(protected override http: HttpClient) {
     super(http);
   }
 
@@ -34,5 +34,9 @@ export class UserService extends BaseService {
 
   updateUser(user: UserDTO): Observable<UserDTO> {
     return this.put<UserDTO>(`${this.endpoint}/update`, user);
+  }
+
+  changePassword(password: string): Observable<void> {
+    return this.put<void>(`${this.endpoint}/change-password`, { password });
   }
 }

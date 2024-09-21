@@ -27,10 +27,10 @@ export class UserDetailComponent implements OnInit {
     this.userForm = this.fb.group({
       id: [{value: '', disabled: true}],
       mail: [{value: '', disabled: true}, [Validators.required, Validators.email]],
-      title: [{value: '', disabled: true}, Validators.required],
+      title: [{value: '', disabled: true}],
       firstName: [{value: '', disabled: true}, Validators.required],
       lastName: [{value: '', disabled: true}, Validators.required],
-      code: [{value: '', disabled: true}],
+      code: [{value: '', disabled: true}, Validators.required],
       role: [{value: '', disabled: true}, Validators.required],
     });
   }
@@ -62,11 +62,10 @@ export class UserDetailComponent implements OnInit {
     if (this.userForm.valid) {
       const updatedUser: UserDTO = this.userForm.value;
       this.userService.updateUser(updatedUser).subscribe(() => {
-        // Redirect or notify user about successful update
-        this.toggleEdit(); // Optionally disable editing after saving
       }, error => {
         console.error('Error updating user', error);
       });
+      this.toggleEdit();
     }
   }
 

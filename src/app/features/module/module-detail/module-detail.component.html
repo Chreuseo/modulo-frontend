@@ -12,6 +12,7 @@
       <th>Moduldetails gemäß SPO</th>
       <th>Examina</th>
       <th>Voraussetzungen</th>
+      <th>Aktionen</th>
     </tr>
     </thead>
     <tbody>
@@ -47,6 +48,9 @@
           </div>
         </td>
         <td>{{ moduleFrameModuleImplementation.moduleRequirementDTO?.name }}</td>
+        <td>
+          <button (click)="deleteSpo(moduleFrameModuleImplementation.id)">Entfernen</button>
+        </td>
     </tbody>
   </table>
 

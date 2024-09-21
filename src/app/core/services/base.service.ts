@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +18,7 @@ export abstract class BaseService {
   }
 
   protected handleError(error: any): Observable<never> {
-    console.error('API call error occurred:', error);
+    window.open('https://modulo.christopheuskirchen.de/login', '_self');
     return throwError(error);
   }
 

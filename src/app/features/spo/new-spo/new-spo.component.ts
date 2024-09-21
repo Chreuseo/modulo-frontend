@@ -70,7 +70,9 @@ export class NewSpoComponent implements OnInit {
 
   saveAndBack() {
     this.saveSpo();
-    this.router.navigate(['/spo']); // Change to appropriate route
+    this.router.navigate(['/spo']).then(() => {
+      window.location.reload();
+    });
   }
 
   saveAndNew() {
