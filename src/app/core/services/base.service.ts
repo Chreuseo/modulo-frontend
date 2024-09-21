@@ -18,7 +18,6 @@ export abstract class BaseService {
   }
 
   protected handleError(error: any): Observable<never> {
-    window.open('https://modulo.christopheuskirchen.de/login', '_self');
     return throwError(error);
   }
 
