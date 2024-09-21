@@ -1,1 +1,6 @@
-<p>my works!</p>
+<h2>Passwort ändern</h2>
+<div class="settings-add-container">
+  <input type="password" [(ngModel)]="newPassword" placeholder="Neues Passwort" />
+  <input type="password" [(ngModel)]="newPasswordRepeat" placeholder="Neues Passwort wiederholen" />
+  <button (click)="changePassword()">Passwort ändern</button>
+</div>
