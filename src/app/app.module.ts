@@ -23,6 +23,7 @@ import { ModuleDetailComponent } from './features/module/module-detail/module-de
 import { NewModuleFrameModuleImplementationComponent } from './features/module/new-module-frame-module-implementation/new-module-frame-module-implementation.component';
 import { NewUserComponent } from './features/user/new-user/new-user.component';
 import { UserDetailComponent } from './features/user/user-detail/user-detail.component';
+import { LoginComponent } from './shared/components/login/login.component';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { UserDetailComponent } from './features/user/user-detail/user-detail.com
     ModuleDetailComponent,
     NewModuleFrameModuleImplementationComponent,
     NewUserComponent,
-    UserDetailComponent
+    UserDetailComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

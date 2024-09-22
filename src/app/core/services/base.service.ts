@@ -3,21 +3,26 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
 })
 export abstract class BaseService {
-  protected baseUrl: string = 'https://modulo.christopheuskirchen.de/api'; // Default API URL
-  //protected baseUrl: string = 'http://localhost:8080/api'; // Default API URL
+  //protected baseUrl: string = 'https://modulo.christopheuskirchen.de/api'; // Default API URL
+  protected baseUrl: string = 'http://localhost:8080/api'; // Default API URL
 
-  constructor(protected http: HttpClient) {}
+  constructor(protected router: Router,
+    protected http: HttpClient) {}
 
   private getFullUrl(endpoint: string): string {
     return `${this.baseUrl}/${endpoint}`;
   }
 
-  protected handleError(error: any): Observable<never> {
+  protected handleError(error: HttpErrorResponse): Observable<never> {
+    if(error.status === 401) {
+      this.router.navigate(['login']);
+    }
     return throwError(error);
   }
 

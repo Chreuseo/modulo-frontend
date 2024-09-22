@@ -5,6 +5,7 @@ import {ModuleFrameSetDTO} from "../models/module-frame-set-dto.model";
 import {ModuleFrameDTO} from "../models/module-frame-dto.model";
 import {HttpClient} from "@angular/common/http";
 import {ModuleFrameModuleImplementationDTO} from "../models/module-frame-module-implementation-dto.model";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +14,9 @@ export class ModuleFrameService extends BaseService {
 
   private endpoint = 'module-frames';
 
-  constructor(protected override http: HttpClient) {
-    super(http);
+  constructor(protected override router: Router,
+              protected override http: HttpClient) {
+    super(router, http);
   }
 
   // Get ModuleFrameSetDTO by SPO ID

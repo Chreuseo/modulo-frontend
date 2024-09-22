@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {BaseService} from "./base.service";
 import {ParagraphDTO} from "../models/paragraph-dto.model";
+import {Router} from "@angular/router";
 
 
 @Injectable({
@@ -12,8 +13,9 @@ import {ParagraphDTO} from "../models/paragraph-dto.model";
 export class ParagraphService extends BaseService {
   private endpoint: string = 'paragraphs';
 
-  constructor(protected override http: HttpClient) {
-    super(http);
+  constructor(protected override router: Router,
+              protected override http: HttpClient) {
+    super(router, http);
   }
 
   addParagraph(paragraphDTO: ParagraphDTO): Observable<ParagraphDTO> {

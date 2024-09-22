@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {BaseService} from "./base.service";
 import {ModuleFrameModuleImplementationDTO} from "../models/module-frame-module-implementation-dto.model";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,9 @@ export class ModuleFrameModuleImplementationService extends BaseService {
   // Define the endpoint for the service
   private readonly endpoint = 'module-frame-module-implementations';
 
-  constructor(http: HttpClient) {
-    super(http); // Pass the HttpClient to the base class
+  constructor(protected override router: Router,
+              protected override http: HttpClient) {
+    super(router, http);
   }
 
   // Get all ModuleFrameModuleImplementations

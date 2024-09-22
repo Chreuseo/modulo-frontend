@@ -4,6 +4,7 @@ import {BaseService} from "./base.service";
 import {DegreeDTO} from "../models/degree-dto.model";
 import {HttpClient} from "@angular/common/http";
 import {CourseTypeDTO} from "../models/course-type-dto.model";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,9 @@ export class CourseTypeService extends BaseService {
 
   private readonly endpoint = 'course-types';
 
-  constructor(protected override http: HttpClient) {
-    super(http);
+  constructor(protected override router: Router,
+    protected override http: HttpClient) {
+    super(router, http);
   }
 
   // Get all degrees
