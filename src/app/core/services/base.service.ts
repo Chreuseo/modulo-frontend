@@ -9,8 +9,8 @@ import {Router} from "@angular/router";
   providedIn: 'root'
 })
 export abstract class BaseService {
-  //protected baseUrl: string = 'https://modulo.christopheuskirchen.de/api'; // Default API URL
-  protected baseUrl: string = 'http://localhost:8080/api'; // Default API URL
+  protected baseUrl: string = 'https://modulo.christopheuskirchen.de/api'; // Default API URL
+  //protected baseUrl: string = 'http://localhost:8080/api'; // Default API URL
 
   constructor(protected router: Router,
     protected http: HttpClient) {}
