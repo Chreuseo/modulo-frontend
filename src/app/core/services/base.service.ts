@@ -21,7 +21,7 @@ export abstract class BaseService {
 
   protected handleError(error: HttpErrorResponse): Observable<never> {
     if(error.status === 401) {
-      this.router.navigate(['login']);
+      window.location.href = '/login';
     }
     return throwError(error);
   }
