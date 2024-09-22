@@ -1,1 +1,16 @@
-<p>login works!</p>
+<!-- app/components/login/login.component.html -->
+<div class="login-container">
+  <h2>Login</h2>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div>
+      <label for="mail">Email:</label>
+      <input id="mail" formControlName="mail" type="email" />
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input id="password" formControlName="password" type="password" />
+    </div>
+    <button type="submit" (click)="login()" [disabled]="loginForm.invalid">Login</button>
+  </form>
+  <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+</div>
