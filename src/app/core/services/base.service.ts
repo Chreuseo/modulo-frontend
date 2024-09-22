@@ -27,7 +27,7 @@ export abstract class BaseService {
   }
 
   protected get<T>(endpoint: string, params?: HttpParams): Observable<T> {
-    return this.http.get<T>(this.getFullUrl(endpoint), { params })
+    return this.http.get<T>(this.getFullUrl(endpoint), { params, withCredentials: true })
       .pipe(catchError(this.handleError));
   }
 
@@ -37,7 +37,7 @@ export abstract class BaseService {
     params?: HttpParams;
     reportProgress?: boolean; // make sure not to include if you want T
   }): Observable<T> {
-    return this.http.post<T>(this.getFullUrl(endpoint), body, options)
+    return this.http.post<T>(this.getFullUrl(endpoint), body, { ...options, withCredentials: true})
       .pipe(catchError(this.handleError));
   }
 
@@ -47,7 +47,7 @@ export abstract class BaseService {
     params?: HttpParams;
     reportProgress?: boolean; // make sure not to include if you want T
   }): Observable<T> {
-    return this.http.put<T>(this.getFullUrl(endpoint), body, options)
+    return this.http.put<T>(this.getFullUrl(endpoint), body, { ...options, withCredentials: true})
       .pipe(catchError(this.handleError));
   }
 
@@ -57,7 +57,7 @@ export abstract class BaseService {
     params?: HttpParams;
     reportProgress?: boolean; // make sure not to include if you want T
   }): Observable<T> {
-    return this.http.delete<T>(this.getFullUrl(endpoint), options)
+    return this.http.delete<T>(this.getFullUrl(endpoint), { ...options, withCredentials: true})
       .pipe(catchError(this.handleError));
   }
 
