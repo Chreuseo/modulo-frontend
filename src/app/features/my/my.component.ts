@@ -1,38 +1,52 @@
-import { Component } from '@angular/core';
-import {UserService} from "../../core/services/user.service";
-
+// app/components/my-component/my-component.component.ts
+import { Component, OnInit } from '@angular/core';
+import {UserDTO} from "../../core/models/user-dto.model";
+import {PasswordDTO} from "../../core/models/passwordDTO";
+import {MyService} from "../../core/services/my.service";
 @Component({
-  selector: 'app-my',
+  selector: 'app-my-component',
   templateUrl: './my.component.html',
-  styleUrls: ['../../core/stylesheets/settings.css']
+  styleUrls: ['../../core/stylesheets/formula.css']
 })
-export class MyComponent {
+export class MyComponent implements OnInit {
+  user!: UserDTO;
+  editing: boolean = false;
+  passwordDTO!: PasswordDTO;
 
-  newPassword: string = '';
-  newPasswordRepeat: string = '';
-
-  constructor(private userService: UserService) {}
+  constructor(private myService: MyService) {}
 
   ngOnInit(): void {
+    this.loadUser();
   }
 
-  changePassword() {
-    if (this.newPassword !== this.newPasswordRepeat) {
-      console.error('Passwords do not match');
-      // Handle error as needed, such as showing a message to the user
-      return
-    }
-    this.userService.changePassword(this.newPassword).subscribe(
-      () => {
-        console.log('Password changed successfully');
-        this.newPassword = '';
-        this.newPasswordRepeat = '';
-      },
-      (error) => {
-        console.error('Error changing password', error);
-        // Handle error as needed, such as showing a message to the user
-      }
+  loadUser(): void {
+    this.myService.getUser().subscribe(
+      user => this.user = user,
+      error => console.error('Error loading user', error)
     );
   }
-  // Add methods here
+
+  toggleEditing(): void {
+    this.editing = !this.editing;
+  }
+
+  saveUser(): void {
+    this.myService.updateUser(this.user).subscribe(
+      updatedUser => {
+        this.user = updatedUser;
+        this.editing = false;
+      },
+      error => console.error('Error updating user', error)
+    );
+  }
+
+  updatePassword(): void {
+    this.myService.updatePassword(this.passwordDTO).subscribe(
+      () => {
+        this.passwordDTO = {} as PasswordDTO; // Reset password fields
+        console.log('Password updated successfully');
+      },
+      error => console.error('Error updating password', error)
+    );
+  }
 }
