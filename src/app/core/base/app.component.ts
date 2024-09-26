@@ -18,7 +18,7 @@ export class AppComponent {
       () => {
         console.log('Logout successful')
         this.cookieService.deleteAll();
-        window.location.href = '/login';
+        window.location.reload();
       },
       error => console.error('Logout failed', error)
     );
