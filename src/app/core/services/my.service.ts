@@ -17,15 +17,17 @@ export class MyService extends BaseService {
     super(router, http);
   }
 
+  private readonly endpoint = 'my';
+
   getUser(): Observable<UserDTO> {
-    return this.get<UserDTO>('my/data');
+    return this.get<UserDTO>(`${this.endpoint}/data`);
   }
 
   updateUser(user: UserDTO): Observable<UserDTO> {
-    return this.put<UserDTO>('my/update', user);
+    return this.put<UserDTO>(`${this.endpoint}/update`, user);
   }
 
   updatePassword(passwordDTO: PasswordDTO): Observable<UserDTO> {
-    return this.put<UserDTO>('my/update-password', passwordDTO);
+    return this.put<UserDTO>(`${this.endpoint}/new-password`, passwordDTO);
   }
 }
