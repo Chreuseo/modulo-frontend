@@ -28,6 +28,6 @@ export class MyService extends BaseService {
   }
 
   updatePassword(passwordDTO: PasswordDTO): Observable<UserDTO> {
-    return this.put<UserDTO>(`${this.endpoint}/new-password`, passwordDTO);
+    return this.put<UserDTO>(`${this.endpoint}/update-password`, passwordDTO);
   }
 }
