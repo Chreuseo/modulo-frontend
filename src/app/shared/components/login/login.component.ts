@@ -34,7 +34,7 @@ export class LoginComponent {
       };
 
       this.authService.login(userDtoAuth).subscribe(
-        (response: String) => {
+        (response) => {
           console.log('Login successful:', response);
           this.router.navigate(['/']); // navigate to home or dashboard after login
         },

@@ -10,7 +10,7 @@ import {UserDtoAuthModel} from "../models/user-dto-auth.model";
 })
 export class AuthService extends BaseService {
 
-  login(userDtoAuth: UserDtoAuthModel): Observable<string> {
+  login(userDtoAuth: UserDtoAuthModel): Observable<String> {
     return this.post<string>('auth/login', userDtoAuth);
   }
 }
