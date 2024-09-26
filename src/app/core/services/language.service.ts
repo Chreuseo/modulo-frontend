@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import {BaseService} from "./base.service";
 import {HttpClient} from "@angular/common/http";
 import {LanguageDTO} from "../models/language-dto.model";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,9 @@ export class LanguageService extends BaseService {
 
   private readonly endpoint = 'language'; // Base endpoint
 
-  constructor(protected override http: HttpClient) {
-    super(http);
+  constructor(protected override router: Router,
+              protected override http: HttpClient) {
+    super(router, http);
   }
 
   // Get all language

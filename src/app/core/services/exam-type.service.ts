@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {BaseService} from "./base.service";
 import {ExamTypeDTO} from "../models/exam-type-dto.model";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,9 @@ export class ExamTypeService extends BaseService {
 
   private endpoint = 'exam-types'; // Adjust according to your backend setup
 
-  constructor(protected override http: HttpClient) {
-    super(http);
+  constructor(protected override router: Router,
+              protected override http: HttpClient) {
+    super(router, http);
   }
 
   getBySpo(spoId: number): Observable<ExamTypeDTO[]> {

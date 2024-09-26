@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import {BaseService} from "./base.service";
 import {HttpClient} from "@angular/common/http";
 import {MaternityProtectionDTO} from "../models/maternity-protection-dto.model";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,9 @@ export class MaternityProtectionService extends BaseService {
 
   private readonly endpoint = 'maternity-protection'; // Base endpoint for maternity protections
 
-  constructor(protected override http: HttpClient) {
-    super(http);
+  constructor(protected override router: Router,
+              protected override http: HttpClient) {
+    super(router, http);
   }
 
   // Get all maternity protections

@@ -4,6 +4,7 @@ import {BaseService} from "./base.service";
 import {SectionDTO} from "../models/section-dto.model";
 import {ModuleTypeDTO} from "../models/module-type-dto.model";
 import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,9 @@ export class ModuleTypeService extends BaseService {
 
   private readonly endpoint = 'module-type';
 
-  constructor(protected override http: HttpClient) {
-    super(http);
+  constructor(protected override router: Router,
+              protected override http: HttpClient) {
+    super(router, http);
   }
 
   // Add a new module type
