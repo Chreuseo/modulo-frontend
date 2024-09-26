@@ -1,6 +1,56 @@
-<h2>Passwort ändern</h2>
-<div class="settings-add-container">
-  <input type="password" [(ngModel)]="newPassword" placeholder="Neues Passwort" />
-  <input type="password" [(ngModel)]="newPasswordRepeat" placeholder="Neues Passwort wiederholen" />
-  <button (click)="changePassword()">Passwort ändern</button>
+<!-- app/components/my-component/my-component.component.html -->
+<div class="user-details-container">
+  <h2>User Details</h2>
+
+  <div>
+    <label for="mail">Email:</label>
+    <input id="mail" type="text" [(ngModel)]="user.mail" [disabled]="!editing">
+  </div>
+
+  <div>
+    <label for="title">Title:</label>
+    <input id="title" type="text" [(ngModel)]="user.title" [disabled]="!editing">
+  </div>
+
+  <div>
+    <label for="firstName">First Name:</label>
+    <input id="firstName" type="text" [(ngModel)]="user.firstName" [disabled]="!editing">
+  </div>
+
+  <div>
+    <label for="lastName">Last Name:</label>
+    <input id="lastName" type="text" [(ngModel)]="user.lastName" [disabled]="!editing">
+  </div>
+
+  <div>
+    <label for="code">Code:</label>
+    <input id="code" type="text" [(ngModel)]="user.code" [disabled]="!editing">
+  </div>
+
+  <div>
+    <label for="role">Role:</label>
+    <input id="role" type="text" [(ngModel)]="user.role" [disabled]="!editing">
+  </div>
+
+  <div>
+    <button (click)="toggleEditing()">{{ editing ? 'Cancel' : 'Edit' }}</button>
+    <button *ngIf="editing" (click)="saveUser()">Save</button>
+  </div>
+</div>
+
+<div class="password-change-container">
+  <h3>Change Password</h3>
+  <div>
+    <label for="current-password">Current Password:</label>
+    <input id="current-password" type="password" [(ngModel)]="passwordDTO.password">
+  </div>
+
+  <div>
+    <label for="new-password">New Password:</label>
+    <input id="new-password" type="password" [(ngModel)]="passwordDTO.newPassword">
+  </div>
+
+  <div>
+    <button (click)="updatePassword()">Submit</button>
+  </div>
 </div>
