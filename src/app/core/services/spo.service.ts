@@ -3,7 +3,8 @@ import { BaseService } from './base.service';
 import { Observable } from 'rxjs';
 import { SpoDTOFlat } from '../models/spo-dto-flat.model';
 import {HttpClient} from "@angular/common/http";
-import {SpoDTO} from "../models/spo-dto.model"; // Adjust the import based on your model's location
+import {SpoDTO} from "../models/spo-dto.model";
+import {Router} from "@angular/router"; // Adjust the import based on your model's location
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,9 @@ import {SpoDTO} from "../models/spo-dto.model"; // Adjust the import based on yo
 export class SpoService extends BaseService {
   private readonly endpoint = 'spo'; // Define your SPO endpoint
 
-  constructor(http: HttpClient) {
-    super(http);
+  constructor(protected override router: Router,
+              protected override http: HttpClient) {
+    super(router, http);
   }
 
   getSpo(id: number): Observable<SpoDTO> {

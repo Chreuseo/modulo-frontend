@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import {BaseService} from "./base.service";
 import {HttpClient} from "@angular/common/http";
 import {DurationDTO} from "../models/duration-dto.model";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,9 @@ export class DurationService extends BaseService {
 
   private readonly endpoint = 'duration'; // Base endpoint for durations
 
-  constructor(protected override http: HttpClient) {
-    super(http);
+  constructor(protected override router: Router,
+              protected override http: HttpClient) {
+    super(router, http);
   }
 
   // Get all durations

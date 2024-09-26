@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import {BaseService} from "./base.service";
 import {SectionDTO} from "../models/section-dto.model";
 import {HttpClient} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,9 @@ export class SectionService extends BaseService {
 
   private readonly endpoint = 'section';
 
-  constructor(protected override http: HttpClient) {
-    super(http);
+  constructor(protected override router: Router,
+              protected override http: HttpClient) {
+    super(router, http);
   }
 
   // Add a new section

@@ -19,8 +19,10 @@ import {
 } from "./features/module/new-module-frame-module-implementation/new-module-frame-module-implementation.component";
 import {NewUserComponent} from "./features/user/new-user/new-user.component";
 import {UserDetailComponent} from "./features/user/user-detail/user-detail.component";
+import {LoginComponent} from "./shared/components/login/login.component";
 
 const routes: Routes = [
+  { path : 'login', component: LoginComponent },
   { path: 'spo', component: SpoListComponent },
   { path: 'spo/new', component: NewSpoComponent },
   { path: 'spo/:id/overview', component: SpoDetailOverviewComponent },  // Route for Spo detail view

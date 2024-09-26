@@ -28,7 +28,10 @@
 
     <div>
       <label for="role">Role:</label>
-      <input id="role" formControlName="role" type="text" />
+      <select id="role" formControlName="role">
+        <option value="ADMIN">Admin</option>
+        <option value="USER">User</option>
+      </select>
     </div>
 
     <button type="button" (click)="toggleEdit()">

@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 import { ModuleImplementationDTOFlat } from '../models/module-implementation-dto-flat.model'; // Adjust import path as necessary
 import { BaseService } from './base.service';
 import {HttpClient} from "@angular/common/http";
-import {ModuleImplementationDTO} from "../models/module-implementation-dto.model"; // Adjust import path as necessary
+import {ModuleImplementationDTO} from "../models/module-implementation-dto.model";
+import {Router} from "@angular/router"; // Adjust import path as necessary
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +14,9 @@ import {ModuleImplementationDTO} from "../models/module-implementation-dto.model
 export class ModuleImplementationService extends BaseService {
   private endpoint = 'module-implementation'; // Specify endpoint for module implementations
 
-  constructor(http: HttpClient) {
-    super(http);
+  constructor(protected override router: Router,
+              protected override http: HttpClient) {
+    super(router, http);
   }
 
   // Method to get all module implementations

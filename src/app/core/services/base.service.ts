@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from "@angular/common/http";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +12,22 @@ export abstract class BaseService {
   protected baseUrl: string = 'https://modulo.christopheuskirchen.de/api'; // Default API URL
   //protected baseUrl: string = 'http://localhost:8080/api'; // Default API URL
 
-  constructor(protected http: HttpClient) {}
+  constructor(protected router: Router,
+    protected http: HttpClient) {}
 
   private getFullUrl(endpoint: string): string {
     return `${this.baseUrl}/${endpoint}`;
   }
 
-  protected handleError(error: any): Observable<never> {
+  protected handleError(error: HttpErrorResponse): Observable<never> {
+    if(error.status === 401) {
+      window.location.href = '/login';
+    }
     return throwError(error);
   }
 
   protected get<T>(endpoint: string, params?: HttpParams): Observable<T> {
-    return this.http.get<T>(this.getFullUrl(endpoint), { params })
+    return this.http.get<T>(this.getFullUrl(endpoint), { params, withCredentials: true })
       .pipe(catchError(this.handleError));
   }
 
@@ -32,7 +37,7 @@ export abstract class BaseService {
     params?: HttpParams;
     reportProgress?: boolean; // make sure not to include if you want T
   }): Observable<T> {
-    return this.http.post<T>(this.getFullUrl(endpoint), body, options)
+    return this.http.post<T>(this.getFullUrl(endpoint), body, { ...options, withCredentials: true})
       .pipe(catchError(this.handleError));
   }
 
@@ -42,7 +47,7 @@ export abstract class BaseService {
     params?: HttpParams;
     reportProgress?: boolean; // make sure not to include if you want T
   }): Observable<T> {
-    return this.http.put<T>(this.getFullUrl(endpoint), body, options)
+    return this.http.put<T>(this.getFullUrl(endpoint), body, { ...options, withCredentials: true})
       .pipe(catchError(this.handleError));
   }
 
@@ -52,7 +57,7 @@ export abstract class BaseService {
     params?: HttpParams;
     reportProgress?: boolean; // make sure not to include if you want T
   }): Observable<T> {
-    return this.http.delete<T>(this.getFullUrl(endpoint), options)
+    return this.http.delete<T>(this.getFullUrl(endpoint), { ...options, withCredentials: true})
       .pipe(catchError(this.handleError));
   }
 

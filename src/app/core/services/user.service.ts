@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { BaseService } from './base.service';
 import {UserDTOFlat} from "../models/user-dto-flat.model";
 import {UserDTO} from "../models/user-dto.model";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,9 @@ export class UserService extends BaseService {
 
   private readonly endpoint = 'users'; // Adjust this endpoint to match your API
 
-  constructor(protected override http: HttpClient) {
-    super(http);
+  constructor(protected override router: Router,
+              protected override http: HttpClient) {
+    super(router, http);
   }
 
   getAllUsers(): Observable<UserDTOFlat[]> {
