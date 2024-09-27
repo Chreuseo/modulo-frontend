@@ -4,6 +4,7 @@ import { ModuleTypeDTO } from './module-type-dto.model';
 import { DegreeDTO } from './degree-dto.model';
 import {ExamTypeDTO} from "./exam-type-dto.model";
 import {ModuleRequirementDTO} from "./module-requirement-dto.model";
+import {UserDTOFlat} from "./user-dto-flat.model";
 
 export interface SpoDTO {
   id: number; // Java long maps to TypeScript number
@@ -17,5 +18,6 @@ export interface SpoDTO {
   moduleTypeDTOs: ModuleTypeDTO[]; // List<ModuleTypeDTO> maps to ModuleTypeDTO[]
   examTypeDTOs: ExamTypeDTO[]; // List<ExamTypeToSpoDTO> maps to any[]
   moduleRequirementDTOs: ModuleRequirementDTO[]; // List<ModuleRequirementDTO> maps to any[]
+  responsibleUsers: UserDTOFlat[]; // List<UserDTOFlat> maps to UserDTOFlat[]
   degree: DegreeDTO; // Full DegreeDTO
 }

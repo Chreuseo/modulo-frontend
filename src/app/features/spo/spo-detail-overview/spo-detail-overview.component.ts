@@ -12,13 +12,17 @@ import {ExamTypeDTO} from "../../../core/models/exam-type-dto.model";
 import {ExamTypeService} from "../../../core/services/exam-type.service";
 import {ModuleRequirementService} from "../../../core/services/module-requirement.service";
 import {ModuleRequirementDTO} from "../../../core/models/module-requirement-dto.model";
+import {UserDTOFlat} from "../../../core/models/user-dto-flat.model";
+import {UserService} from "../../../core/services/user.service";
 
 @Component({
   selector: 'app-spo-detail-overview',
   templateUrl: './spo-detail-overview.component.html',
   styleUrls: ['../../../core/stylesheets/details.css',
     '../../../core/stylesheets/sub-nav.css',
-    '../../../core/stylesheets/exam-type-table.css']
+    '../../../core/stylesheets/exam-type-table.css',
+    '../../../core/stylesheets/formula.css',
+    '../../../core/stylesheets/details.css']
 })
 export class SpoDetailOverviewComponent implements OnInit {
   spoId!: number;
@@ -33,6 +37,10 @@ export class SpoDetailOverviewComponent implements OnInit {
   newExamTypeLength: string = ''; // For new exam type length input
   newModuleRequirementName: string = ''; // For new module requirement input
 
+  userDTOs: UserDTOFlat[] = [];
+  selectedUser!: UserDTOFlat; // To keep the currently selected lecturer to add
+
+
   constructor(
     private route: ActivatedRoute,
     private spoService: SpoService,
@@ -40,7 +48,8 @@ export class SpoDetailOverviewComponent implements OnInit {
     private sectionService: SectionService,
     private moduleTypeService: ModuleTypeService,
     private examTypeService: ExamTypeService,
-    private moduleRequirementService: ModuleRequirementService
+    private moduleRequirementService: ModuleRequirementService,
+    private userService: UserService
   ) { }
 
   ngOnInit(): void {
@@ -49,6 +58,7 @@ export class SpoDetailOverviewComponent implements OnInit {
     if (idValue) {
       const id = +idValue; // Convert to number
       this.loadSpoDetail(id);
+      this.loadUserDTOs()
     } else {
       console.error('Spo ID not found in route parameters.');
     }
@@ -252,5 +262,23 @@ export class SpoDetailOverviewComponent implements OnInit {
         console.error('Error deleting module requirement:', error);
       }
     );
+  }
+
+  loadUserDTOs(): void {
+    this.userService.getAllUsers().subscribe(data => {
+      this.userDTOs = data;
+    });
+  }
+
+  addResponsibleUser(userId: number): void {
+    this.spoService.addResponsibleUser(this.spo.id, userId).subscribe(() => {
+      this.spo.responsibleUsers.push(this.userDTOs.find(user => user.id === userId)!);
+    });
+  }
+
+  removeResponsibleUser(userId: number): void {
+    this.spoService.removeResponsibleUser(this.spo.id, userId).subscribe(() => {
+      this.spo.responsibleUsers = this.spo.responsibleUsers.filter(user => user.id !== userId);
+    });
   }
 }

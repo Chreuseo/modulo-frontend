@@ -37,5 +37,12 @@ export class SpoService extends BaseService {
   updateSpo(spo: SpoDTO): Observable<SpoDTOFlat> {
     return this.put<SpoDTOFlat>(`${this.endpoint}/update`, spo);
   }
-  // Additional methods follow the same logic
+
+  addResponsibleUser(spoId: number, userId: number): Observable<void> {
+    return this.post<void>(`${this.endpoint}/${spoId}/responsible/add/${userId}`, null);
+  }
+
+  removeResponsibleUser(spoId: number, userId: number): Observable<void> {
+    return this.delete<void>(`${this.endpoint}/${spoId}/responsible/remove/${userId}`);
+  }
 }
