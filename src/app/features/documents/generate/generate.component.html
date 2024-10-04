@@ -22,7 +22,7 @@
   <div>
     <label for="semesters">Select Semester:</label>
     <select id="semesters" [(ngModel)]="selectedSemesterId">
-      <option *ngFor="let semester of semesters" [value]="semester.id">{{ semester.name }}</option>
+      <option *ngFor="let semester of semesters" [value]="semester.id">{{ semester.name }} {{ semester.year}}</option>
     </select>
   </div>
 
