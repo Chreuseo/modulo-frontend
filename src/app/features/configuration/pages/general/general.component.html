@@ -26,6 +26,7 @@
         <th>Name</th>
         <th>Abkürzung</th>
         <th>Jahr</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -33,7 +34,6 @@
         <td>{{ semester.name }}</td>
         <td>{{ semester.abbreviation }}</td>
         <td>{{ semester.year }}</td>
-        <td></td>
         <td>
           <button (click)="deleteSemester(semester.id)">Löschen</button>
         </td>
