@@ -42,7 +42,7 @@ export class DocumentService extends BaseService {
    * @returns An Observable of void (no content).
    */
   generateDocument(spoId: number, semesterId: number, documentType: string): Observable<void> {
-    return this.post<void>(`${this.endpoint}/generate/${spoId}/${semesterId}/${documentType}`, null);
+    return this.post<void>(`${this.endpoint}/generate/${spoId}/${semesterId}/${documentType}`, {});
   }
 
   getSPOs(): Observable<SpoDocumentsDTO[]> {
