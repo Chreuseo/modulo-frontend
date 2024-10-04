@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'module/new', component: NewModuleComponent },
   { path: 'module/:id', component: ModuleDetailComponent },
   { path: 'module/:id/new-module-frame', component: NewModuleFrameModuleImplementationComponent},
-  { path: '/documents', component: DocumentListComponent},
+  { path: 'documents', component: DocumentListComponent},
   { path: 'user', component: UserListComponent},
   { path: 'user/new', component: NewUserComponent},
   { path: 'user/:id', component: UserDetailComponent},
