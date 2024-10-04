@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { SpoService } from '../../../core/services/spo.service'; // Adjust the path as necessary
 import { SpoDTOFlat } from '../../../core/models/spo-dto-flat.model';
 import {Router} from "@angular/router";
-import {PdfService} from "../../../core/services/pdf.service"; // Adjust the path as necessary
 
 @Component({
   selector: 'app-spo-list',
@@ -15,8 +14,7 @@ export class SpoListComponent implements OnInit {
   public sortDirection: 'asc' | 'desc' = 'asc';
 
   constructor(private spoService: SpoService,
-              private router: Router,
-              private pdfService: PdfService) {}
+              private router: Router) {}
 
   ngOnInit(): void {
     this.loadSpoData();
@@ -61,18 +59,5 @@ export class SpoListComponent implements OnInit {
 
   navigateToSpoDetail(id: number): void {
     this.router.navigate([`/spo/${id}/overview`]); // Update the route to your SPO detail path
-  }
-
-  downloadModuleManual(id: number): void {
-    this.pdfService.downloadModuleManual(id).subscribe(
-      (data) => {
-        const blob = new Blob([data], { type: 'application/pdf' });
-        const url = window.URL.createObjectURL(blob);
-        window.open(url);
-      },
-      (error) => {
-        console.error('Error downloading module manual:', error);
-      }
-    );
   }
 }
