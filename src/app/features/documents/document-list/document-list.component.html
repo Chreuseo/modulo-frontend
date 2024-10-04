@@ -5,7 +5,7 @@
     <th>SPO</th>
     <th>Documents</th>
     <th *ngFor="let semester of spoDocuments[0]?.semesters">
-      {{ semester.semester.name }} <!-- Adjust the property name based on your SemesterDTO -->
+      {{ semester.semester.abbreviation }} {{ semester.semester.year }} <!-- Adjust the property name based on your SemesterDTO -->
     </th>
   </tr>
   </thead>
