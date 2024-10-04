@@ -64,7 +64,7 @@ export abstract class BaseService {
       .pipe(catchError(this.handleError));
   }
 
-  protected getBlob(endpoint: string): Observable<Blob> {
+  protected getBlob(endpoint: string, params?: { params: HttpParams }): Observable<Blob> {
     return this.http.get(this.getFullUrl(endpoint), { responseType: 'blob', withCredentials: true })
       .pipe(catchError(this.handleError));
   }

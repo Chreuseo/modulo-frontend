@@ -23,7 +23,7 @@ import {LoginComponent} from "./shared/components/login/login.component";
 import {DocumentListComponent} from "./features/documents/document-list/document-list.component";
 
 const routes: Routes = [
-  { path : 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'spo', component: SpoListComponent },
   { path: 'spo/new', component: NewSpoComponent },
   { path: 'spo/:id/overview', component: SpoDetailOverviewComponent },  // Route for Spo detail view
