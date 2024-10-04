@@ -34,11 +34,11 @@ export abstract class BaseService {
       .pipe(catchError(this.handleError));
   }
 
-  protected post<T>(endpoint: string, body: any, options?: {
+  protected post<T>(endpoint: string, body: any, params?: { params: HttpParams }, options?: {
     headers?: HttpHeaders;
-    observe?: 'body'; // specify 'body' or omit to use default
+    observe?: "body";
     params?: HttpParams;
-    reportProgress?: boolean; // make sure not to include if you want T
+    reportProgress?: boolean
   }): Observable<T> {
     return this.http.post<T>(this.getFullUrl(endpoint), body, { ...options, withCredentials: true})
       .pipe(catchError(this.handleError));
