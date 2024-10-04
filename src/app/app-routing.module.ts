@@ -20,6 +20,7 @@ import {
 import {NewUserComponent} from "./features/user/new-user/new-user.component";
 import {UserDetailComponent} from "./features/user/user-detail/user-detail.component";
 import {LoginComponent} from "./shared/components/login/login.component";
+import {DocumentListComponent} from "./features/documents/document-list/document-list.component";
 
 const routes: Routes = [
   { path : 'login', component: LoginComponent },
@@ -33,6 +34,7 @@ const routes: Routes = [
   { path: 'module/new', component: NewModuleComponent },
   { path: 'module/:id', component: ModuleDetailComponent },
   { path: 'module/:id/new-module-frame', component: NewModuleFrameModuleImplementationComponent},
+  { path: '/documents', component: DocumentListComponent},
   { path: 'user', component: UserListComponent},
   { path: 'user/new', component: NewUserComponent},
   { path: 'user/:id', component: UserDetailComponent},

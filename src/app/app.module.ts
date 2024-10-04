@@ -24,6 +24,7 @@ import { NewModuleFrameModuleImplementationComponent } from './features/module/n
 import { NewUserComponent } from './features/user/new-user/new-user.component';
 import { UserDetailComponent } from './features/user/user-detail/user-detail.component';
 import { LoginComponent } from './shared/components/login/login.component';
+import { DocumentListComponent } from './features/documents/document-list/document-list.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { LoginComponent } from './shared/components/login/login.component';
     NewModuleFrameModuleImplementationComponent,
     NewUserComponent,
     UserDetailComponent,
-    LoginComponent
+    LoginComponent,
+    DocumentListComponent
   ],
   imports: [
     BrowserModule,

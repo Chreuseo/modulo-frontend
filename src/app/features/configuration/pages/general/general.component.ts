@@ -11,6 +11,8 @@ import {CourseTypeDTO} from "../../../../core/models/course-type-dto.model";
 import {CourseTypeService} from "../../../../core/services/course-type.service";
 import {CycleDTO} from "../../../../core/models/cycle-dto.model";
 import {CycleService} from "../../../../core/services/cycle.service";
+import {SemesterDTO} from "../../../../core/models/semester-dto.model";
+import {SemesterService} from "../../../../core/services/semester.service";
 
 @Component({
   selector: 'app-general',
@@ -37,13 +39,19 @@ export class GeneralComponent implements OnInit {
   cycles: CycleDTO[] = [];
   newCycleName: string = '';
 
+  semesters: SemesterDTO[] = [];
+  newSemesterName: string = '';
+  newSemesterAbbreviation: string = '';
+  newSemesterYear: string = '';
+
 
   constructor(private degreeService: DegreeService,
               private languageService: LanguageService,
               private durationService: DurationService,
               private maternityProtectionService: MaternityProtectionService,
               private courseTypeService: CourseTypeService,
-              private cycleService: CycleService
+              private cycleService: CycleService,
+              private semesterService: SemesterService
               ) {}
 
   ngOnInit(): void {
@@ -53,6 +61,7 @@ export class GeneralComponent implements OnInit {
     this.loadMaternityProtections();
     this.loadCourseTypes();
     this.loadCycles();
+    this.loadSemesters();
   }
 
   loadDegrees(): void {
@@ -191,6 +200,36 @@ export class GeneralComponent implements OnInit {
   deleteCycle(id: number): void {
     this.cycleService.deleteCycle(id).subscribe(() => {
       this.loadCycles(); // Refresh the list after deletion
+    });
+  }
+
+  loadSemesters(): void {
+    this.semesterService.getAllSemesters().subscribe(semesters => {
+      this.semesters = semesters;
+    });
+  }
+
+  addSemester(): void {
+    if (this.newSemesterName.trim() && this.newSemesterAbbreviation.trim() && this.newSemesterYear.trim()) {
+      const newSemester: SemesterDTO = {
+        id: 0,
+        name: this.newSemesterName.trim(),
+        abbreviation: this.newSemesterAbbreviation.trim(),
+        year: this.newSemesterYear.trim()
+      };
+
+      this.semesterService.addSemester(newSemester).subscribe(() => {
+        this.loadSemesters();
+        this.newSemesterName = ''; // Clear the input field
+        this.newSemesterAbbreviation = ''; // Clear the input field
+        this.newSemesterYear = ''; // Clear the input field
+      });
+    }
+  }
+
+  deleteSemester(id: number): void {
+    this.semesterService.removeSemester(id).subscribe(() => {
+      this.loadSemesters(); // Refresh the list after deletion
     });
   }
 }

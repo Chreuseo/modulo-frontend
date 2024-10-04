@@ -19,6 +19,50 @@
 
   <hr />
 
+  <h2>Semester</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Abkürzung</th>
+        <th>Jahr</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let semester of semesters">
+        <td>{{ semester.name }}</td>
+        <td>{{ semester.abbreviation }}</td>
+        <td>{{ semester.year }}</td>
+        <td>
+          <button (click)="deleteSemester(semester.id)">Löschen</button>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <input
+            type="text"
+            [(ngModel)]="newSemesterName"
+            placeholder="Semester" />
+        </td>
+        <td>
+          <input
+            type="text"
+            [(ngModel)]="newSemesterAbbreviation"
+            placeholder="Abkürzung" />
+        </td>
+        <td>
+          <input
+            type="text"
+            [(ngModel)]="newSemesterYear"
+            placeholder="Jahr" />
+        </td>
+        <td>
+          <button (click)="addSemester()">Hinzufügen</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
   <!-- Languages Section -->
   <h2>Sprachen</h2>
 
