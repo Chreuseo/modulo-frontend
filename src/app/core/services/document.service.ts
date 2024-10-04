@@ -46,7 +46,7 @@ export class DocumentService extends BaseService {
       .set('spoId', spoId.toString())
       .set('semesterId', semesterId.toString())
       .set('documentType', documentType);
-    return this.post<void>(`${this.endpoint}/generate`, null, {params});
+    return this.get<void>(`${this.endpoint}/generate`, params);
   }
 
   getSPOs(): Observable<SpoDocumentsDTO[]> {

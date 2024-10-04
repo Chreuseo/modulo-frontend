@@ -34,7 +34,7 @@ export abstract class BaseService {
       .pipe(catchError(this.handleError));
   }
 
-  protected post<T>(endpoint: string, body: any, params?: { params: HttpParams }, options?: {
+  protected post<T>(endpoint: string, body: any, options?: {
     headers?: HttpHeaders;
     observe?: "body";
     params?: HttpParams;
