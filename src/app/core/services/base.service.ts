@@ -64,6 +64,11 @@ export abstract class BaseService {
       .pipe(catchError(this.handleError));
   }
 
+  protected getBlob(endpoint: string): Observable<Blob> {
+    return this.http.get(this.getFullUrl(endpoint), { responseType: 'blob', withCredentials: true })
+      .pipe(catchError(this.handleError));
+  }
+
   protected mapToModel<T>(DataSource: Observable<any>, model: new (...args: any[]) => T): Observable<T> {
     return DataSource.pipe(map(data => new model(data)));
   }
