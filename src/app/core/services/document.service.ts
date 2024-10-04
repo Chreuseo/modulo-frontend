@@ -26,12 +26,8 @@ export class DocumentService extends BaseService {
    * @returns An Observable of the document blob.
    */
   getDocument(spoId: number, semesterId: number, documentType: string): Observable<Blob> {
-    let params = new HttpParams()
-      .set('spoId', spoId.toString())
-      .set('semesterId', semesterId.toString())
-      .set('documentType', documentType);
 
-    return this.getBlob(`${this.endpoint}/get`, { params });
+    return this.getBlob(`${this.endpoint}/get/${spoId}/${semesterId}/${documentType}`);
   }
 
   /**
