@@ -1,0 +1,37 @@
+<nav>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/documents/list']" routerLinkActive="active">Dokumente</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/documents/generate']" routerLinkActive="active">Module Frames</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="generate-component">
+  <h2>Generate Document</h2>
+
+  <div>
+    <label for="spos">Select SPO:</label>
+    <select id="spos" [(ngModel)]="selectedSpoId">
+      <option *ngFor="let spo of spos" [value]="spo.id">{{ spo.name }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="semesters">Select Semester:</label>
+    <select id="semesters" [(ngModel)]="selectedSemesterId">
+      <option *ngFor="let semester of semesters" [value]="semester.id">{{ semester.name }}</option>
+    </select>
+  </div>
+
+  <div>
+    <label for="documentType">Select Document Type:</label>
+    <select id="documentType" [(ngModel)]="selectedDocumentType">
+      <option *ngFor="let type of documentTypes" [value]="type">{{ type }}</option>
+    </select>
+  </div>
+
+  <button (click)="generateDocument()">Generate Document</button>
+</div>

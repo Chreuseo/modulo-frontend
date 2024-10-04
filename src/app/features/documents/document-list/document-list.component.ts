@@ -5,7 +5,8 @@ import {DocumentService} from "../../../core/services/document.service";
 @Component({
   selector: 'app-document-list',
   templateUrl: './document-list.component.html',
-  styleUrls: ['../../../core/stylesheets/list-view.css']
+  styleUrls: ['../../../core/stylesheets/list-view.css',
+    '../../../core/stylesheets/sub-nav.css']
 })
 export class DocumentListComponent implements OnInit {
   spoDocuments: SpoDocumentsDTO[] = [];
