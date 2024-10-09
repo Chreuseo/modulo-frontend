@@ -265,7 +265,7 @@ export class SpoDetailOverviewComponent implements OnInit {
   }
 
   loadUserDTOs(): void {
-    this.userService.getAllUsers().subscribe(data => {
+    this.userService.getUsersByRole("SPO_ADMIN").subscribe(data => {
       this.userDTOs = data;
     });
   }
