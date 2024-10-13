@@ -1,0 +1,39 @@
+<nav>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/documents/list']" routerLinkActive="active">Dokumente</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/documents/generate']" routerLinkActive="active">Erzeugung</a>
+    </li>
+  </ul>
+</nav>
+
+<div class="spo-list-container">
+<table>
+  <thead>
+  <tr>
+    <th>SPO</th>
+    <th>Documents</th>
+    <th *ngFor="let semester of spoDocuments[0]?.semesters">
+      {{ semester.semester.abbreviation }} {{ semester.semester.year }} <!-- Adjust the property name based on your SemesterDTO -->
+    </th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let spo of spoDocuments">
+    <td>{{ spo.spo.name }}</td> <!-- Adjust the property name based on your SpoDTOFlat -->
+    <td>
+      <ng-container *ngFor="let document of spo.documents">
+        <a (click)="getDocument(spo.spo.id, 0, document.name)">{{ document.friendlyName }}</a><br />
+      </ng-container>
+    </td>
+    <td *ngFor="let semester of spo.semesters">
+      <ng-container *ngFor="let document of semester.documents">
+        <a (click)="getDocument(spo.spo.id, semester.semester.id, document.name)">{{ document.friendlyName }}</a><br />
+      </ng-container>
+    </td>
+  </tr>
+  </tbody>
+</table>
+</div>

@@ -19,11 +19,11 @@ export class ParagraphService extends BaseService {
   }
 
   addParagraph(paragraphDTO: ParagraphDTO): Observable<ParagraphDTO> {
-    return this.post<ParagraphDTO>(this.endpoint, paragraphDTO);
+    return this.post<ParagraphDTO>(`${this.endpoint}/add/`, paragraphDTO);
   }
 
   updateParagraph(paragraphDTO: ParagraphDTO): Observable<ParagraphDTO> {
-    return this.put<ParagraphDTO>(`${this.endpoint}/update/${paragraphDTO.id}`, paragraphDTO);
+    return this.put<ParagraphDTO>(`${this.endpoint}/update/`, paragraphDTO);
   }
 
   deleteParagraph(id: number): Observable<void> {

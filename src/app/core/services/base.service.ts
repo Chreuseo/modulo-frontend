@@ -36,9 +36,9 @@ export abstract class BaseService {
 
   protected post<T>(endpoint: string, body: any, options?: {
     headers?: HttpHeaders;
-    observe?: 'body'; // specify 'body' or omit to use default
+    observe?: "body";
     params?: HttpParams;
-    reportProgress?: boolean; // make sure not to include if you want T
+    reportProgress?: boolean
   }): Observable<T> {
     return this.http.post<T>(this.getFullUrl(endpoint), body, { ...options, withCredentials: true})
       .pipe(catchError(this.handleError));
@@ -61,6 +61,11 @@ export abstract class BaseService {
     reportProgress?: boolean; // make sure not to include if you want T
   }): Observable<T> {
     return this.http.delete<T>(this.getFullUrl(endpoint), { ...options, withCredentials: true})
+      .pipe(catchError(this.handleError));
+  }
+
+  protected getBlob(endpoint: string, params?: { params: HttpParams }): Observable<Blob> {
+    return this.http.get(this.getFullUrl(endpoint), { responseType: 'blob', withCredentials: true })
       .pipe(catchError(this.handleError));
   }
 

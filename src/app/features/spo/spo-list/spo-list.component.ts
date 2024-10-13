@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SpoService } from '../../../core/services/spo.service'; // Adjust the path as necessary
 import { SpoDTOFlat } from '../../../core/models/spo-dto-flat.model';
-import {Router} from "@angular/router"; // Adjust the path as necessary
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-spo-list',

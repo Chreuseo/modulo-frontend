@@ -22,6 +22,10 @@ export class UserService extends BaseService {
     return this.get<UserDTOFlat[]>(`${this.endpoint}/all`);
   }
 
+  getUsersByRole(role: string): Observable<UserDTOFlat[]> {
+    return this.get<UserDTOFlat[]>(`${this.endpoint}/role/${role}`);
+  }
+
   getUserById(id: number): Observable<UserDTO> {
     return this.get<UserDTO>(`${this.endpoint}/${id}`);
   }

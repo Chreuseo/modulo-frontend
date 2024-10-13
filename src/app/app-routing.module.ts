@@ -20,9 +20,11 @@ import {
 import {NewUserComponent} from "./features/user/new-user/new-user.component";
 import {UserDetailComponent} from "./features/user/user-detail/user-detail.component";
 import {LoginComponent} from "./shared/components/login/login.component";
+import {DocumentListComponent} from "./features/documents/document-list/document-list.component";
+import {GenerateComponent} from "./features/documents/generate/generate.component";
 
 const routes: Routes = [
-  { path : 'login', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'spo', component: SpoListComponent },
   { path: 'spo/new', component: NewSpoComponent },
   { path: 'spo/:id/overview', component: SpoDetailOverviewComponent },  // Route for Spo detail view
@@ -33,6 +35,8 @@ const routes: Routes = [
   { path: 'module/new', component: NewModuleComponent },
   { path: 'module/:id', component: ModuleDetailComponent },
   { path: 'module/:id/new-module-frame', component: NewModuleFrameModuleImplementationComponent},
+  { path: 'documents/list', component: DocumentListComponent},
+  { path: 'documents/generate', component: GenerateComponent},
   { path: 'user', component: UserListComponent},
   { path: 'user/new', component: NewUserComponent},
   { path: 'user/:id', component: UserDetailComponent},

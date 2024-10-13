@@ -124,6 +124,29 @@
       </div>
     </div>
 
+  <h3>Responsible:</h3>
+  <table class="table exam-types-table">
+    <tbody>
+    <tr *ngFor="let user of spo.responsibleUsers">
+      <td>{{ user.name }}</td>
+      <td>
+        <button *ngIf="isEditing" (click)="removeResponsibleUser(user.id)">Remove</button>
+      </td>
+    </tr>
+    <tr *ngIf="isEditing">
+      <td>
+        <select [(ngModel)]="selectedUser">
+          <option *ngFor="let user of userDTOs" [ngValue]="user">{{ user.name }}</option>
+        </select>
+      </td>
+      <td>
+        <button (click)="addResponsibleUser(selectedUser.id)">Add</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+
   <div>
     <button (click)="toggleEdit()">{{ isEditing ? 'Cancel' : 'Edit' }}</button>
     <button (click)="save()" *ngIf="isEditing">Save</button>
