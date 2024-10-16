@@ -3,6 +3,9 @@
   display: flex;
   justify-content: flex-start;
   background-color: var(--modulo-main-color);
+  padding: 10px;
+  margin: 0;
+  border: none !important;
 }
 
 .nav-item {
