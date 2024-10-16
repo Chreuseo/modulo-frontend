@@ -27,9 +27,14 @@ button {
   background-color: var(--modulo-light-grey);
 }
 
-button.highlight {
+button.btn-highlight {
   background-color: var(--modulo-main-color); /* Highlight button color */
   color: var(--modulo-white); /* White text */
+}
+
+button.btn-soft-highlight {
+  background-color: var(--modulo-main-color-light); /* Soft highlight button color */
+  color: var(--modulo-black); /* Black text */
 }
 
 button.btn-danger {
