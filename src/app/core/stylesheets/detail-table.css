@@ -17,9 +17,6 @@
   font-weight: bold; /* Bold headers */
 }
 
-.detail-table tr:hover {
-  background-color: var(--modulo-mid-grey); /* Highlight on row hover */
-}
 
 td input {
   width: 100%;
