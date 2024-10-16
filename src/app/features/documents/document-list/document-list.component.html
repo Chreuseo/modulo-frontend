@@ -26,12 +26,12 @@
       <td>{{ spo.spo.name }}</td> <!-- Adjust the property name based on your SpoDTOFlat -->
       <td>
         <ng-container *ngFor="let document of spo.documents">
-          <a (click)="getDocument(spo.spo.id, 0, document.name)">{{ document.friendlyName }}</a><br />
+          <a href="#" (click)="getDocument(spo.spo.id, 0, document.name)">{{ document.friendlyName }}</a><br />
         </ng-container>
       </td>
       <td *ngFor="let semester of spo.semesters">
         <ng-container *ngFor="let document of semester.documents">
-          <a (click)="getDocument(spo.spo.id, semester.semester.id, document.name)">{{ document.friendlyName }}</a><br />
+          <a href="#" (click)="getDocument(spo.spo.id, semester.semester.id, document.name)">{{ document.friendlyName }}</a><br />
         </ng-container>
       </td>
     </tr>
