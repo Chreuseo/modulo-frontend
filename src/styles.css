@@ -57,3 +57,13 @@ hr {
   border: 2px solid var(--modulo-mid-grey); /* Light gray border */
   margin: 20px 0; /* Space above and below the line */
 }
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px; /* Adds space between items */
+}
+
+.checkbox-container input[type="checkbox"] {
+  margin-right: 8px; /* Space between checkbox and label */
+}
