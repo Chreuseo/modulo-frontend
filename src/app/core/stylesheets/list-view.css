@@ -25,3 +25,8 @@ th:hover {
 .main-content {
   margin: 20px;
 }
+
+a {
+  text-underline-mode: solid;
+  cursor: pointer;
+}
