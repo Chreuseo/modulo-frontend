@@ -26,9 +26,12 @@ ul {
   padding: 0; /* Remove padding */
 }
 
-li, li a {
+li {
   padding: 10px; /* Padding for list items */
   border-bottom: 1px solid var(--modulo-light-grey); /* Separator line between items */
+}
+
+li, li a {
   color: var(--modulo-dark-grey);
   font-weight: bold;
 }
