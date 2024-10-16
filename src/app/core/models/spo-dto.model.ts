@@ -20,4 +20,5 @@ export interface SpoDTO {
   moduleRequirementDTOs: ModuleRequirementDTO[]; // List<ModuleRequirementDTO> maps to any[]
   responsibleUsers: UserDTOFlat[]; // List<UserDTOFlat> maps to UserDTOFlat[]
   degree: DegreeDTO; // Full DegreeDTO
+  moduleManualIntroduction: string;
 }

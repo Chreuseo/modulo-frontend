@@ -33,6 +33,15 @@
       [modules]="quillModules">
     </quill-editor>
   </div>
+  <div>
+    <label>Modulhandbuch-Vorwort:</label>
+    <div *ngIf="isDisabled" [innerHTML]="this.spo.moduleManualIntroduction"></div>
+    <quill-editor
+      *ngIf="!isDisabled"
+      [(ngModel)]="this.spo.moduleManualIntroduction"
+      [modules]="quillModules">
+    </quill-editor>
+  </div>
 
   <!-- Edit and Save Buttons -->
   <div>
