@@ -28,8 +28,8 @@
   </div>
 
   <div>
-    <button (click)="toggleEditing()">{{ editing ? 'Cancel' : 'Edit' }}</button>
-    <button *ngIf="editing" (click)="saveUser()">Save</button>
+    <button class="btn-soft-highlight" (click)="toggleEditing()">{{ editing ? 'Cancel' : 'Edit' }}</button>
+    <button class="btn-soft-highlight" *ngIf="editing" (click)="saveUser()">Save</button>
   </div>
 </div>
 
