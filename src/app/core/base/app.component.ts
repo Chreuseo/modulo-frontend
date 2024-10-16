@@ -7,7 +7,7 @@ import {CookieService} from "ngx-cookie-service";
   templateUrl: './app.component.html',
   styleUrls: ['../stylesheets/app.component.css',
               '../stylesheets/shared.css',
-              '../stylesheets/modulo-colors.css.css',]
+              '../stylesheets/modulo-colors.css',]
 })
 export class AppComponent {
   title = 'frontend';
