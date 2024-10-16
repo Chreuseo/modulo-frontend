@@ -3,7 +3,6 @@
   display: flex;
   justify-content: flex-start;
   background-color: var(--modulo-main-color-light);
-  padding: 10px;
 }
 
 .nav-item {
@@ -27,7 +26,7 @@ ul {
   padding: 0; /* Remove padding */
 }
 
-li {
+li, li a {
   padding: 10px; /* Padding for list items */
   border-bottom: 1px solid var(--modulo-light-grey); /* Separator line between items */
   color: var(--modulo-dark-grey);
