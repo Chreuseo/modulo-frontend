@@ -34,6 +34,3 @@ li {
   border-bottom: 1px solid var(--modulo-light-grey); /* Separator line between items */
 }
 
-li:last-child {
-  border: none; /* Remove the border from the last item */
-}
