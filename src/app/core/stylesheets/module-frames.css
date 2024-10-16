@@ -35,7 +35,7 @@ table {
 }
 
 table thead {
-  background-color: var(--modulo-main-color);
+  background-color: var(--modulo-main-color-light);
   color: var(--modulo-white);
 }
 
@@ -51,8 +51,4 @@ table th {
 
 table tbody tr:nth-child(even) {
   background-color: var(--modulo-mid-grey);
-}
-
-table tbody tr:hover {
-  background-color: var(--modulo-light-grey);
 }
