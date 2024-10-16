@@ -21,7 +21,3 @@ th {
 th:hover {
   background-color: var(--modulo-mid-grey);
 }
-
-body {
-  padding: 20px;
-}
