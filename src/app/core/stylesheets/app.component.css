@@ -27,7 +27,6 @@ body {
   align-items: center;
   padding: 10px;
   background-color: var(--modulo-main-color);
-  border-bottom: 1px solid var(--modulo-light-grey);
   height: 60px; /* Example height for the top bar */
 }
 
