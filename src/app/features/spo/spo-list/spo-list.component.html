@@ -11,13 +11,6 @@
       <th (click)="sortBy('validUntil')">Gültig bis</th>
       <th>Actions</th> <!-- Column for actions -->
     </tr>
-    <tr>
-      <th *ngIf="sortedBy === 'name'">{{sortDirection === 'asc' ? '↑' : '↓'}}</th>
-      <th *ngIf="sortedBy === 'degree.name'">{{sortDirection === 'asc' ? '↑' : '↓'}}</th>
-      <th *ngIf="sortedBy === 'validFrom'">{{sortDirection === 'asc' ? '↑' : '↓'}}</th>
-      <th *ngIf="sortedBy === 'validUntil'">{{sortDirection === 'asc' ? '↑' : '↓'}}</th>
-      <th></th> <!-- Empty column for action icons -->
-    </tr>
     </thead>
     <tbody>
     <tr *ngFor="let spo of spoList">
