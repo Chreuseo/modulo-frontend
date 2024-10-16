@@ -17,7 +17,7 @@
   transition: background-color 0.3s;
 }
 
-.nav-link:hover, .nav-link.active {
+.nav-link:hover {
   background-color: var(--modulo-main-color);
 }
 
@@ -32,7 +32,7 @@ li {
 }
 
 li, li a {
-  color: var(--modulo-dark-grey);
+  color: var(--modulo-black);
   font-weight: bold;
 }
 
