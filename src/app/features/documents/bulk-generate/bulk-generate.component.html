@@ -25,9 +25,10 @@
       </select>
     </div>
 
-    <label>Studiengänge wählen:</label>
+    <h3>Studiengänge wählen:</h3>
     <div>
-      <input type="checkbox" [(ngModel)]="allSelected" (change)="toggleSelectAll()"> Select/Unselect All SPOs
+      <label for="allSelected">Alle auswählen</label>
+      <input type="checkbox" id="allSelected" [(ngModel)]="allSelected" (change)="toggleSelectAll()">
     </div>
 
     <div *ngFor="let spo of spoItems">
@@ -35,7 +36,7 @@
       <input type="checkbox" [id]="isSpoSelected(spo.id)" [checked]="isSpoSelected(spo.id)" (change)="toggleSpoSelection(spo.id)">
     </div>
 
-    <label>Dokumente wählen:</label>
+    <h3>Dokumente wählen:</h3>
     <div class="document-options">
       <div>
         <label for="moduleManualChecked">Modulhandbuch</label>
@@ -47,7 +48,7 @@
       </div>
       <div>
         <label for="spoChecked">SPO</label>
-        <input type="checkbox" id="spoChecked" [(ngModel)]="spoChecked"> SPO
+        <input type="checkbox" id="spoChecked" [(ngModel)]="spoChecked">
       </div>
     </div>
 
