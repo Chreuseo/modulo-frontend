@@ -12,3 +12,26 @@ body{
   --modulo-black: #000000;
   --modulo-white: #ffffff;
 }
+
+button {
+  padding: 10px 15px; /* Padding for buttons */
+  margin-right: 5px; /* Space between buttons */
+  font-size: 14px; /* Set a base font size */
+  border: none; /* Remove default border */
+  border-radius: 4px; /* Rounded corners for buttons */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  transition: background-color 0.3s ease; /* Smooth transitions for hover effects */
+  color: var(--modulo-black);
+  background-color: var(--modulo-light-grey);
+}
+
+button.highlight {
+  background-color: var(--modulo-main-color); /* Highlight button color */
+  color: var(--modulo-white); /* White text */
+}
+
+button.btn-danger {
+  background-color: var(--modulo-red); /* Red background for delete button */
+  color: var(--modulo-white); /* White text */
+}
+
