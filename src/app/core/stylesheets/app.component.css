@@ -51,7 +51,8 @@ body {
 }
 
 .sidebar li {
-  padding: 10px;
+  margin: 10px;
+  border-radius: 8px;
 }
 
 .sidebar a {
@@ -70,6 +71,7 @@ body {
 .main-content {
   background-color: var(--modulo-white);
   flex: 1;
+  margin-right: 200px;
 }
 
 h1 {
