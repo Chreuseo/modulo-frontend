@@ -36,7 +36,7 @@ table {
 
 table thead {
   background-color: var(--modulo-main-color-light);
-  color: var(--modulo-white);
+  color: var(--modulo-dark-grey);
 }
 
 table th, table td {
