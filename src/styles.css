@@ -69,4 +69,5 @@ hr {
   margin-top: 8px; /* Space above checkbox */
   height: 14px;
   width: 14px;
+  min-width: 14px;
 }
