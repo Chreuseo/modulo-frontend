@@ -49,5 +49,6 @@ input, select {
   border-radius: 4px;
   color: var(--modulo-black); /* Black text */
   background-color: var(--modulo-light-grey); /* Light gray background */
-  width: 50%; /* Full width minus padding */
+  width: 50%;
+  min-width: 200px;
 }
