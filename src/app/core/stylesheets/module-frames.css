@@ -50,5 +50,5 @@ table th {
 }
 
 table tbody tr:nth-child(even) {
-  background-color: var(--modulo-mid-grey);
+  background-color: var(--modulo-light-mid-grey);
 }
