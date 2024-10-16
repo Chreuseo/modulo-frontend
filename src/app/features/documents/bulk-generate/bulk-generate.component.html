@@ -14,10 +14,10 @@
 
 <main class="main-content">
   <div class="bulk-generate">
-    <h2>Bulk Document Generation</h2>
+    <h2>Sammelerzeugung</h2>
 
     <div>
-      <label for="semester-select">Select Semester:</label>
+      <label for="semester-select">Semester wählen:</label>
       <select id="semester-select" [(ngModel)]="selectedSemester">
         <option *ngFor="let semester of semesters" [ngValue]="semester">
           {{ semester.name }} ({{ semester.abbreviation }})
@@ -25,23 +25,29 @@
       </select>
     </div>
 
+    <label>Studiengänge wählen:</label>
     <div>
       <input type="checkbox" [(ngModel)]="allSelected" (change)="toggleSelectAll()"> Select/Unselect All SPOs
     </div>
 
     <div *ngFor="let spo of spoItems">
-      <input type="checkbox" [checked]="isSpoSelected(spo.id)" (change)="toggleSpoSelection(spo.id)"> {{ spo.name }}
+      <label [for]="isSpoSelected(spo.id)">{{ spo.name }} {{spo.degree.name}}</label>
+      <input type="checkbox" [id]="isSpoSelected(spo.id)" [checked]="isSpoSelected(spo.id)" (change)="toggleSpoSelection(spo.id)">
     </div>
 
+    <label>Dokumente wählen:</label>
     <div class="document-options">
       <div>
-        <input type="checkbox" [(ngModel)]="moduleManualChecked"> Module Manual
+        <label for="moduleManualChecked">Modulhandbuch</label>
+        <input type="checkbox" id="moduleManualChecked" [(ngModel)]="moduleManualChecked">
       </div>
       <div>
-        <input type="checkbox" [(ngModel)]="studyGuideChecked"> Study Guide
+        <label for="studyGuideChecked">Studienplan</label>
+        <input type="checkbox" id="studyGuideChecked" [(ngModel)]="studyGuideChecked">
       </div>
       <div>
-        <input type="checkbox" [(ngModel)]="spoChecked"> SPO
+        <label for="spoChecked">SPO</label>
+        <input type="checkbox" id="spoChecked" [(ngModel)]="spoChecked"> SPO
       </div>
     </div>
 
