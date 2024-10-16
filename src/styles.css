@@ -42,3 +42,12 @@ button.btn-danger {
   color: var(--modulo-white); /* White text */
 }
 
+input {
+  padding: 10px;
+  margin: 5px;
+  border: 1px solid var(--modulo-mid-grey);
+  border-radius: 4px;
+  color: var(--modulo-black); /* Black text */
+  background-color: var(--modulo-light-grey); /* Light gray background */
+  width: calc(100% - 20px); /* Full width minus padding */
+}
