@@ -20,7 +20,7 @@
       <label for="semester-select">Semester wählen:</label>
       <select id="semester-select" [(ngModel)]="selectedSemester">
         <option *ngFor="let semester of semesters" [ngValue]="semester">
-          {{ semester.name }} ({{ semester.abbreviation }})
+          {{ semester.name }} {{ semester.year }}
         </option>
       </select>
     </div>
