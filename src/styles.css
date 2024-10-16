@@ -52,3 +52,8 @@ input, select {
   width: 50%;
   min-width: 200px;
 }
+
+hr {
+  border: 1px solid var(--modulo-light-grey); /* Light gray border */
+  margin: 20px 0; /* Space above and below the line */
+}
