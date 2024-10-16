@@ -1,3 +1,5 @@
+@import url('modulo-colors.css');
+
 h2 {
   text-align: center; /* Center the heading */
   margin-bottom: 20px; /* Space below the heading */
@@ -8,10 +10,10 @@ form {
   max-width: 600px; /* Maximum width for the form */
   margin: 30px auto; /* Center the form horizontally */
   padding: 20px; /* Internal padding */
-  border: 1px solid #ccc; /* Border around the form */
+  border: 1px solid var(--modulo-light-grey); /* Border around the form */
   border-radius: 8px; /* Rounded corners */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  background-color: #f9f9f9; /* Light background color */
+  background-color: var(--modulo-light-grey); /* Light background color */
 }
 
 /* Style for each input field */
@@ -20,7 +22,7 @@ input[type="date"] {
   width: 100%; /* Full width */
   padding: 10px; /* Padding for input */
   margin: 10px 0; /* Spacing around inputs */
-  border: 1px solid #ccc; /* Border for inputs */
+  border: 1px solid var(--modulo-light-grey); /* Border for inputs */
   border-radius: 4px; /* Slightly rounded corners */
   box-sizing: border-box; /* Ensure padding and border are included in the total width/height */
 }

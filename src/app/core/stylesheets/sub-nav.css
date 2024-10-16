@@ -1,8 +1,10 @@
+@import url('modulo-colors.css');
+
 /* Navigation Tabs */
 .nav {
   display: flex;
   justify-content: flex-start;
-  background-color: #007bff;
+  background-color: var(--modulo-main-color);
   padding: 10px;
 }
 

@@ -1,5 +1,7 @@
+@import url('modulo-colors.css');
+
 .quill-editor[disabled] {
   pointer-events: none;  /* Prevent any interaction */
-  background-color: #f0f0f0; /* Change background */
-  color: #999; /* Change text color */
+  background-color: var(--modulo-light-grey); /* Change background */
+  color: var(--modulo-mid-grey); /* Change text color */
 }

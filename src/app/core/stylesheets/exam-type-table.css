@@ -1,3 +1,5 @@
+@import url('modulo-colors.css');
+
 /* Exam Types Table Styles */
 .exam-types-table {
   width: 100%; /* Make the table full-width */
@@ -9,16 +11,16 @@
 .exam-types-table td {
   padding: 12px; /* Top/bottom padding for cells */
   text-align: left; /* Align text to the left */
-  border-bottom: 1px solid #dee2e6; /* Bottom border for cells */
+  border-bottom: 1px solid var(--modulo-light-grey); /* Bottom border for cells */
 }
 
 .exam-types-table th {
-  background-color: #e9ecef; /* Header background */
+  background-color: var(--modulo-light-grey); /* Header background */
   font-weight: bold; /* Bold headers */
 }
 
 .exam-types-table tr:hover {
-  background-color: #f1f1f1; /* Highlight on row hover */
+  background-color: var(--modulo-mid-grey); /* Highlight on row hover */
 }
 
 /* Input Fields for Adding New Exam Type */
@@ -30,7 +32,7 @@
   width: calc(100% - 20px); /* Full-width input minus padding */
   padding: 10px; /* Inner padding */
   margin-top: 5px; /* Space above the input */
-  border: 1px solid #ced4da; /* Light border */
+  border: 1px solid var(--modulo-light-grey); /* Light border */
   border-radius: 4px; /* Rounded corners */
 }
 

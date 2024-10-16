@@ -1,3 +1,5 @@
+@import url('modulo-colors.css');
+
 /* General Styles */
 body {
   font-family: Arial, sans-serif;
@@ -31,7 +33,7 @@ input, textarea {
 }
 
 input[disabled], textarea[disabled] {
-  background-color: #f0f0f0; /* Gray background for disabled inputs */
+  background-color: var(--modulo-light-grey); /* Gray background for disabled inputs */
 }
 
 /* Table Styles */
