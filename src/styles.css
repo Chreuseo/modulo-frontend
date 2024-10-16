@@ -54,6 +54,6 @@ input, select {
 }
 
 hr {
-  border: 1px solid var(--modulo-light-grey); /* Light gray border */
+  border: 2px solid var(--modulo-mid-grey); /* Light gray border */
   margin: 20px 0; /* Space above and below the line */
 }
