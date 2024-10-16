@@ -60,7 +60,7 @@ hr {
 
 .checkbox-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 8px; /* Adds space between items */
 }
 
