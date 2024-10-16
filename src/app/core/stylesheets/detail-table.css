@@ -1,36 +1,27 @@
 /* Exam Types Table Styles */
-.exam-types-table {
+.detail-table {
   width: 100%; /* Make the table full-width */
   border-collapse: collapse; /* Collapse borders */
   margin-top: 15px; /* Space above the table */
 }
 
-.exam-types-table th,
-.exam-types-table td {
+.detail-table th,
+.detail-table td {
   padding: 12px; /* Top/bottom padding for cells */
   text-align: left; /* Align text to the left */
   border-bottom: 1px solid var(--modulo-light-grey); /* Bottom border for cells */
 }
 
-.exam-types-table th {
+.detail-table th {
   background-color: var(--modulo-light-grey); /* Header background */
   font-weight: bold; /* Bold headers */
 }
 
-.exam-types-table tr:hover {
+.detail-table tr:hover {
   background-color: var(--modulo-mid-grey); /* Highlight on row hover */
 }
 
-/* Input Fields for Adding New Exam Type */
-.add-exam-type {
-  margin-top: 15px; /* Space above the input section */
+td input {
+  width: 100%;
+  min-width: 30px;
 }
-
-.add-exam-type input {
-  width: calc(100% - 20px); /* Full-width input minus padding */
-  padding: 10px; /* Inner padding */
-  margin-top: 5px; /* Space above the input */
-  border: 1px solid var(--modulo-light-grey); /* Light border */
-  border-radius: 4px; /* Rounded corners */
-}
-

@@ -79,7 +79,7 @@
 
       <!-- Exam Types Management -->
       <h3>Exam Types</h3>
-      <table class="table exam-types-table">
+      <table class="table detail-table">
         <thead>
         <tr>
           <th>Name</th>
@@ -97,16 +97,21 @@
             <button (click)="deleteExamType(examType.id)" class="btn-danger">-</button>
           </td>
         </tr>
+        <tr *ngIf="isEditing">
+          <td>
+            <input [(ngModel)]="newExamTypeName" placeholder="New Exam Type Name" />
+          </td>
+          <td>
+            <input [(ngModel)]="newExamTypeAbbreviation" placeholder="New Exam Type Abbreviation" />
+          </td>
+          <td>
+            <input [(ngModel)]="newExamTypeLength" placeholder="New Exam Type Length" />
+          </td>
+          <td>
+            <button (click)="addExamType()">Add Exam Type</button>
+          </td>
         </tbody>
       </table>
-
-      <div *ngIf="isEditing" class="add-exam-type">
-        <h4>Add New Exam Type</h4>
-        <input [(ngModel)]="newExamTypeName" placeholder="New Exam Type Name" />
-        <input [(ngModel)]="newExamTypeAbbreviation" placeholder="New Exam Type Abbreviation" />
-        <input [(ngModel)]="newExamTypeLength" placeholder="New Exam Type Length" />
-        <button (click)="addExamType()">Add Exam Type</button>
-      </div>
     </div>
 
 
@@ -125,7 +130,7 @@
       </div>
 
     <h3>Responsible:</h3>
-    <table class="table exam-types-table">
+    <table class="table detail-table">
       <tbody>
       <tr *ngFor="let user of spo.responsibleUsers">
         <td>{{ user.name }}</td>
