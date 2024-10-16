@@ -1,5 +1,3 @@
-@import url('modulo-colors.css');
-
 .spo-detail {
   max-width: 600px; /* Sets a max width for the detail view */
   margin: 0 auto; /* Center the component in the viewport */
