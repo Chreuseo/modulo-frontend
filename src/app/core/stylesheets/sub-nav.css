@@ -2,10 +2,8 @@
 .nav {
   display: flex;
   justify-content: flex-start;
-  background-color: var(--modulo-main-color);
+  background-color: var(--modulo-main-color-light);
   padding: 10px;
-  margin: 0;
-  border: none !important;
 }
 
 .nav-item {
@@ -32,5 +30,7 @@ ul {
 li {
   padding: 10px; /* Padding for list items */
   border-bottom: 1px solid var(--modulo-light-grey); /* Separator line between items */
+  color: var(--modulo-dark-grey);
+  font-weight: bold;
 }
 
