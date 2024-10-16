@@ -69,7 +69,6 @@ body {
 .main-content {
   background-color: var(--modulo-white);
   flex: 1;
-  padding: 20px;
 }
 
 h1 {
