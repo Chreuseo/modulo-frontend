@@ -22,6 +22,7 @@ import {UserDetailComponent} from "./features/user/user-detail/user-detail.compo
 import {LoginComponent} from "./shared/components/login/login.component";
 import {DocumentListComponent} from "./features/documents/document-list/document-list.component";
 import {GenerateComponent} from "./features/documents/generate/generate.component";
+import {BulkGenerateComponent} from "./features/documents/bulk-generate/bulk-generate.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -37,6 +38,7 @@ const routes: Routes = [
   { path: 'module/:id/new-module-frame', component: NewModuleFrameModuleImplementationComponent},
   { path: 'documents/list', component: DocumentListComponent},
   { path: 'documents/generate', component: GenerateComponent},
+  { path: 'documents/bulk-generate', component: BulkGenerateComponent},
   { path: 'user', component: UserListComponent},
   { path: 'user/new', component: NewUserComponent},
   { path: 'user/:id', component: UserDetailComponent},

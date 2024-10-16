@@ -1,0 +1,50 @@
+<nav>
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/documents/list']" routerLinkActive="active">Dokumente</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/documents/generate']" routerLinkActive="active">Erzeugung</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" [routerLink]="['/documents/bulk-generate']" routerLinkActive="active">Sammelerzeugung</a>
+    </li>
+  </ul>
+</nav>
+
+<main class="main-content">
+  <div class="bulk-generate">
+    <h2>Bulk Document Generation</h2>
+
+    <div>
+      <label for="semester-select">Select Semester:</label>
+      <select id="semester-select" [(ngModel)]="selectedSemester">
+        <option *ngFor="let semester of semesters" [ngValue]="semester">
+          {{ semester.name }} ({{ semester.abbreviation }})
+        </option>
+      </select>
+    </div>
+
+    <div>
+      <input type="checkbox" [(ngModel)]="allSelected" (change)="toggleSelectAll()"> Select/Unselect All SPOs
+    </div>
+
+    <div *ngFor="let spo of spoItems">
+      <input type="checkbox" [checked]="isSpoSelected(spo.id)" (change)="toggleSpoSelection(spo.id)"> {{ spo.name }}
+    </div>
+
+    <div class="document-options">
+      <div>
+        <input type="checkbox" [(ngModel)]="moduleManualChecked"> Module Manual
+      </div>
+      <div>
+        <input type="checkbox" [(ngModel)]="studyGuideChecked"> Study Guide
+      </div>
+      <div>
+        <input type="checkbox" [(ngModel)]="spoChecked"> SPO
+      </div>
+    </div>
+
+    <button (click)="generateDocuments()">Generate</button>
+  </div>
+</main>

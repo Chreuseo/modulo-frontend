@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import {BaseService} from "./base.service";
 import {Router} from "@angular/router";
 import {SpoDocumentsDTO} from "../models/spo-documents-dto.model";
+import {DocumentGenerationBulkDTO} from "../models/document-generation-bulk-dto.model";
 
 @Injectable({
   providedIn: 'root',
@@ -39,6 +40,10 @@ export class DocumentService extends BaseService {
    */
   generateDocument(spoId: number, semesterId: number, documentType: string): Observable<void> {
     return this.post<void>(`${this.endpoint}/generate/${spoId}/${semesterId}/${documentType}`, {});
+  }
+
+  generateBulkDocument(documentGenerationBulkDTO: DocumentGenerationBulkDTO): Observable<void> {
+    return this.post<void>(`${this.endpoint}/generate/bulk`, documentGenerationBulkDTO);
   }
 
   getSPOs(): Observable<SpoDocumentsDTO[]> {

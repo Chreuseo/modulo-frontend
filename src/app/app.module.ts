@@ -26,6 +26,7 @@ import { UserDetailComponent } from './features/user/user-detail/user-detail.com
 import { LoginComponent } from './shared/components/login/login.component';
 import { DocumentListComponent } from './features/documents/document-list/document-list.component';
 import { GenerateComponent } from './features/documents/generate/generate.component';
+import { BulkGenerateComponent } from './features/documents/bulk-generate/bulk-generate.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { GenerateComponent } from './features/documents/generate/generate.compon
     UserDetailComponent,
     LoginComponent,
     DocumentListComponent,
-    GenerateComponent
+    GenerateComponent,
+    BulkGenerateComponent
   ],
   imports: [
     BrowserModule,
