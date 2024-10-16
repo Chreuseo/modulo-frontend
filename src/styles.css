@@ -67,4 +67,6 @@ hr {
 .checkbox-container input[type="checkbox"] {
   margin-right: 8px; /* Space between checkbox and label */
   margin-top: 8px; /* Space above checkbox */
+  height: 14px;
+  width: 14px;
 }
