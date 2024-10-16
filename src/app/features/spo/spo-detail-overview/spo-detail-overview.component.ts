@@ -20,7 +20,6 @@ import {UserService} from "../../../core/services/user.service";
   templateUrl: './spo-detail-overview.component.html',
   styleUrls: ['../../../core/stylesheets/details.css',
     '../../../core/stylesheets/sub-nav.css',
-    '../../../core/stylesheets/exam-type-table.css',
     '../../../core/stylesheets/formula.css',
     '../../../core/stylesheets/details.css']
 })
