@@ -1,27 +1,29 @@
-<button class="btn-highlight" (click)="navigateToNewSpo()">Add New SPO</button>
+<main class="main-content">
+  <button class="btn-highlight" (click)="navigateToNewSpo()">Add New SPO</button>
 
-<div class="spo-list-container">
-  <h2>SPOs</h2>
-  <table>
-    <thead>
-    <tr>
-      <th (click)="sortBy('name')">Name</th>
-      <th (click)="sortBy('degree.name')">Abschluss</th>
-      <th (click)="sortBy('validFrom')">Gültig von</th>
-      <th (click)="sortBy('validUntil')">Gültig bis</th>
-      <th>Actions</th> <!-- Column for actions -->
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let spo of spoList">
-      <td>{{spo.name}}</td>
-      <td>{{spo.degree.name}}</td>
-      <td>{{spo.validFrom | date: 'MM/yy'}}</td>
-      <td>{{spo.validUntil | date: 'MM/yy' }}</td>
-      <td>
-        <button (click)="navigateToSpoDetail(spo.id)">View Details</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+  <div class="spo-list-container">
+    <h2>SPOs</h2>
+    <table>
+      <thead>
+      <tr>
+        <th (click)="sortBy('name')">Name</th>
+        <th (click)="sortBy('degree.name')">Abschluss</th>
+        <th (click)="sortBy('validFrom')">Gültig von</th>
+        <th (click)="sortBy('validUntil')">Gültig bis</th>
+        <th>Actions</th> <!-- Column for actions -->
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let spo of spoList">
+        <td>{{spo.name}}</td>
+        <td>{{spo.degree.name}}</td>
+        <td>{{spo.validFrom | date: 'MM/yy'}}</td>
+        <td>{{spo.validUntil | date: 'MM/yy' }}</td>
+        <td>
+          <button (click)="navigateToSpoDetail(spo.id)">View Details</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</main>

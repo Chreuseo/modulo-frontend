@@ -1,29 +1,31 @@
-<button class="btn-highlight" (click)="navigateToNewModule()" >Add New Module</button>
+<main class="main-content">
+  <button class="btn-highlight" (click)="navigateToNewModule()" >Add New Module</button>
 
-<div class="module-list-container">
-  <h2>Module</h2>
-  <table>
-    <thead>
-    <tr>
-      <th>Name</th>
-      <th>Abkürzung</th>
-      <th>Verwendungen</th>
-      <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let module of modules">
-      <td>{{ module.name }}</td>
-      <td>{{ module.abbreviation }}</td>
-      <td>
-        <div *ngFor="let spo of module.spos">
-          {{ spo.name }} <!-- Change to another property if needed -->
-        </div>
-      </td>
-      <td>
-        <button (click)="navigateToModuleDetail(module.id)">View Details</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+  <div class="module-list-container">
+    <h2>Module</h2>
+    <table>
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Abkürzung</th>
+        <th>Verwendungen</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let module of modules">
+        <td>{{ module.name }}</td>
+        <td>{{ module.abbreviation }}</td>
+        <td>
+          <div *ngFor="let spo of module.spos">
+            {{ spo.name }} <!-- Change to another property if needed -->
+          </div>
+        </td>
+        <td>
+          <button (click)="navigateToModuleDetail(module.id)">View Details</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</main>

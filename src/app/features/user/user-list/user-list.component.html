@@ -1,30 +1,32 @@
-<button class="btn-highlight" (click)="navigateToNewUser()">Add New User</button>
+<main class="main-content">
+  <button class="btn-highlight" (click)="navigateToNewUser()">Add New User</button>
 
-<div class="user-list">
-  <h2>User List</h2>
+  <div class="user-list">
+    <h2>User List</h2>
 
-  <div *ngIf="loading">Loading users...</div>
-  <div *ngIf="error" class="error">{{ error }}</div>
+    <div *ngIf="loading">Loading users...</div>
+    <div *ngIf="error" class="error">{{ error }}</div>
 
-  <table *ngIf="!loading && !error">
-    <thead>
-    <tr>
-      <th>Name</th>
-      <th>Kürzel</th>
-      <th>Email</th>
-      <th>Aktionen</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let user of users">
-      <td>{{ user.name }}</td>
-      <td>{{ user.code }}</td>
-      <td>{{ user.mail }}</td>
-      <td>
-        <button (click)="navigateToUserDetail(user.id)">Details</button>
-        <button (click)="deleteUser(user.id)" class="btn-danger">Delete</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-</div>
+    <table *ngIf="!loading && !error">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Kürzel</th>
+        <th>Email</th>
+        <th>Aktionen</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.name }}</td>
+        <td>{{ user.code }}</td>
+        <td>{{ user.mail }}</td>
+        <td>
+          <button (click)="navigateToUserDetail(user.id)">Details</button>
+          <button (click)="deleteUser(user.id)" class="btn-danger">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</main>

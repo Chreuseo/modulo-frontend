@@ -68,7 +68,6 @@ body {
 .main-content {
   background-color: var(--modulo-white);
   flex: 1;
-  margin: 20px;
 }
 
 h1 {
