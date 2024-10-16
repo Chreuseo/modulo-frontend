@@ -42,12 +42,12 @@ button.btn-danger {
   color: var(--modulo-white); /* White text */
 }
 
-input {
+input, select {
   padding: 10px;
   margin: 5px;
   border: 1px solid var(--modulo-mid-grey);
   border-radius: 4px;
   color: var(--modulo-black); /* Black text */
   background-color: var(--modulo-light-grey); /* Light gray background */
-  width: calc(50%); /* Full width minus padding */
+  width: 50%; /* Full width minus padding */
 }
