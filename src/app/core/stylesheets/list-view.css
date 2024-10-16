@@ -27,6 +27,6 @@ th:hover {
 }
 
 a {
-  text-underline: solid var(--modulo-black);
+  text-underline: solid 1pt var(--modulo-black);
   cursor: pointer;
 }
