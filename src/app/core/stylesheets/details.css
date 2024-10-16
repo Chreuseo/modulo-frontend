@@ -28,40 +28,6 @@ select {
   box-sizing: border-box; /* Include padding in width calculation */
 }
 
-button {
-  padding: 10px 15px; /* Padding for buttons */
-  margin-right: 5px; /* Space between buttons */
-  font-size: 14px; /* Set a base font size */
-  border: none; /* Remove default border */
-  border-radius: 4px; /* Rounded corners for buttons */
-  cursor: pointer; /* Change cursor to pointer on hover */
-  transition: background-color 0.3s ease; /* Smooth transitions for hover effects */
-}
-
-button.btn-primary {
-  background-color: #007bff; /* Primary button color */
-  color: white; /* White text */
-}
-
-button.btn-info {
-  background-color: #17a2b8; /* Info button color */
-  color: white; /* White text */
-}
-
-button.btn-success {
-}
-
-button.btn-secondary {
-  background-color: #6c757d; /* Secondary button color */
-  color: white; /* White text */
-}
-
-button:hover {
-  opacity: 0.9; /* Slightly reduce opacity on hover */
-}
-
-
-
 input::placeholder {
   color: #aaa; /* Light color for placeholder text */
 }

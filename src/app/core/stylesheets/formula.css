@@ -32,30 +32,6 @@ label {
   display: block; /* Block display for labels to stack */
 }
 
-/* Button styles */
-button {
-  background-color: #007bff; /* Bootstrap primary color */
-  color: #fff; /* White text color */
-  border: none; /* No border */
-  border-radius: 4px; /* Rounded corners */
-  padding: 10px 15px; /* Padding for buttons */
-  cursor: pointer; /* Pointer cursor on hover */
-  margin-right: 10px; /* Space between buttons */
-}
-
-button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
-}
-
-/* Style for the discard button */
-button[type="button"] {
-  background-color: #dc3545; /* Bootstrap danger color */
-}
-
-button[type="button"]:hover {
-  background-color: #c82333; /* Darker shade on hover */
-}
-
 /* Optional: Add responsive styling or media queries */
 @media (max-width: 600px) {
   form {

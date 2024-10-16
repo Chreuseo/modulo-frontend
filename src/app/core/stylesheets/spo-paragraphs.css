@@ -34,24 +34,6 @@ input[disabled], textarea[disabled] {
   background-color: #f0f0f0; /* Gray background for disabled inputs */
 }
 
-/* Button Styles */
-button {
-  padding: 10px 15px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background-color: #218838; /* Darker green on hover */
-}
-
-button[disabled] {
-  background-color: #ccc; /* Gray for disabled buttons */
-  cursor: not-allowed; /* Change cursor for disabled state */
-}
-
 /* Table Styles */
 table {
   width: 100%;
@@ -60,7 +42,7 @@ table {
 }
 
 table thead {
-  background-color: #007bff; /* Same color as nav */
+  background-color: var(--modulo-main-color); /* Same color as nav */
   color: #fff;
 }
 

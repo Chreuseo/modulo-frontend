@@ -11,7 +11,7 @@
 }
 
 .nav-link {
-  color: #fff;
+  color: var(--modulo-white);
   text-decoration: none;
   padding: 10px 15px;
   border-radius: 5px;
@@ -19,7 +19,7 @@
 }
 
 .nav-link:hover, .nav-link.active {
-  background-color: #0056b3;
+  background-color: var(--modulo-main-color);
 }
 
 ul {
@@ -29,7 +29,7 @@ ul {
 
 li {
   padding: 10px; /* Padding for list items */
-  border-bottom: 1px solid #ddd; /* Separator line between items */
+  border-bottom: 1px solid var(--modulo-light-grey); /* Separator line between items */
 }
 
 li:last-child {

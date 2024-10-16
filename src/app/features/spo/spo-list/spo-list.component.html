@@ -1,4 +1,4 @@
-<button (click)="navigateToNewSpo()" class="btn btn-primary">Add New SPO</button>
+<button (click)="navigateToNewSpo()">Add New SPO</button>
 
 <div class="spo-list-container">
   <h2>SPOs</h2>
@@ -26,7 +26,7 @@
       <td>{{spo.validFrom | date: 'MM/yy'}}</td>
       <td>{{spo.validUntil | date: 'MM/yy' }}</td>
       <td>
-        <button (click)="navigateToSpoDetail(spo.id)" class="btn btn-info">View Details</button>
+        <button (click)="navigateToSpoDetail(spo.id)">View Details</button>
       </td>
     </tr>
     </tbody>

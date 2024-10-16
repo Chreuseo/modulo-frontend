@@ -35,22 +35,6 @@ li:last-child {
   border-bottom: none; /* Remove border from the last item */
 }
 
-/* Button Styles */
-button {
-  background-color: #e74c3c; /* Red background for buttons */
-  color: white; /* White text */
-  border: none; /* Remove border */
-  border-radius: 4px; /* Rounded corners */
-  padding: 8px 12px; /* Padding for buttons */
-  cursor: pointer; /* Pointer cursor on hover */
-  font-size: 14px; /* Font size for buttons */
-  transition: background-color 0.3s; /* Smooth transition */
-}
-
-button:hover {
-  background-color: #c0392b; /* Darker red on hover */
-}
-
 /* Input Field Styles */
 .settings-add-container {
   display: flex; /* Flex display for input fields and button */

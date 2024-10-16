@@ -115,12 +115,12 @@
           <td><input type="number" [(ngModel)]="newModuleFrame.weight" placeholder="Weight"/></td>
           <td><input type="number" [(ngModel)]="newModuleFrame.credits" placeholder="Credits"/></td>
           <td>
-            <button (click)="addModuleFrame(moduleType.id, section.id)" class="btn btn-success">Add</button>
+            <button (click)="addModuleFrame(moduleType.id, section.id)">Add</button>
           </td>
         </tr>
         </tbody>
       </table>
-      <button (click)="toggleAddModuleFrame(section.id, moduleType.id)" class="btn btn-primary">
+      <button (click)="toggleAddModuleFrame(section.id, moduleType.id)">
         {{ isAddingModuleFrame[section.id][moduleType.id] ? 'Cancel' : 'Add Module Frame' }}
       </button>
 

@@ -34,17 +34,3 @@
   border-radius: 4px; /* Rounded corners */
 }
 
-.add-exam-type button {
-  margin-top: 10px; /* Space above the button */
-}
-
-/* Buttons in the Exam Type Table */
-.btn-danger {
-  background-color: #dc3545; /* Red background for delete button */
-  color: white; /* White text */
-}
-
-.btn-danger:hover {
-  background-color: #c82333; /* Darker red on hover */
-  transition: background-color 0.2s; /* Smooth transition effect */
-}
