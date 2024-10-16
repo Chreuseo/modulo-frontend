@@ -49,5 +49,5 @@ input {
   border-radius: 4px;
   color: var(--modulo-black); /* Black text */
   background-color: var(--modulo-light-grey); /* Light gray background */
-  width: calc(100% - 20px); /* Full width minus padding */
+  width: calc(50%); /* Full width minus padding */
 }
