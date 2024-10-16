@@ -20,4 +20,5 @@
 td input {
   width: 100%;
   min-width: 30px;
+  padding: 5px;
 }
