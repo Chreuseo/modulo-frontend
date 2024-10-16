@@ -27,13 +27,13 @@
 
     <h3>Studiengänge wählen:</h3>
     <div class="checkbox-container">
-      <label for="allSelected">Alle auswählen</label>
       <input type="checkbox" id="allSelected" [(ngModel)]="allSelected" (change)="toggleSelectAll()">
+      <label for="allSelected">Alle auswählen</label>
     </div>
 
     <div *ngFor="let spo of spoItems" class="checkbox-container">
-      <label [for]="isSpoSelected(spo.id)">{{ spo.name }} {{spo.degree.name}}</label>
       <input type="checkbox" [id]="isSpoSelected(spo.id)" [checked]="isSpoSelected(spo.id)" (change)="toggleSpoSelection(spo.id)">
+      <label [for]="isSpoSelected(spo.id)">{{ spo.name }} {{spo.degree.name}}</label>
     </div>
 
     <h3>Dokumente wählen:</h3>

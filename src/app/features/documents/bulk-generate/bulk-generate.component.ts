@@ -50,7 +50,7 @@ export class BulkGenerateComponent implements OnInit {
 
   toggleSelectAll(): void {
     this.allSelected = !this.allSelected;
-    this.selectedSpos = this.allSelected ? this.spoItems.map(spo => spo.id) : [];
+    this.selectedSpos = !this.allSelected ? this.spoItems.map(spo => spo.id) : [];
   }
 
   isSpoSelected(id: number): boolean {
