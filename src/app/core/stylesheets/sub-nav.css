@@ -3,6 +3,7 @@
   display: flex;
   justify-content: flex-start;
   background-color: var(--modulo-main-color-light);
+  margin: 10px;
 }
 
 .nav-item {
@@ -15,11 +16,10 @@
   padding: 10px 15px;
   border-radius: 5px;
   transition: background-color 0.3s;
-  margin: 10px;
 }
 
-.nav-link:hover {
-  background-color: var(--modulo-main-color);
+.nav-link:hover, .nav-link.active {
+  background-color: var(--modulo-main-color-light);
 }
 
 ul {
