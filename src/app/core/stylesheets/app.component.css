@@ -37,7 +37,7 @@ body {
 }
 
 .sidebar {
-  background-color: var(--modulo-mid-grey);
+  background-color: var(--modulo-light-grey);
   width: 200px;
   display: flex;
   flex-direction: column;
