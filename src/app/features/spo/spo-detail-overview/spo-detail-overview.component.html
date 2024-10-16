@@ -13,142 +13,143 @@
   </ul>
 </nav>
 
+<main class="main-content">
+  <div class="spo-detail">
+    <h2>Spo Detail</h2>
 
-<div class="spo-detail">
-  <h2>Spo Detail</h2>
-
-  <div>
-    <label>Name:</label>
-    <input type="text" [(ngModel)]="spo.name" [disabled]="!isEditing"/>
-  </div>
-
-  <div>
-    <label>Publication Date:</label>
-    <input type="date" [(ngModel)]="spo.publication" [disabled]="!isEditing"/>
-  </div>
-
-  <div>
-    <label>Valid From:</label>
-    <input type="date" [(ngModel)]="spo.validFrom" [disabled]="!isEditing"/>
-  </div>
-
-  <div>
-    <label>Valid Until:</label>
-    <input type="date" [(ngModel)]="spo.validUntil" [disabled]="!isEditing"/>
-  </div>
-
-  <div>
-    <label>Degree:</label>
-    <select [(ngModel)]="spo.degree" [disabled]="!isEditing">
-      <option *ngFor="let degree of degrees" [ngValue]="degree">{{ degree.name }}</option>
-    </select>
-  </div>
-
-  <div>
-    <h3>Sections</h3>
-    <ul>
-      <li *ngFor="let section of sortedSections; let i = index">
-        {{ section.name }}
-        <button (click)="moveUp(i, spo.sectionDTOs)" *ngIf="isEditing && i > 0">↑</button>
-        <button (click)="moveDown(i, spo.sectionDTOs)" *ngIf="isEditing && i < spo.sectionDTOs.length - 1">↓</button>
-        <button (click)="deleteSection(section.id)" class="btn-danger" *ngIf="isEditing">-</button>
-      </li>
-    </ul>
-    <!-- Row to add new section -->
-    <div *ngIf="isEditing">
-      <input [(ngModel)]="newSectionName" placeholder="New Section Name" />
-      <button (click)="addSection()">Add Section</button>
-    </div>
-  </div>
-
-  <div>
-    <h3>Module Types</h3>
-    <ul>
-      <li *ngFor="let moduleType of sortedModuleTypes; let i = index">
-        {{ moduleType.name }}
-        <button (click)="moveUp(i, spo.moduleTypeDTOs)" *ngIf="isEditing && i > 0">↑</button>
-        <button (click)="moveDown(i, spo.moduleTypeDTOs)" *ngIf="isEditing && i < spo.moduleTypeDTOs.length - 1">↓</button>
-        <button (click)="deleteModuleType(moduleType.id)" class="btn-danger" *ngIf="isEditing">-</button>
-      </li>
-    </ul>
-    <!-- Row to add new module type -->
-    <div *ngIf="isEditing">
-      <input [(ngModel)]="newModuleTypeName" placeholder="New Module Type Name" />
-      <button (click)="addModuleType()">Add Module Type</button>
+    <div>
+      <label>Name:</label>
+      <input type="text" [(ngModel)]="spo.name" [disabled]="!isEditing"/>
     </div>
 
-    <!-- Exam Types Management -->
-    <h3>Exam Types</h3>
+    <div>
+      <label>Publication Date:</label>
+      <input type="date" [(ngModel)]="spo.publication" [disabled]="!isEditing"/>
+    </div>
+
+    <div>
+      <label>Valid From:</label>
+      <input type="date" [(ngModel)]="spo.validFrom" [disabled]="!isEditing"/>
+    </div>
+
+    <div>
+      <label>Valid Until:</label>
+      <input type="date" [(ngModel)]="spo.validUntil" [disabled]="!isEditing"/>
+    </div>
+
+    <div>
+      <label>Degree:</label>
+      <select [(ngModel)]="spo.degree" [disabled]="!isEditing">
+        <option *ngFor="let degree of degrees" [ngValue]="degree">{{ degree.name }}</option>
+      </select>
+    </div>
+
+    <div>
+      <h3>Sections</h3>
+      <ul>
+        <li *ngFor="let section of sortedSections; let i = index">
+          {{ section.name }}
+          <button (click)="moveUp(i, spo.sectionDTOs)" *ngIf="isEditing && i > 0">↑</button>
+          <button (click)="moveDown(i, spo.sectionDTOs)" *ngIf="isEditing && i < spo.sectionDTOs.length - 1">↓</button>
+          <button (click)="deleteSection(section.id)" class="btn-danger" *ngIf="isEditing">-</button>
+        </li>
+      </ul>
+      <!-- Row to add new section -->
+      <div *ngIf="isEditing">
+        <input [(ngModel)]="newSectionName" placeholder="New Section Name" />
+        <button (click)="addSection()">Add Section</button>
+      </div>
+    </div>
+
+    <div>
+      <h3>Module Types</h3>
+      <ul>
+        <li *ngFor="let moduleType of sortedModuleTypes; let i = index">
+          {{ moduleType.name }}
+          <button (click)="moveUp(i, spo.moduleTypeDTOs)" *ngIf="isEditing && i > 0">↑</button>
+          <button (click)="moveDown(i, spo.moduleTypeDTOs)" *ngIf="isEditing && i < spo.moduleTypeDTOs.length - 1">↓</button>
+          <button (click)="deleteModuleType(moduleType.id)" class="btn-danger" *ngIf="isEditing">-</button>
+        </li>
+      </ul>
+      <!-- Row to add new module type -->
+      <div *ngIf="isEditing">
+        <input [(ngModel)]="newModuleTypeName" placeholder="New Module Type Name" />
+        <button (click)="addModuleType()">Add Module Type</button>
+      </div>
+
+      <!-- Exam Types Management -->
+      <h3>Exam Types</h3>
+      <table class="table exam-types-table">
+        <thead>
+        <tr>
+          <th>Name</th>
+          <th>Abbreviation</th> <!-- New column for Abbreviation -->
+          <th>Length</th> <!-- New column for Length -->
+          <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let examType of spo.examTypeDTOs; let i = index">
+          <td>{{ examType.name }}</td>
+          <td>{{ examType.abbreviation }}</td> <!-- New column for Abbreviation -->
+          <td>{{ examType.length }}</td> <!-- New column for Length -->
+          <td *ngIf="isEditing">
+            <button (click)="deleteExamType(examType.id)" class="btn-danger">-</button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <div *ngIf="isEditing" class="add-exam-type">
+        <h4>Add New Exam Type</h4>
+        <input [(ngModel)]="newExamTypeName" placeholder="New Exam Type Name" />
+        <input [(ngModel)]="newExamTypeAbbreviation" placeholder="New Exam Type Abbreviation" />
+        <input [(ngModel)]="newExamTypeLength" placeholder="New Exam Type Length" />
+        <button (click)="addExamType()">Add Exam Type</button>
+      </div>
+    </div>
+
+
+    <div>
+        <h3>Module Requirements</h3>
+        <ul>
+          <li *ngFor="let moduleRequirement of spo.moduleRequirementDTOs; let i = index">
+            {{ moduleRequirement.name }}
+            <button (click)="deleteModuleRequirement(moduleRequirement.id)" class="btn-danger" *ngIf="isEditing">-</button>
+          </li>
+        </ul>
+        <div *ngIf="isEditing">
+          <input [(ngModel)]="newModuleRequirementName" placeholder="New Module Requirement Name" />
+          <button (click)="addModuleRequirement()">Add Module Requirement</button>
+        </div>
+      </div>
+
+    <h3>Responsible:</h3>
     <table class="table exam-types-table">
-      <thead>
-      <tr>
-        <th>Name</th>
-        <th>Abbreviation</th> <!-- New column for Abbreviation -->
-        <th>Length</th> <!-- New column for Length -->
-        <th>Action</th>
-      </tr>
-      </thead>
       <tbody>
-      <tr *ngFor="let examType of spo.examTypeDTOs; let i = index">
-        <td>{{ examType.name }}</td>
-        <td>{{ examType.abbreviation }}</td> <!-- New column for Abbreviation -->
-        <td>{{ examType.length }}</td> <!-- New column for Length -->
-        <td *ngIf="isEditing">
-          <button (click)="deleteExamType(examType.id)" class="btn-danger">-</button>
+      <tr *ngFor="let user of spo.responsibleUsers">
+        <td>{{ user.name }}</td>
+        <td>
+          <button *ngIf="isEditing" (click)="removeResponsibleUser(user.id)">Remove</button>
+        </td>
+      </tr>
+      <tr *ngIf="isEditing">
+        <td>
+          <select [(ngModel)]="selectedUser">
+            <option *ngFor="let user of userDTOs" [ngValue]="user">{{ user.name }}</option>
+          </select>
+        </td>
+        <td>
+          <button (click)="addResponsibleUser(selectedUser.id)">Add</button>
         </td>
       </tr>
       </tbody>
     </table>
 
-    <div *ngIf="isEditing" class="add-exam-type">
-      <h4>Add New Exam Type</h4>
-      <input [(ngModel)]="newExamTypeName" placeholder="New Exam Type Name" />
-      <input [(ngModel)]="newExamTypeAbbreviation" placeholder="New Exam Type Abbreviation" />
-      <input [(ngModel)]="newExamTypeLength" placeholder="New Exam Type Length" />
-      <button (click)="addExamType()">Add Exam Type</button>
+
+    <div>
+      <button (click)="toggleEdit()">{{ isEditing ? 'Cancel' : 'Edit' }}</button>
+      <button (click)="save()" *ngIf="isEditing">Save</button>
     </div>
   </div>
-
-
-  <div>
-      <h3>Module Requirements</h3>
-      <ul>
-        <li *ngFor="let moduleRequirement of spo.moduleRequirementDTOs; let i = index">
-          {{ moduleRequirement.name }}
-          <button (click)="deleteModuleRequirement(moduleRequirement.id)" class="btn-danger" *ngIf="isEditing">-</button>
-        </li>
-      </ul>
-      <div *ngIf="isEditing">
-        <input [(ngModel)]="newModuleRequirementName" placeholder="New Module Requirement Name" />
-        <button (click)="addModuleRequirement()">Add Module Requirement</button>
-      </div>
-    </div>
-
-  <h3>Responsible:</h3>
-  <table class="table exam-types-table">
-    <tbody>
-    <tr *ngFor="let user of spo.responsibleUsers">
-      <td>{{ user.name }}</td>
-      <td>
-        <button *ngIf="isEditing" (click)="removeResponsibleUser(user.id)">Remove</button>
-      </td>
-    </tr>
-    <tr *ngIf="isEditing">
-      <td>
-        <select [(ngModel)]="selectedUser">
-          <option *ngFor="let user of userDTOs" [ngValue]="user">{{ user.name }}</option>
-        </select>
-      </td>
-      <td>
-        <button (click)="addResponsibleUser(selectedUser.id)">Add</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-
-
-  <div>
-    <button (click)="toggleEdit()">{{ isEditing ? 'Cancel' : 'Edit' }}</button>
-    <button (click)="save()" *ngIf="isEditing">Save</button>
-  </div>
-</div>
+</main>

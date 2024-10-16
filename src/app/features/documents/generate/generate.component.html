@@ -9,29 +9,31 @@
   </ul>
 </nav>
 
-<div class="generate-component">
-  <h2>Generate Document</h2>
+<main class="main-content">
+  <div class="generate-component">
+    <h2>Generate Document</h2>
 
-  <div>
-    <label for="spos">Select SPO:</label>
-    <select id="spos" [(ngModel)]="selectedSpoId">
-      <option *ngFor="let spo of spos" [value]="spo.id">{{ spo.name }}</option>
-    </select>
+    <div>
+      <label for="spos">Select SPO:</label>
+      <select id="spos" [(ngModel)]="selectedSpoId">
+        <option *ngFor="let spo of spos" [value]="spo.id">{{ spo.name }}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="semesters">Select Semester:</label>
+      <select id="semesters" [(ngModel)]="selectedSemesterId">
+        <option *ngFor="let semester of semesters" [value]="semester.id">{{ semester.name }} {{ semester.year}}</option>
+      </select>
+    </div>
+
+    <div>
+      <label for="documentType">Select Document Type:</label>
+      <select id="documentType" [(ngModel)]="selectedDocumentType">
+        <option *ngFor="let type of documentTypes" [value]="type">{{ type }}</option>
+      </select>
+    </div>
+
+    <button (click)="generateDocument()">Generate Document</button>
   </div>
-
-  <div>
-    <label for="semesters">Select Semester:</label>
-    <select id="semesters" [(ngModel)]="selectedSemesterId">
-      <option *ngFor="let semester of semesters" [value]="semester.id">{{ semester.name }} {{ semester.year}}</option>
-    </select>
-  </div>
-
-  <div>
-    <label for="documentType">Select Document Type:</label>
-    <select id="documentType" [(ngModel)]="selectedDocumentType">
-      <option *ngFor="let type of documentTypes" [value]="type">{{ type }}</option>
-    </select>
-  </div>
-
-  <button (click)="generateDocument()">Generate Document</button>
-</div>
+</main>

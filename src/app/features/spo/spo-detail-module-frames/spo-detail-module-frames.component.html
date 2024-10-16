@@ -13,119 +13,121 @@
   </ul>
 </nav>
 
-<div *ngIf="moduleFrameSet">
-  <h1>SPO Details</h1>
+<main class="main-content">
+  <div *ngIf="moduleFrameSet">
+    <h1>SPO Details</h1>
 
-  <div *ngFor="let section of moduleFrameSet.sections">
-    <h2>{{ section.name }}</h2>
+    <div *ngFor="let section of moduleFrameSet.sections">
+      <h2>{{ section.name }}</h2>
 
-    <div *ngFor="let moduleType of section.moduleTypes">
-      <h3>{{ moduleType.name }}</h3>
+      <div *ngFor="let moduleType of section.moduleTypes">
+        <h3>{{ moduleType.name }}</h3>
 
-      <table>
-        <thead>
-        <tr>
-          <th>Quantity</th>
-          <th>Name</th>
-          <th>SWS</th>
-          <th>Course Types</th>
-          <th>Exam Types</th>
-          <th>Weight</th>
-          <th>Credits</th>
-          <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr *ngFor="let moduleFrame of moduleType.moduleFrames">
-          <td>{{ moduleFrame.quantity }}</td>
-          <td>{{ moduleFrame.name }}</td>
-          <td>{{ moduleFrame.sws }}</td>
-          <td>
-            <div *ngFor="let courseType of moduleFrame.courseTypes">
-              <label>
-                <input
-                  type="checkbox"
-                  [(ngModel)]="courseType.enabled"
-                  disabled="true"
-                />
-                {{ courseType.abbreviation }}
-              </label>
-            </div>
-          </td>
-          <td>
-            <div *ngFor="let examType of moduleFrame.examTypes">
-              <label>
-                <input
-                  type="checkbox"
-                  [(ngModel)]="examType.enabled"
-                  disabled="true"
-                />
-              </label>
-              {{ examType.abbreviation }}
-              <label>
-                <input
-                  type="checkbox"
-                  [(ngModel)]="examType.mandatory"
-                  disabled="true"
-                />
-              </label>
-              mandatory
-            </div>
-          </td>
-          <td>{{ moduleFrame.weight }}</td>
-          <td>{{ moduleFrame.credits }}</td>
-          <td>
-            <!-- You could add edit/delete functionality here -->
-          </td>
-        </tr>
-        <tr *ngIf="isAddingModuleFrame[section.id] && isAddingModuleFrame[section.id][moduleType.id]">
-          <td><input type="number" [(ngModel)]="newModuleFrame.quantity" placeholder="Semester"/></td>
-          <td><input type="text" [(ngModel)]="newModuleFrame.name" placeholder="Name"/></td>
-          <td><input type="number" [(ngModel)]="newModuleFrame.sws" placeholder="SWS"/></td>
-          <td>
-            <div *ngFor="let courseType of newModuleFrame.courseTypes">
-              <label>
-                <input
-                  type="checkbox"
-                  [(ngModel)]="courseType.enabled"
-                />
-                {{ courseType.abbreviation }}
-              </label>
-            </div>
-          </td>
-          <td>
-            <div *ngFor="let examType of newModuleFrame.examTypes">
-              <label>
-                <input
-                  type="checkbox"
-                  [(ngModel)]="examType.enabled"
-                />
+        <table>
+          <thead>
+          <tr>
+            <th>Quantity</th>
+            <th>Name</th>
+            <th>SWS</th>
+            <th>Course Types</th>
+            <th>Exam Types</th>
+            <th>Weight</th>
+            <th>Credits</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let moduleFrame of moduleType.moduleFrames">
+            <td>{{ moduleFrame.quantity }}</td>
+            <td>{{ moduleFrame.name }}</td>
+            <td>{{ moduleFrame.sws }}</td>
+            <td>
+              <div *ngFor="let courseType of moduleFrame.courseTypes">
+                <label>
+                  <input
+                    type="checkbox"
+                    [(ngModel)]="courseType.enabled"
+                    disabled="true"
+                  />
+                  {{ courseType.abbreviation }}
+                </label>
+              </div>
+            </td>
+            <td>
+              <div *ngFor="let examType of moduleFrame.examTypes">
+                <label>
+                  <input
+                    type="checkbox"
+                    [(ngModel)]="examType.enabled"
+                    disabled="true"
+                  />
+                </label>
                 {{ examType.abbreviation }}
-              </label>
-              <label>
-                <input
-                  type="checkbox"
-                  [(ngModel)]="examType.mandatory"
-                  disabled={{!examType.enabled}}
-                />
+                <label>
+                  <input
+                    type="checkbox"
+                    [(ngModel)]="examType.mandatory"
+                    disabled="true"
+                  />
+                </label>
                 mandatory
-              </label>
-            </div>
-          </td>
-          <td><input type="number" [(ngModel)]="newModuleFrame.weight" placeholder="Weight"/></td>
-          <td><input type="number" [(ngModel)]="newModuleFrame.credits" placeholder="Credits"/></td>
-          <td>
-            <button class="btn-soft-highlight" (click)="addModuleFrame(moduleType.id, section.id)">Add</button>
-          </td>
-        </tr>
-        </tbody>
-      </table>
-      <button class="btn-soft-highlight" (click)="toggleAddModuleFrame(section.id, moduleType.id)">
-        {{ isAddingModuleFrame[section.id][moduleType.id] ? 'Cancel' : 'Add Module Frame' }}
-      </button>
+              </div>
+            </td>
+            <td>{{ moduleFrame.weight }}</td>
+            <td>{{ moduleFrame.credits }}</td>
+            <td>
+              <!-- You could add edit/delete functionality here -->
+            </td>
+          </tr>
+          <tr *ngIf="isAddingModuleFrame[section.id] && isAddingModuleFrame[section.id][moduleType.id]">
+            <td><input type="number" [(ngModel)]="newModuleFrame.quantity" placeholder="Semester"/></td>
+            <td><input type="text" [(ngModel)]="newModuleFrame.name" placeholder="Name"/></td>
+            <td><input type="number" [(ngModel)]="newModuleFrame.sws" placeholder="SWS"/></td>
+            <td>
+              <div *ngFor="let courseType of newModuleFrame.courseTypes">
+                <label>
+                  <input
+                    type="checkbox"
+                    [(ngModel)]="courseType.enabled"
+                  />
+                  {{ courseType.abbreviation }}
+                </label>
+              </div>
+            </td>
+            <td>
+              <div *ngFor="let examType of newModuleFrame.examTypes">
+                <label>
+                  <input
+                    type="checkbox"
+                    [(ngModel)]="examType.enabled"
+                  />
+                  {{ examType.abbreviation }}
+                </label>
+                <label>
+                  <input
+                    type="checkbox"
+                    [(ngModel)]="examType.mandatory"
+                    disabled={{!examType.enabled}}
+                  />
+                  mandatory
+                </label>
+              </div>
+            </td>
+            <td><input type="number" [(ngModel)]="newModuleFrame.weight" placeholder="Weight"/></td>
+            <td><input type="number" [(ngModel)]="newModuleFrame.credits" placeholder="Credits"/></td>
+            <td>
+              <button class="btn-soft-highlight" (click)="addModuleFrame(moduleType.id, section.id)">Add</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <button class="btn-soft-highlight" (click)="toggleAddModuleFrame(section.id, moduleType.id)">
+          {{ isAddingModuleFrame[section.id][moduleType.id] ? 'Cancel' : 'Add Module Frame' }}
+        </button>
 
+      </div>
     </div>
   </div>
-</div>
 
-<button (click)="navigateToNewModuleFrame()" class="btn btn-primary">Add New Module</button>
+  <button (click)="navigateToNewModuleFrame()" class="btn btn-primary">Add New Module</button>
+</main>

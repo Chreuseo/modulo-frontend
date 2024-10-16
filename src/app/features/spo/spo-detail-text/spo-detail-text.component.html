@@ -13,87 +13,87 @@
   </ul>
 </nav>
 
-<!-- app/components/spo-detail-text/spo-detail-text.component.html -->
-<div>
+<main class="main-content">
+  <!-- app/components/spo-detail-text/spo-detail-text.component.html -->
   <div>
-    <label>Header:</label>
-    <div *ngIf="isDisabled" [innerHTML]="this.spo.header"></div>
+    <div>
+      <label>Header:</label>
+      <div *ngIf="isDisabled" [innerHTML]="this.spo.header"></div>
+      <quill-editor
+        *ngIf="!isDisabled"
+        [(ngModel)]="this.spo.header"
+        [modules]="quillModules">
+      </quill-editor>
+    </div>
+    <div>
+      <label>Footer:</label>
+      <div *ngIf="isDisabled" [innerHTML]="this.spo.footer"></div>
+      <quill-editor
+        *ngIf="!isDisabled"
+        [(ngModel)]="this.spo.footer"
+        [modules]="quillModules">
+      </quill-editor>
+    </div>
+    <div>
+      <label>Modulhandbuch-Vorwort:</label>
+      <div *ngIf="isDisabled" [innerHTML]="this.spo.moduleManualIntroduction"></div>
+      <quill-editor
+        *ngIf="!isDisabled"
+        [(ngModel)]="this.spo.moduleManualIntroduction"
+        [modules]="quillModules">
+      </quill-editor>
+    </div>
+
+    <!-- Edit and Save Buttons -->
+    <div>
+      <button type="button" (click)="onEdit()" *ngIf="isDisabled">Edit</button>
+      <button type="button" (click)="onSave()" *ngIf="!isDisabled">Save</button>
+    </div>
+  </div>
+
+    <h3>Paragraphs</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>Title</th>
+        <th>Text</th>
+        <th>Actions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let paragraph of paragraphs">
+        <td>
+          <span *ngIf="editableParagraph?.id !== paragraph.id">{{ paragraph.title }}</span>
+          <input *ngIf="editableParagraph?.id === paragraph.id" [(ngModel)]="editableParagraph.title" />
+        </td>
+        <td>
+          <span *ngIf="editableParagraph?.id !== paragraph.id" [innerHTML]="paragraph.text"></span>
+          <quill-editor
+            *ngIf="editableParagraph?.id === paragraph.id"
+            [(ngModel)]="editableParagraph.text"
+            [modules]="quillModules">
+          </quill-editor>
+        </td>
+        <td>
+          <button *ngIf="editableParagraph?.id !== paragraph.id" (click)="editParagraph(paragraph)">Edit</button>
+          <button *ngIf="editableParagraph?.id === paragraph.id" (click)="saveParagraph()">Save</button>
+          <button (click)="deleteParagraph(paragraph.id)">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  <h4>Add New Paragraph</h4>
+  <div>
+    <label for="newTitle">Title:</label>
+    <input id="newTitle" [(ngModel)]="newParagraph.title" name="title" required />
+  </div>
+  <div>
+    <label>Text:</label>
     <quill-editor
-      *ngIf="!isDisabled"
-      [(ngModel)]="this.spo.header"
+      [(ngModel)]="newParagraph.text"
       [modules]="quillModules">
     </quill-editor>
   </div>
-  <div>
-    <label>Footer:</label>
-    <div *ngIf="isDisabled" [innerHTML]="this.spo.footer"></div>
-    <quill-editor
-      *ngIf="!isDisabled"
-      [(ngModel)]="this.spo.footer"
-      [modules]="quillModules">
-    </quill-editor>
-  </div>
-  <div>
-    <label>Modulhandbuch-Vorwort:</label>
-    <div *ngIf="isDisabled" [innerHTML]="this.spo.moduleManualIntroduction"></div>
-    <quill-editor
-      *ngIf="!isDisabled"
-      [(ngModel)]="this.spo.moduleManualIntroduction"
-      [modules]="quillModules">
-    </quill-editor>
-  </div>
-
-  <!-- Edit and Save Buttons -->
-  <div>
-    <button type="button" (click)="onEdit()" *ngIf="isDisabled">Edit</button>
-    <button type="button" (click)="onSave()" *ngIf="!isDisabled">Save</button>
-  </div>
-</div>
-
-  <h3>Paragraphs</h3>
-  <table>
-    <thead>
-    <tr>
-      <th>Title</th>
-      <th>Text</th>
-      <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let paragraph of paragraphs">
-      <td>
-        <span *ngIf="editableParagraph?.id !== paragraph.id">{{ paragraph.title }}</span>
-        <input *ngIf="editableParagraph?.id === paragraph.id" [(ngModel)]="editableParagraph.title" />
-      </td>
-      <td>
-        <span *ngIf="editableParagraph?.id !== paragraph.id" [innerHTML]="paragraph.text"></span>
-        <quill-editor
-          *ngIf="editableParagraph?.id === paragraph.id"
-          [(ngModel)]="editableParagraph.text"
-          [modules]="quillModules">
-        </quill-editor>
-      </td>
-      <td>
-        <button *ngIf="editableParagraph?.id !== paragraph.id" (click)="editParagraph(paragraph)">Edit</button>
-        <button *ngIf="editableParagraph?.id === paragraph.id" (click)="saveParagraph()">Save</button>
-        <button (click)="deleteParagraph(paragraph.id)">Delete</button>
-      </td>
-    </tr>
-    </tbody>
-  </table>
-
-<h4>Add New Paragraph</h4>
-<div>
-  <label for="newTitle">Title:</label>
-  <input id="newTitle" [(ngModel)]="newParagraph.title" name="title" required />
-</div>
-<div>
-  <label>Text:</label>
-  <quill-editor
-    [(ngModel)]="newParagraph.text"
-    [modules]="quillModules">
-  </quill-editor>
-</div>
-<button type="submit" (click)="addParagraph()">Add</button>
-
-
+  <button type="submit" (click)="addParagraph()">Add</button>
+</main>
