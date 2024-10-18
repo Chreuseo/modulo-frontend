@@ -269,6 +269,7 @@ export class ModuleDetailComponent implements OnInit {
     }).subscribe(data => {
       console.debug(data)
       console.log('ModuleFrame added successfully.');
+      this.fetchModuleFrameModuleImplementations();
     }, error => {
       console.error('Error adding ModuleFrame: ', error);
     });
