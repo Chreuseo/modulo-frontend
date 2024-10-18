@@ -9,4 +9,5 @@ export interface ModuleFrameModuleImplementationDTO {
   moduleFrameDTO: ModuleFrameDTO;
   moduleRequirementDTO: ModuleRequirementDTO | null;
   examTypeDTOs: ExamTypeDTO[];
+  semester: String;
 }

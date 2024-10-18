@@ -24,6 +24,11 @@
   </div>
 
   <div>
+    <label>Semester:</label>
+    <input [ngModel]="semester"/>
+  </div>
+
+  <div>
     <label>Examina:</label>
     <div *ngFor="let examType of examTypes">
       <div class="checkbox-container">

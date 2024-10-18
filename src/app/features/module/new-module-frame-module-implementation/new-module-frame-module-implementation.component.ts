@@ -28,6 +28,7 @@ export class NewModuleFrameModuleImplementationComponent {
   moduleRequirements: ModuleRequirementDTO[] = [];
   examTypes: ExamTypeDTO[] = [];
   selectedSpo: SpoDTOFlat | null = null;
+  semester: string = '';
   selectedModuleFrame: ModuleFrameDTO | null = null;
   selectedModuleRequirement: ModuleRequirementDTO | null = null;
 
@@ -110,6 +111,7 @@ export class NewModuleFrameModuleImplementationComponent {
       moduleFrameDTO: this.selectedModuleFrame!,
       moduleImplementationDTOFlat: this.moduleImplementationDTOFlat,
       examTypeDTOs: this.examTypes,
+      semester: this.semester,
       moduleRequirementDTO: this.selectedModuleRequirement
     }).subscribe(data => {
       console.debug(data)

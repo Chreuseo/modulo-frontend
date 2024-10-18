@@ -34,6 +34,8 @@
           <input [value]="moduleFrameModuleImplementation.moduleFrameDTO.credits" disabled="disabled">
           <label>Gewichtung: </label>
           <input [value]="moduleFrameModuleImplementation.moduleFrameDTO.weight" disabled="disabled">
+          <label>Semester: </label>
+          <input [value]="moduleFrameModuleImplementation.semester" disabled="disabled">
         </td>
         <td>
           <div *ngFor="let examType of moduleFrameModuleImplementation.examTypeDTOs">
@@ -79,7 +81,10 @@
             </select>
           </div>
         </td>
-        <td></td>
+        <td>
+          <label>Semester:</label>
+          <input [ngModel]="semester"/>
+        </td>
         <td>
           <div>
             <label>Examina:</label>

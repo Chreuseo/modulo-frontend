@@ -56,6 +56,7 @@ export class ModuleDetailComponent implements OnInit {
   moduleRequirements: ModuleRequirementDTO[] = [];
   examTypes: ExamTypeDTO[] = [];
   selectedSpo: SpoDTOFlat | null = null;
+  semester: String = '';
   selectedModuleFrame: ModuleFrameDTO | null = null;
   selectedModuleRequirement: ModuleRequirementDTO | null = null;
 
@@ -265,6 +266,7 @@ export class ModuleDetailComponent implements OnInit {
       moduleFrameDTO: this.selectedModuleFrame!,
       moduleImplementationDTOFlat: this.moduleImplementationDTOFlat,
       examTypeDTOs: this.examTypes,
+      semester: this.semester,
       moduleRequirementDTO: this.selectedModuleRequirement
     }).subscribe(data => {
       console.debug(data)
