@@ -181,7 +181,7 @@ export class ModuleDetailComponent implements OnInit {
   }
 
   navigateToNewModuleFrame(): void {
-    this.isAddingModuleFrame = true;
+    this.isAddingModuleFrame = !this.isAddingModuleFrame;
   }
 
   addLecturer(): void {
