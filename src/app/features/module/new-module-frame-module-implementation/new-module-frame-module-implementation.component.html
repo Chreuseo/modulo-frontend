@@ -25,23 +25,23 @@
 
   <div>
     <label>Examina:</label>
-    <div *ngFor="let examType of examTypes" class="checkbox-container">
-      <label>
+    <div *ngFor="let examType of examTypes">
+      <div class="checkbox-container">
         <input
           type="checkbox"
+          [id]="examType.abbreviation"
           [(ngModel)]="examType.enabled"
           [disabled]="examType.mandatory"
         />
-        {{ examType.abbreviation }}
-      </label>
-      <label>
-        <input
-          type="checkbox"
-          [(ngModel)]="examType.mandatory"
-          disabled="true"
-        />
-        mandatory
-      </label>
+        <label [for]="examType.abbreviation">{{ examType.abbreviation }}</label>
+      </div>
+      <input
+        type="checkbox"
+        [id]="examType.abbreviation+'-mandatory'"
+        [(ngModel)]="examType.mandatory"
+        disabled="true"
+      />
+      <label [for]="examType.abbreviation+'-mandatory'">mandatory</label>
       <label>Description:</label>
       <input [(ngModel)]="examType.description" [disabled]="!examType.enabled" />
       <label>Length:</label>
