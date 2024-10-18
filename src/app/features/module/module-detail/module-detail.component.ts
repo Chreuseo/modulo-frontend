@@ -19,6 +19,16 @@ import {ModuleFrameModuleImplementationDTO} from "../../../core/models/module-fr
 import {UserService} from "../../../core/services/user.service";
 import {UserDTOFlat} from "../../../core/models/user-dto-flat.model";
 import {quillModules} from "../../../shared/components/quill-config";
+import {SpoDTOFlat} from "../../../core/models/spo-dto-flat.model";
+import {ModuleFrameSetDTO} from "../../../core/models/module-frame-set-dto.model";
+import {ModuleRequirementDTO} from "../../../core/models/module-requirement-dto.model";
+import {ExamTypeDTO} from "../../../core/models/exam-type-dto.model";
+import {ModuleFrameDTO} from "../../../core/models/module-frame-dto.model";
+import {ModuleImplementationDTOFlat} from "../../../core/models/module-implementation-dto-flat.model";
+import {SpoService} from "../../../core/services/spo.service";
+import {ModuleFrameService} from "../../../core/services/module-frame.service";
+import {ModuleRequirementService} from "../../../core/services/module-requirement.service";
+import {ExamTypeService} from "../../../core/services/exam-type.service";
 
 @Component({
   selector: 'app-module-detail',
@@ -30,14 +40,24 @@ import {quillModules} from "../../../shared/components/quill-config";
 export class ModuleDetailComponent implements OnInit {
   id: number = 0;
   moduleImplementation!: ModuleImplementationDTO;
+  moduleImplementationDTOFlat!: ModuleImplementationDTOFlat;
   cycles: CycleDTO[] = [];
   durations: DurationDTO[] = [];
   languages: LanguageDTO[] = [];
   maternityProtection: MaternityProtectionDTO[] = [];
   userDTOs: UserDTOFlat[] = [];
   isEditing: boolean = false;
+  isAddingModuleFrame = false;
   moduleFrameModuleImplementations!: ModuleFrameModuleImplementationDTO[];
   selectedLecturer!: UserDTOFlat; // To keep the currently selected lecturer to add
+
+  spos!: SpoDTOFlat[];
+  moduleFrameSet: ModuleFrameSetDTO = { sections: [] };
+  moduleRequirements: ModuleRequirementDTO[] = [];
+  examTypes: ExamTypeDTO[] = [];
+  selectedSpo: SpoDTOFlat | null = null;
+  selectedModuleFrame: ModuleFrameDTO | null = null;
+  selectedModuleRequirement: ModuleRequirementDTO | null = null;
 
   quillModules = quillModules;
 
@@ -50,7 +70,12 @@ export class ModuleDetailComponent implements OnInit {
     private languageService: LanguageService,
     private maternityProtectionService: MaternityProtectionService,
     private moduleFrameModuleImplementationService: ModuleFrameModuleImplementationService,
-    private userService: UserService
+    private userService: UserService,
+    private moduleImplementationService: ModuleImplementationService,
+    private spoService: SpoService,
+    private moduleFrameService: ModuleFrameService,
+    private moduleRequirementService: ModuleRequirementService,
+    private examTypeService: ExamTypeService,
   ) {}
 
   ngOnInit(): void {
@@ -60,6 +85,8 @@ export class ModuleDetailComponent implements OnInit {
       this.id = +idValue;
       this.fetchModuleFrameModuleImplementations();
       this.loadCycles();
+      this.loadModuleImplementation();
+      this.loadSpos();
     } else {
       console.error('Spo ID not found in route parameters.');
     }
@@ -176,5 +203,80 @@ export class ModuleDetailComponent implements OnInit {
       this.fetchModuleFrameModuleImplementations();
     });
   }
+
+  loadModuleImplementation(): void {
+    this.moduleImplementationService.getFlatById(this.id).subscribe(data => {
+      this.moduleImplementationDTOFlat = data;
+    }, error => {
+      console.error('Error loading ModuleImplementationDTO: ', error);
+    });
+  }
+
+  loadSpos(): void {
+    this.spoService.getAll().subscribe(data => {
+      this.spos = data;
+    }, error => {
+      console.error('Error loading SPOs: ', error);
+    });
+  }
+
+  loadModuleFrameSet(spoId: number): void {
+    this.moduleFrameService.getModuleFrameSetBySpoId(spoId).subscribe(moduleFrameSet => {
+      this.moduleFrameSet = moduleFrameSet;
+      this.selectedModuleFrame = this.moduleFrameSet.sections[0].moduleTypes[0].moduleFrames[0];
+      this.onModuleFrameChange()
+    }, error => {
+      console.error('Error loading ModuleFrameSetDTO: ', error);
+    });
+  }
+
+  loadModuleRequirements(spoId: number): void {
+    this.moduleRequirementService.getBySpoId(spoId).subscribe(data => {
+      this.moduleRequirements = data;
+    }, error => {
+      console.error('Error loading ModuleRequirements: ', error);
+    });
+  }
+
+  loadExamTypes(moduleFrameId: number): void {
+    this.examTypeService.getByModuleFrame(moduleFrameId).subscribe(data => {
+      this.examTypes = data;
+    }, error => {
+      console.error('Error loading ExamTypes: ', error);
+    });
+  }
+
+  onSpoChange(): void {
+    if (this.selectedSpo) {
+      this.loadModuleFrameSet(this.selectedSpo.id);
+      this.loadModuleRequirements(this.selectedSpo.id);
+    }
+  }
+
+  onModuleFrameChange(): void {
+    if (this.selectedModuleFrame) {
+      this.loadExamTypes(this.selectedModuleFrame.id);
+    }
+  }
+
+  addModuleFrame(): void {
+    this.moduleFrameModuleImplementationService.add({
+      id: 0,
+      moduleFrameDTO: this.selectedModuleFrame!,
+      moduleImplementationDTOFlat: this.moduleImplementationDTOFlat,
+      examTypeDTOs: this.examTypes,
+      moduleRequirementDTO: this.selectedModuleRequirement
+    }).subscribe(data => {
+      console.debug(data)
+      console.log('ModuleFrame added successfully.');
+    }, error => {
+      console.error('Error adding ModuleFrame: ', error);
+    });
+  }
+
+  onSave(): void {
+    this.addModuleFrame();
+  }
+
 
 }

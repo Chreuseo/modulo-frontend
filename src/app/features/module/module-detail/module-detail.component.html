@@ -53,6 +53,60 @@
         <td>
           <button (click)="deleteSpo(moduleFrameModuleImplementation.id)">Entfernen</button>
         </td>
+      </tr>
+      <tr *ngIf="isAddingModuleFrame">
+        <td>
+          <div>
+            <label>Studiengang:</label>
+            <select [(ngModel)]="selectedSpo" (change)="onSpoChange()">
+              <option *ngFor="let spo of spos" [ngValue]="spo">{{spo.name}}</option>
+            </select>
+          </div>
+        </td>
+        <td></td>
+        <td>
+          <div>
+            <label>Examina:</label>
+            <div *ngFor="let examType of examTypes">
+              <div class="checkbox-container">
+                <input
+                  type="checkbox"
+                  [id]="examType.abbreviation"
+                  [(ngModel)]="examType.enabled"
+                  [disabled]="examType.mandatory"
+                />
+                <label [for]="examType.abbreviation">{{ examType.name }}</label>
+              </div>
+              <div class="checkbox-container">
+                <input
+                  type="checkbox"
+                  [id]="examType.abbreviation+'-mandatory'"
+                  [(ngModel)]="examType.mandatory"
+                  disabled="true"
+                />
+                <label [for]="examType.abbreviation+'-mandatory'">mandatory</label>
+              </div>
+              <label>Description:</label>
+              <input [(ngModel)]="examType.description" [disabled]="!examType.enabled" />
+              <label>Length:</label>
+              <input [(ngModel)]="examType.length" [disabled]="!examType.enabled" />
+            </div>
+          </div>
+        </td>
+        <td>
+          <div>
+            <label>Voraussetzungen</label>
+            <select [(ngModel)]="selectedModuleRequirement">
+              <option *ngFor="let moduleRequirement of moduleRequirements" [ngValue]="moduleRequirement">
+                {{ moduleRequirement.name }}
+              </option>
+            </select>
+          </div>
+        </td>
+        <td>
+          <button (click)="addModuleFrame()">Hinzufügen</button>
+        </td>
+      </tr>
     </tbody>
   </table>
 
