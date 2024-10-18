@@ -63,7 +63,22 @@
             </select>
           </div>
         </td>
-        <td></td>
+        <td>
+          <div>
+            <label>Modul:</label>
+            <select [(ngModel)]="selectedModuleFrame" (change)="onModuleFrameChange()">
+              <ng-container *ngFor="let section of moduleFrameSet.sections">
+                <option [disabled]="true">--- {{ section.name }}</option>
+                <ng-container *ngFor="let moduleType of section.moduleTypes">
+                  <option [disabled]="true">----- {{ moduleType.name }}</option>
+                  <option *ngFor="let moduleFrame of moduleType.moduleFrames" [ngValue]="moduleFrame">
+                    {{ moduleFrame.name }}
+                  </option>
+                </ng-container>
+              </ng-container>
+            </select>
+          </div>
+        </td>
         <td>
           <div>
             <label>Examina:</label>
