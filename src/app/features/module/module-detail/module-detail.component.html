@@ -106,6 +106,7 @@
               <input [(ngModel)]="examType.description" [disabled]="!examType.enabled" />
               <label>Length:</label>
               <input [(ngModel)]="examType.length" [disabled]="!examType.enabled" />
+              <hr *ngIf="examType.id != examTypes.at(examTypes.length - 1).id">
             </div>
           </div>
         </td>
