@@ -181,7 +181,7 @@ export class ModuleDetailComponent implements OnInit {
   }
 
   navigateToNewModuleFrame(): void {
-    this.router.navigate(['/module', this.id, 'new-module-frame']);
+    this.isAddingModuleFrame = true;
   }
 
   addLecturer(): void {
@@ -272,11 +272,6 @@ export class ModuleDetailComponent implements OnInit {
     }, error => {
       console.error('Error adding ModuleFrame: ', error);
     });
+    this.isAddingModuleFrame = false;
   }
-
-  onSave(): void {
-    this.addModuleFrame();
-  }
-
-
 }
