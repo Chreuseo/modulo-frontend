@@ -37,10 +37,12 @@
         </td>
         <td>
           <div *ngFor="let examType of moduleFrameModuleImplementation.examTypeDTOs">
-            <label>
-              <input type="checkbox" [checked]="examType.enabled" disabled="disabled">
-              {{ examType.abbreviation }} - {{ examType.name}}
-            </label>
+            <div class="checkbox-container">
+              <input type="checkbox" [id]="examType.name+'-enabled'" [checked]="examType.enabled" disabled="disabled">
+              <label [for]="examType.name+'-enabled'">
+                {{ examType.abbreviation }} - {{ examType.name}}
+              </label>
+            </div>
             <label>Length:</label>
             <input [value]="examType.length" disabled="disabled">
             <label>Description:</label>
