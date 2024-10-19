@@ -108,7 +108,11 @@
                 <label [for]="examType.abbreviation+'-mandatory'">mandatory</label>
               </div>
               <label>Description:</label>
-              <input [(ngModel)]="examType.description" [disabled]="!examType.enabled" />
+              <quill-editor
+                [(ngModel)]="examType.description"
+                [disabled]="!examType.enabled"
+                [modules]="quillModules">
+              </quill-editor>
               <label>Length:</label>
               <input [(ngModel)]="examType.length" [disabled]="!examType.enabled" />
               <hr *ngIf="examType.id != examTypes.at(examTypes.length - 1)?.id">
