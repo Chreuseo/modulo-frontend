@@ -21,4 +21,5 @@ export interface SpoDTO {
   responsibleUsers: UserDTOFlat[]; // List<UserDTOFlat> maps to UserDTOFlat[]
   degree: DegreeDTO; // Full DegreeDTO
   moduleManualIntroduction: string;
+  studyPlanAppendix: string;
 }
