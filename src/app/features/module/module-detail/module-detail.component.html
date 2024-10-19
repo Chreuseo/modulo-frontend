@@ -48,7 +48,7 @@
             <label>Length:</label>
             <input [value]="examType.length" disabled="disabled">
             <label>Description:</label>
-            <input [innerHTML]="examType.description"  disabled="disabled">
+            <div [innerHTML]="examType.description" ></div>
           </div>
         </td>
         <td>{{ moduleFrameModuleImplementation.moduleRequirementDTO?.name }}</td>
