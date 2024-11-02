@@ -78,6 +78,7 @@ hr {
   color: #333; /* Color of the bell icon */
   position: relative;
   font-size: 24px; /* Make the icon larger */
+  margin-right: 12px;
 }
 
 .btn-notification:hover {
