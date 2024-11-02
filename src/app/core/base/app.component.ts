@@ -10,11 +10,15 @@ import {MyService} from "../services/my.service";
 })
 export class AppComponent {
   title = 'frontend';
-  unreadNotifications: number = 0;
+  unreadCount: number = 0;
 
   constructor(private authService: AuthService,
               private myService: MyService,
               private cookieService: CookieService) {}
+
+  ngOnInit() {
+    this.fetchUnreadNotifications();
+  }
 
   logout() {
     this.authService.logout().subscribe(
@@ -27,10 +31,16 @@ export class AppComponent {
     );
   }
 
-  ngOnInit() {
+  fetchUnreadNotifications() {
     this.myService.unreadNotifications().subscribe(
-      count => this.unreadNotifications = count,
-      error => console.error('Error loading unread notifications', error)
+      (count: number) => {
+        this.unreadCount = count; // Set unread count from service
+      },
+      error => console.error('Failed to fetch unread notifications', error)
     );
+  }
+
+  showNotifications() {
+    console.log('Show notifications');
   }
 }
