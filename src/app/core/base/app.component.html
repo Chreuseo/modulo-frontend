@@ -2,7 +2,7 @@
   <header class="top-bar">
     <h1>Modulo</h1>
     <button class="btn-notification" (click)="showNotifications()">
-      <i class="fa fa-bell"></i> <!-- You can replace this with the appropriate icon -->
+      <i class="fa fa-bell"></i>
       <span *ngIf="unreadCount > 0" class="badge">{{ unreadCount }}</span>
     </button>
     <button class="btn-danger" (click)="logout()">Logout</button>
