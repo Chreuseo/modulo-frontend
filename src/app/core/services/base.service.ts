@@ -4,7 +4,6 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Router} from "@angular/router";
-import * as Console from "node:console";
 
 @Injectable({
   providedIn: 'root'
@@ -22,9 +21,8 @@ export abstract class BaseService {
 
   protected handleError(error: HttpErrorResponse): Observable<never> {
     if(error.status === 401) {
-      Console.log(window.location.pathname);
       if(window.location.pathname.includes('login')){
-        //window.location.href = '/login';
+        window.location.href = '/login';
       }
     }
     if(error.status === 403) {
