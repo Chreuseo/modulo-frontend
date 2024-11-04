@@ -17,9 +17,7 @@ export class AppComponent {
               private cookieService: CookieService) {}
 
   ngOnInit() {
-    if(!window.location.href.includes("login")){
       this.fetchUnreadNotifications();
-    }
   }
 
   logout() {
