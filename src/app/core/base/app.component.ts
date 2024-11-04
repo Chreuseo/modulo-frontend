@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {AuthService} from "../services/auth.service";
 import {CookieService} from "ngx-cookie-service";
 import {MyService} from "../services/my.service";
+import {NavigationEnd, Router} from "@angular/router";
+import {filter} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -14,7 +16,8 @@ export class AppComponent {
 
   constructor(private authService: AuthService,
               private myService: MyService,
-              private cookieService: CookieService) {}
+              private cookieService: CookieService,
+              private router: Router) {}
 
   ngOnInit() {
     this.fetchUnreadNotifications();
@@ -32,7 +35,7 @@ export class AppComponent {
   }
 
   fetchUnreadNotifications() {
-    if(this.getCurrentRoute() !== '/login') {
+    if(this.getCurrentRoute().includes('login')) {
       this.myService.unreadNotifications().subscribe(
         (count: number) => {
           this.unreadCount = count; // Set unread count from service
@@ -46,7 +49,11 @@ export class AppComponent {
     console.log('Show notifications');
   }
 
-  getCurrentRoute() {
-    return window.location.pathname;
+  getCurrentRoute(): any {
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd)) // Only get the NavigationEnd events
+      .subscribe((event: NavigationEnd) => {
+        return event.url; // Capture the current route URL
+      });
   }
 }
