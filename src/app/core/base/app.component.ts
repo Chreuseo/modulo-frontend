@@ -10,6 +10,7 @@ import {MyService} from "../services/my.service";
 })
 export class AppComponent {
   title = 'frontend';
+  currentRoute: String = '';
   unreadCount: number = 0;
 
   constructor(private authService: AuthService,
@@ -17,6 +18,7 @@ export class AppComponent {
               private cookieService: CookieService) {}
 
   ngOnInit() {
+    this.getCurrentRoute();
     this.fetchUnreadNotifications();
   }
 
@@ -32,15 +34,21 @@ export class AppComponent {
   }
 
   fetchUnreadNotifications() {
-    this.myService.unreadNotifications().subscribe(
-      (count: number) => {
-        this.unreadCount = count; // Set unread count from service
-      },
-      error => console.error('Failed to fetch unread notifications', error)
-    );
+    if(!this.currentRoute || this.currentRoute === '/login') {
+      this.myService.unreadNotifications().subscribe(
+        (count: number) => {
+          this.unreadCount = count; // Set unread count from service
+        },
+        error => console.error('Failed to fetch unread notifications', error)
+      );
+    }
   }
 
   showNotifications() {
     console.log('Show notifications');
+  }
+
+  getCurrentRoute() {
+    this.currentRoute = window.location.pathname;
   }
 }
