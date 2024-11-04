@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import {HttpClient, HttpErrorResponse, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Router} from "@angular/router";
+import * as Console from "node:console";
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +22,7 @@ export abstract class BaseService {
 
   protected handleError(error: HttpErrorResponse): Observable<never> {
     if(error.status === 401) {
-      if(window.location.pathname !== '/login'){
-        window.location.href = '/login';
-      }
+      Console.log(window.location.pathname);
     }
     if(error.status === 403) {
       window.alert('Ihre Berechtigungen reichen für diese Aktion nicht aus.');
