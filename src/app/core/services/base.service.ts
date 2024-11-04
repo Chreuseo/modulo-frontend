@@ -21,7 +21,8 @@ export abstract class BaseService {
 
   protected handleError(error: HttpErrorResponse): Observable<never> {
     if(error.status === 401) {
-      this.router.navigate(['/login']);
+      console.log(this.router.getCurrentNavigation());
+      //this.router.navigate(['/login']);
     }
     if(error.status === 403) {
       window.alert('Ihre Berechtigungen reichen für diese Aktion nicht aus.');
