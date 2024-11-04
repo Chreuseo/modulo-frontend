@@ -2,8 +2,6 @@ import { Component } from '@angular/core';
 import {AuthService} from "../services/auth.service";
 import {CookieService} from "ngx-cookie-service";
 import {MyService} from "../services/my.service";
-import {NavigationEnd, Router} from "@angular/router";
-import {filter} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -16,8 +14,7 @@ export class AppComponent {
 
   constructor(private authService: AuthService,
               private myService: MyService,
-              private cookieService: CookieService,
-              private router: Router) {}
+              private cookieService: CookieService) {}
 
   ngOnInit() {
     this.fetchUnreadNotifications();
