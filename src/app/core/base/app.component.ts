@@ -35,25 +35,15 @@ export class AppComponent {
   }
 
   fetchUnreadNotifications() {
-    if(this.getCurrentRoute().includes('login')) {
-      this.myService.unreadNotifications().subscribe(
-        (count: number) => {
-          this.unreadCount = count; // Set unread count from service
-        },
-        error => console.error('Failed to fetch unread notifications', error)
-      );
-    }
+    this.myService.unreadNotifications().subscribe(
+      (count: number) => {
+        this.unreadCount = count; // Set unread count from service
+      },
+      error => console.error('Failed to fetch unread notifications', error)
+    );
   }
 
   showNotifications() {
     console.log('Show notifications');
-  }
-
-  getCurrentRoute(): any {
-    this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd)) // Only get the NavigationEnd events
-      .subscribe((event: NavigationEnd) => {
-        return event.url; // Capture the current route URL
-      });
   }
 }
