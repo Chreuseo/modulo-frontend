@@ -16,13 +16,20 @@ form {
 
 /* Style for each input field */
 input[type="text"],
-input[type="date"] {
+input[type="date"],
+input[type="email"]{
   width: 100%; /* Full width */
   padding: 10px; /* Padding for input */
   margin: 10px 0; /* Spacing around inputs */
-  border: 1px solid var(--modulo-light-grey); /* Border for inputs */
+  border: 1px solid var(--modulo-dark-grey); /* Border for inputs */
   border-radius: 4px; /* Slightly rounded corners */
   box-sizing: border-box; /* Ensure padding and border are included in the total width/height */
+}
+
+input[type="text"]:enabled,
+input[type="date"]:enabled,
+input[type="email"]:enabled {
+  background-color: var(--modulo-white); /* White background for enabled inputs */
 }
 
 /* Label styles */
