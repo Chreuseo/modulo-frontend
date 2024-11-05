@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import { ModuleFrameService } from '../../../core/services/module-frame.service';
 import { ModuleFrameDTO } from '../../../core/models/module-frame-dto.model';
@@ -12,7 +12,7 @@ import {ModuleTypeDTO} from "../../../core/models/module-type-dto.model"; // Adj
   templateUrl: './new-module-frame.component.html',
   styleUrls: ['../../../core/stylesheets/formula.css']
 })
-export class NewModuleFrameComponent {
+export class NewModuleFrameComponent implements OnInit {
   spoId!: number;
   spo!: SpoDTO;
   sectionDTOs: SectionDTO[] = []; // List of section DTOs

@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import {BaseService} from "./base.service";
 import {UserDTO} from "../models/user-dto.model";
 import {PasswordDTO} from "../models/passwordDTO";
+import {NotificationDTO} from "../models/notification-dto.model";
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +34,9 @@ export class MyService extends BaseService {
 
   unreadNotifications(): Observable<number> {
     return this.get<number>(`${this.endpoint}/unread-notifications`);
+  }
+
+  getNotifications(): Observable<NotificationDTO[]> {
+    return this.get<NotificationDTO[]>(`${this.endpoint}/notifications`);
   }
 }

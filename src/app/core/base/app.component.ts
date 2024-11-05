@@ -1,22 +1,24 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {AuthService} from "../services/auth.service";
 import {CookieService} from "ngx-cookie-service";
 import {MyService} from "../services/my.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['../stylesheets/app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'frontend';
   unreadCount: number = 0;
 
   constructor(private authService: AuthService,
               private myService: MyService,
-              private cookieService: CookieService) {}
+              private cookieService: CookieService,
+              private router: Router) {}
 
-  ngOnInit() {
+  ngOnInit() : void {
       this.fetchUnreadNotifications();
   }
 
@@ -41,6 +43,6 @@ export class AppComponent {
   }
 
   showNotifications() {
-    console.log('Show notifications');
+    this.router.navigate(['/notifications']);
   }
 }
