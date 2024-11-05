@@ -11,7 +11,7 @@ form {
   border: 1px solid var(--modulo-light-grey); /* Border around the form */
   border-radius: 8px; /* Rounded corners */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  background-color: var(--modulo-light-grey); /* Light background color */
+  background-color: var(--modulo-light-mid-grey); /* Light background color */
 }
 
 /* Style for each input field */
