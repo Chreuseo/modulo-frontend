@@ -7,7 +7,7 @@ import {MyService} from "../../core/services/my.service";
   templateUrl: './notification.component.html',
   styleUrls: ['../../core/stylesheets/list-view.css']
 })
-export class NotificationsComponent implements OnInit {
+export class NotificationComponent implements OnInit {
   notifications: NotificationDTO[] = [];
 
   constructor(private myService: MyService) {}

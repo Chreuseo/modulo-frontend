@@ -23,7 +23,7 @@ import {LoginComponent} from "./shared/components/login/login.component";
 import {DocumentListComponent} from "./features/documents/document-list/document-list.component";
 import {GenerateComponent} from "./features/documents/generate/generate.component";
 import {BulkGenerateComponent} from "./features/documents/bulk-generate/bulk-generate.component";
-import {NotificationsComponent} from "./features/notification/notification.component";
+import {NotificationComponent} from "./features/notification/notification.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -45,7 +45,7 @@ const routes: Routes = [
   { path: 'user/:id', component: UserDetailComponent},
   { path: 'configuration', component: GeneralComponent },
   { path: 'my', component: MyComponent},
-  { path: 'notifications', component: NotificationsComponent},
+  { path: 'notifications', component: NotificationComponent},
   { path: '', redirectTo: '/spo', pathMatch: 'full' }
 ];
 
