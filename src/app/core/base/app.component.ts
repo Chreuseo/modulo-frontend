@@ -43,6 +43,7 @@ export class AppComponent implements OnInit {
   }
 
   showNotifications() {
+    this.unreadCount = 0; // Reset unread count
     this.router.navigate(['/notifications']);
   }
 }
