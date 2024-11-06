@@ -1,0 +1,28 @@
+<div class="main-content">
+  <h2>Notifications</h2>
+  <table>
+    <thead>
+    <tr>
+      <th>Created at</th>
+      <th>Title</th>
+      <th>Message</th>
+      <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let notification of notifications">
+      <td [ngStyle]="{ 'font-weight': notification.unread ? 'bold' : 'normal' }">
+        {{ notification.createdAt }}
+      <td [ngStyle]="{ 'font-weight': notification.unread ? 'bold' : 'normal' }">
+        {{ notification.title }}
+      </td>
+      <td [ngStyle]="{ 'font-weight': notification.unread ? 'bold' : 'normal' }">
+        {{ notification.message }}
+      </td>
+      <td [ngStyle]="{ 'font-weight': notification.unread ? 'bold' : 'normal' }">
+        {{ notification.unread ? 'Unread' : 'Read' }}
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

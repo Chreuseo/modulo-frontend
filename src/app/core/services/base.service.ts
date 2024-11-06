@@ -20,7 +20,7 @@ export abstract class BaseService {
   }
 
   protected handleError(error: HttpErrorResponse): Observable<never> {
-    if(error.status === 401) {
+    if(error.status === 401 && !window.location.href.includes('login')) {
       window.location.href = '/login';
     }
     if(error.status === 403) {

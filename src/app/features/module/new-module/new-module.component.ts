@@ -1,6 +1,6 @@
 // new-module.component.ts
 
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {ModuleImplementationService} from "../../../core/services/module-implementation.service";
 import {ModuleImplementationDTOFlat} from "../../../core/models/module-implementation-dto-flat.model";
@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
   selector: 'app-new-module',
   templateUrl: './new-module.component.html',
   styleUrls: ['../../../core/stylesheets/formula.css']})
-export class NewModuleComponent {
+export class NewModuleComponent implements OnInit {
   moduleForm!: FormGroup;
 
   constructor(private router: Router,

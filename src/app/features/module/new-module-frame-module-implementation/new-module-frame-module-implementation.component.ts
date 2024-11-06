@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {ModuleImplementationService} from "../../../core/services/module-implementation.service";
 import {SpoService} from "../../../core/services/spo.service";
@@ -20,7 +20,7 @@ import {ModuleImplementationDTOFlat} from "../../../core/models/module-implement
   templateUrl: './new-module-frame-module-implementation.component.html',
   styleUrls: ['../../../core/stylesheets/formula.css']
 })
-export class NewModuleFrameModuleImplementationComponent {
+export class NewModuleFrameModuleImplementationComponent implements OnInit {
   moduleImplementationId!: number ;
   moduleImplementationDTOFlat!: ModuleImplementationDTOFlat;
   spos!: SpoDTOFlat[];

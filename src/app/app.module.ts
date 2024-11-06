@@ -27,6 +27,7 @@ import { LoginComponent } from './shared/components/login/login.component';
 import { DocumentListComponent } from './features/documents/document-list/document-list.component';
 import { GenerateComponent } from './features/documents/generate/generate.component';
 import { BulkGenerateComponent } from './features/documents/bulk-generate/bulk-generate.component';
+import { NotificationComponent } from './features/notification/notification.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { BulkGenerateComponent } from './features/documents/bulk-generate/bulk-g
     LoginComponent,
     DocumentListComponent,
     GenerateComponent,
-    BulkGenerateComponent
+    BulkGenerateComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule,

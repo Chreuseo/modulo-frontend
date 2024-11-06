@@ -24,7 +24,7 @@ button {
   cursor: pointer; /* Change cursor to pointer on hover */
   transition: background-color 0.3s ease; /* Smooth transitions for hover effects */
   color: var(--modulo-black);
-  background-color: var(--modulo-light-mid-grey);
+  background-color: var(--modulo-mid-grey);
 }
 
 button.btn-highlight {
@@ -69,4 +69,29 @@ hr {
   height: 14px;
   width: 14px;
   min-width: 14px;
+}
+
+.btn-notification {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333; /* Color of the bell icon */
+  position: relative;
+  font-size: 24px; /* Make the icon larger */
+  margin-right: 12px;
+}
+
+.btn-notification:hover {
+  color: #007bff; /* Change color on hover */
+}
+
+.badge {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  background-color: red; /* Badge color */
+  color: white; /* Text color */
+  border-radius: 50%; /* Circle shape */
+  padding: 2px 6px; /* Padding for the badge */
+  font-size: 12px; /* Font size of the badge */
 }
