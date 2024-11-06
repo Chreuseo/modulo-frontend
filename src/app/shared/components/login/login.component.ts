@@ -36,7 +36,7 @@ export class LoginComponent {
       this.authService.login(userDtoAuth).subscribe(
         (response) => {
           console.log('Login successful:', response);
-          this.router.navigate(['/']); // navigate to home or dashboard after login
+          this.router.navigate(['/']).then(window.location.reload); // navigate to home or dashboard after login
         },
         (error) => {
           console.error('Login failed:', error);
