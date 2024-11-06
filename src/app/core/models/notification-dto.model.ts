@@ -4,4 +4,5 @@ export interface NotificationDTO{
   message: string;
   unread: boolean;
   userId: number;
+  createdAt: string;
 }

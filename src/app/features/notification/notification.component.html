@@ -3,6 +3,7 @@
   <table>
     <thead>
     <tr>
+      <th>Created at</th>
       <th>Title</th>
       <th>Message</th>
       <th>Status</th>
@@ -10,6 +11,8 @@
     </thead>
     <tbody>
     <tr *ngFor="let notification of notifications">
+      <td [ngStyle]="{ 'font-weight': notification.unread ? 'bold' : 'normal' }">
+        {{ notification.createdAt }}
       <td [ngStyle]="{ 'font-weight': notification.unread ? 'bold' : 'normal' }">
         {{ notification.title }}
       </td>
