@@ -18,7 +18,7 @@
     <tbody>
       <tr *ngFor="let moduleFrameModuleImplementation of moduleFrameModuleImplementations">
         <td>
-          {{ moduleFrameModuleImplementation.moduleFrameDTO.spoDTOFlat.name }} {{ moduleFrameModuleImplementation.moduleFrameDTO.spoDTOFlat.degree }}
+          {{ moduleFrameModuleImplementation.moduleFrameDTO.spoDTOFlat.name }} {{ moduleFrameModuleImplementation.moduleFrameDTO.spoDTOFlat.degree.name }}
           <div *ngIf="moduleFrameModuleImplementation.moduleFrameDTO.spoDTOFlat.validFrom">
             Gültig seit {{ moduleFrameModuleImplementation.moduleFrameDTO.spoDTOFlat.validFrom | date: 'MM/yy' }}
           </div>
@@ -61,7 +61,7 @@
           <div>
             <label>Studiengang:</label>
             <select [(ngModel)]="selectedSpo" (change)="onSpoChange()">
-              <option *ngFor="let spo of spos" [ngValue]="spo">{{spo.name}} {{spo.degree}} - ab {{spo.validFrom}}</option>
+              <option *ngFor="let spo of spos" [ngValue]="spo">{{spo.name}} {{spo.degree.name}} - ab {{spo.validFrom}}</option>
             </select>
           </div>
         </td>
