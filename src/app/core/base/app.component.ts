@@ -3,6 +3,7 @@ import {AuthService} from "../services/auth.service";
 import {CookieService} from "ngx-cookie-service";
 import {MyService} from "../services/my.service";
 import {Router} from "@angular/router";
+import {interval, Subscription} from "rxjs";
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ import {Router} from "@angular/router";
 export class AppComponent implements OnInit {
   title = 'frontend';
   unreadCount: number = 0;
+  private intervalSubscription: Subscription | undefined;
 
   constructor(private authService: AuthService,
               private myService: MyService,
@@ -19,9 +21,20 @@ export class AppComponent implements OnInit {
               private router: Router) {}
 
   ngOnInit() : void {
+    this.fetchUnreadNotifications();
+
+    // Update unread notifications every minute (60000 milliseconds)
+    this.intervalSubscription = interval(30000).subscribe(() => {
       this.fetchUnreadNotifications();
+    });
   }
 
+  ngOnDestroy(): void {
+    // Unsubscribe from interval to prevent memory leaks
+    if (this.intervalSubscription) {
+      this.intervalSubscription.unsubscribe();
+    }
+  }
   logout() {
     this.authService.logout().subscribe(
       () => {
