@@ -61,7 +61,7 @@
           <div>
             <label>Studiengang:</label>
             <select [(ngModel)]="selectedSpo" (change)="onSpoChange()">
-              <option *ngFor="let spo of spos" [ngValue]="spo">{{spo.name}} {{spo.degree.name}} - ab {{spo.validFrom | date: "MM/yyyy"}}</option>
+              <option *ngFor="let spo of spos" [ngValue]="spo">{{spo.name}} {{spo.degree.name}} - ab {{spo.validFrom | date: "MM/yy"}}</option>
             </select>
           </div>
         </td>
