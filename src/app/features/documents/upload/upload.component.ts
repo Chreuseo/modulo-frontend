@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SpoDTOFlat} from "../../../core/models/spo-dto-flat.model";
 import {SemesterDTO} from "../../../core/models/semester-dto.model";
 import {SpoService} from "../../../core/services/spo.service";
@@ -11,7 +11,7 @@ import {DocumentService} from "../../../core/services/document.service";
   styleUrls: ['../../../core/stylesheets/details.css',
     '../../../core/stylesheets/sub-nav.css']
 })
-export class UploadComponent {
+export class UploadComponent implements OnInit{
   spos: SpoDTOFlat[] = [];
   semesters: SemesterDTO[] = [];
   documentTypes: string[] = ['MODULE_MANUAL', 'STUDY_GUIDE', 'SPO'];
