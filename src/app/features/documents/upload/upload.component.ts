@@ -41,7 +41,18 @@ export class UploadComponent implements OnInit{
 
   loadSemesters(): void {
     this.semesterService.getAllSemesters().subscribe(
-      (semesters) => this.semesters = semesters,
+      (semesters) => {
+        // Create an empty semester entry
+        const emptySemester: SemesterDTO = {
+          id: null,
+          name: '',
+          abbreviation: '',
+          year: '',
+        };
+
+        // Prepend the empty entry to the list of semesters
+        this.semesters = [emptySemester, ...semesters];
+      },
       (error) => console.error('Error loading semesters', error)
     );
   }
