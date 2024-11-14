@@ -50,12 +50,9 @@ export class DocumentService extends BaseService {
     return this.get<any>(`${this.endpoint}/spos`);
   }
 
-  uploadDocument(formData: FormData, spoId: number, semesterId: number | null, documentType: string): Observable<void> {
-    let endpointUrl = `${this.endpoint}/upload/${spoId}/${documentType}`;
-    if (semesterId !== null) {
-      endpointUrl += `/${semesterId}`;
-    }
-    return this.post<void>(endpointUrl, formData);
+  uploadDocument(formData: FormData): Observable<void> {
+    return this.post<void>(`${this.endpoint}/upload`, formData);
   }
+
 
 }

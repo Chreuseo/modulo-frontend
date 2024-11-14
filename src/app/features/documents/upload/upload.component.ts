@@ -46,6 +46,27 @@ export class UploadComponent implements OnInit{
     );
   }
 
+  uploadDocument() {
+    if (!this.selectedFile || this.selectedSpoId === null || this.selectedDocumentType === '') {
+      console.error('No file selected or missing selections');
+      return;
+    }
+
+    const formData = new FormData();
+    formData.append('file', this.selectedFile);
+    formData.append('spoId', this.selectedSpoId.toString());
+    formData.append('documentType', this.selectedDocumentType);
+
+    if (this.selectedSemesterId !== null) {
+      formData.append('semesterId', this.selectedSemesterId.toString());
+    }
+
+    this.documentService.uploadDocument(formData).subscribe({
+      next: () => console.log('Document uploaded successfully'),
+      error: error => console.error('Error uploading document', error)
+    });
+  }
+
   onFileSelected(event: Event): void {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
@@ -55,19 +76,4 @@ export class UploadComponent implements OnInit{
     }
   }
 
-  uploadDocument(): void {
-    if (!this.selectedFile || this.selectedSpoId === null || this.selectedDocumentType === '') {
-      console.error('No file selected or missing selections');
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append('document', this.selectedFile);
-
-    this.documentService.uploadDocument(formData, this.selectedSpoId, this.selectedSemesterId, this.selectedDocumentType)
-      .subscribe({
-        next: () => console.log('Document uploaded successfully'),
-        error: (error) => console.error('Error uploading document', error)
-      });
-  }
 }
