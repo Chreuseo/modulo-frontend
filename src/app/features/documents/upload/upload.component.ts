@@ -44,7 +44,7 @@ export class UploadComponent implements OnInit{
       (semesters) => {
         // Create an empty semester entry
         const emptySemester: SemesterDTO = {
-          id: null,
+          id: 0,
           name: '',
           abbreviation: '',
           year: '',

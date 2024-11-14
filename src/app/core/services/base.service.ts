@@ -26,6 +26,9 @@ export abstract class BaseService {
     if(error.status === 403) {
       window.alert('Ihre Berechtigungen reichen für diese Aktion nicht aus.');
     }
+    if(error.status === 400) {
+      window.alert('Die Anfrage war fehlerhaft. Bitte überprüfen Sie Ihre Eingaben.');
+    }
     return throwError(error);
   }
 
