@@ -18,7 +18,7 @@
         <td>{{ module.abbreviation }}</td>
         <td>
           <div *ngFor="let spo of module.spos">
-            {{ spo.name }} {{ spo.degree.name }} - ab {{spo.validUntil | date: 'MM/yy' }}
+            {{ spo.name }} {{ spo.degree.name }} - gültig ab {{spo.validFrom | date: 'MM/yy' }}
           </div>
         </td>
         <td>
