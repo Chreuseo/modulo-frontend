@@ -55,7 +55,7 @@ export class DocumentService extends BaseService {
     if (semesterId !== null) {
       endpointUrl += `/${semesterId}`;
     }
-    return this.http.post<void>(endpointUrl, formData);
+    return this.post<void>(endpointUrl, formData);
   }
 
 }
