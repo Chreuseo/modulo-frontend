@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
 import {BaseService} from "./base.service";
 import {Router} from "@angular/router";
@@ -49,4 +49,13 @@ export class DocumentService extends BaseService {
   getSPOs(): Observable<SpoDocumentsDTO[]> {
     return this.get<any>(`${this.endpoint}/spos`);
   }
+
+  uploadDocument(formData: FormData, spoId: number, semesterId: number | null, documentType: string): Observable<void> {
+    let endpointUrl = `${this.endpoint}/upload/${spoId}/${documentType}`;
+    if (semesterId !== null) {
+      endpointUrl += `/${semesterId}`;
+    }
+    return this.http.post<void>(endpointUrl, formData);
+  }
+
 }

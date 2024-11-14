@@ -28,6 +28,7 @@ import { DocumentListComponent } from './features/documents/document-list/docume
 import { GenerateComponent } from './features/documents/generate/generate.component';
 import { BulkGenerateComponent } from './features/documents/bulk-generate/bulk-generate.component';
 import { NotificationComponent } from './features/notification/notification.component';
+import { UploadComponent } from './features/documents/upload/upload.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { NotificationComponent } from './features/notification/notification.comp
     DocumentListComponent,
     GenerateComponent,
     BulkGenerateComponent,
-    NotificationComponent
+    NotificationComponent,
+    UploadComponent
   ],
   imports: [
     BrowserModule,

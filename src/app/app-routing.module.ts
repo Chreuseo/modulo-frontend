@@ -24,6 +24,7 @@ import {DocumentListComponent} from "./features/documents/document-list/document
 import {GenerateComponent} from "./features/documents/generate/generate.component";
 import {BulkGenerateComponent} from "./features/documents/bulk-generate/bulk-generate.component";
 import {NotificationComponent} from "./features/notification/notification.component";
+import {UploadComponent} from "./features/documents/upload/upload.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -39,6 +40,7 @@ const routes: Routes = [
   { path: 'module/:id/new-module-frame', component: NewModuleFrameModuleImplementationComponent},
   { path: 'documents/list', component: DocumentListComponent},
   { path: 'documents/generate', component: GenerateComponent},
+  { path: 'documents/upload', component: UploadComponent},
   { path: 'documents/bulk-generate', component: BulkGenerateComponent},
   { path: 'user', component: UserListComponent},
   { path: 'user/new', component: NewUserComponent},
