@@ -92,34 +92,42 @@
             <td><input type="text" [(ngModel)]="newModuleFrame.name" placeholder="Name"/></td>
             <td><input type="number" [(ngModel)]="newModuleFrame.sws" placeholder="SWS"/></td>
             <td>
-              <div *ngFor="let courseType of newModuleFrame.courseTypes">
-                <label>
-                  <input
-                    type="checkbox"
-                    [(ngModel)]="courseType.enabled"
-                  />
-                  {{ courseType.abbreviation }}
-                </label>
-              </div>
+              <table>
+                <tr *ngFor="let courseType of newModuleFrame.courseTypes">
+                  <label>
+                    <input
+                      type="checkbox"
+                      [(ngModel)]="courseType.enabled"
+                    />
+                    {{ courseType.abbreviation }}
+                  </label>
+                </tr>
+              </table>
             </td>
             <td>
-              <div *ngFor="let examType of newModuleFrame.examTypes">
-                <label>
-                  <input
-                    type="checkbox"
-                    [(ngModel)]="examType.enabled"
-                  />
-                  {{ examType.abbreviation }}
-                </label>
-                <label>
-                  <input
-                    type="checkbox"
-                    [(ngModel)]="examType.mandatory"
-                    disabled={{!examType.enabled}}
-                  />
-                  mandatory
-                </label>
-              </div>
+              <table>
+                <tr *ngFor="let examType of newModuleFrame.examTypes">
+                  <td>
+                    <label>
+                      <input
+                        type="checkbox"
+                        [(ngModel)]="examType.enabled"
+                      />
+                      {{ examType.abbreviation }}
+                    </label>
+                  </td>
+                  <td>
+                    <label>
+                      <input
+                        type="checkbox"
+                        [(ngModel)]="examType.mandatory"
+                        disabled={{!examType.enabled}}
+                      />
+                      mandatory
+                    </label>
+                  </td>
+                </tr>
+              </table>
             </td>
             <td><input type="number" [(ngModel)]="newModuleFrame.weight" placeholder="Weight"/></td>
             <td><input type="number" [(ngModel)]="newModuleFrame.credits" placeholder="Credits"/></td>
