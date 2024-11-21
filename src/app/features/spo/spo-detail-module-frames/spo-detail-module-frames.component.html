@@ -44,7 +44,7 @@
             <td>
               <table>
                 <tr *ngFor="let courseType of moduleFrame.courseTypes">
-                  <label>
+                  <label *ngIf="courseType.enabled">
                     <input
                       type="checkbox"
                       [(ngModel)]="courseType.enabled"
@@ -58,7 +58,7 @@
             <td>
               <table>
                 <tr *ngFor="let examType of moduleFrame.examTypes">
-                  <td>
+                  <td *ngIf="examType.enabled">
                     <label>
                       <input
                         type="checkbox"
@@ -68,15 +68,15 @@
                     </label>
                     {{ examType.abbreviation }}: {{examType.length}}
                   </td>
-                    <td>
-                      <label>
-                      <input
-                      type="checkbox"
-                      [(ngModel)]="examType.mandatory"
-                      disabled="true"
-                      />
-                      </label>
-                    </td>
+                  <td *ngIf="examType.enabled">
+                    <label>
+                    <input
+                    type="checkbox"
+                    [(ngModel)]="examType.mandatory"
+                    disabled="true"
+                    />
+                    </label>
+                  </td>
                   mandatory
                 </tr>
               </table>
