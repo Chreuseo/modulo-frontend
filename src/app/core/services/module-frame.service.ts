@@ -36,6 +36,6 @@ export class ModuleFrameService extends BaseService {
 
   // Delete a ModuleFrame by ID
   deleteModuleFrame(id: number): Observable<void> {
-    return this.delete<void>(`${this.endpoint}/${id}`);
+    return this.delete<void>(`${this.endpoint}/remove/${id}`);
   }
 }
