@@ -149,4 +149,17 @@ export class SpoDetailModuleFramesComponent implements OnInit {
       this.initializeNewModuleFrame(); // Initialize newModuleFrame after fetching the SPO
     });
   }
+
+  deleteModuleFrame(moduleFrameId: number): void {
+    if (confirm('Are you sure you want to delete this module frame?')) {
+      this.moduleFrameService.deleteModuleFrame(moduleFrameId).subscribe({
+        next: () => {
+          this.loadModuleFrameSet(this.spo.id); // Reload the module frame set after deletion
+        },
+        error: (err) => {
+          console.error('Error deleting ModuleFrame:', err);
+        }
+      });
+    }
+  }
 }

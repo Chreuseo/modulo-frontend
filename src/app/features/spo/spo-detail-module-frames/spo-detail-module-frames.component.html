@@ -84,7 +84,7 @@
             <td>{{ moduleFrame.weight }}</td>
             <td>{{ moduleFrame.credits }}</td>
             <td>
-              <!-- You could add edit/delete functionality here -->
+              <button class="btn-soft-highlight" (click)="deleteModuleFrame(moduleFrame.id)">Delete</button>
             </td>
           </tr>
           <tr *ngIf="isAddingModuleFrame[section.id] && isAddingModuleFrame[section.id][moduleType.id]">
