@@ -16,6 +16,7 @@ export class MyComponent implements OnInit {
   constructor(private myService: MyService) {}
 
   ngOnInit(): void {
+    this.passwordDTO = { password: '', newPassword: '' }; // Initialize with empty strings
     this.loadUser();
   }
 
