@@ -58,4 +58,18 @@ export class UserListComponent implements OnInit {
       });
     }
   }
+
+  passwordReset(id: number): void {
+    if(confirm('Are you sure you want to reset the password for this user?')) {
+      this.userService.resetPassword(id).subscribe({
+        next: () => {
+          alert('Password reset successfully. The new password has been sent to the user.'); // Notify the user of the password reset
+        },
+        error: (err: any) => {
+          console.error('Error resetting password:', err);
+          alert('An error occurred. Please try again later.'); // Notify the user of the error
+        }
+      });
+    }
+  }
 }

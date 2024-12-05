@@ -45,4 +45,8 @@ export class UserService extends BaseService {
   changePassword(password: string): Observable<void> {
     return this.put<void>(`${this.endpoint}/change-password`, { password });
   }
+
+  resetPassword(id: number): Observable<void> {
+    return this.put<void>(`${this.endpoint}/password-reset/${id}`, {});
+  }
 }
