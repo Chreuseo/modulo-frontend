@@ -29,13 +29,10 @@ export class MyService extends BaseService {
   }
 
   updatePassword(passwordDTO: PasswordDTO): Observable<UserDTO> {
-    // Create HttpHeaders object and set Content-Type
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json' // Explicitly set Content-Type to JSON
-    });
+
 
     // Make the PUT request with the custom headers
-    return this.http.put<UserDTO>(`${this.endpoint}/update-password`, passwordDTO, { headers });
+    return this.http.put<UserDTO>(`${this.endpoint}/update-password`, passwordDTO);
   }
 
   unreadNotifications(): Observable<number> {
