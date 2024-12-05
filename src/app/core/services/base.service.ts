@@ -53,14 +53,9 @@ export abstract class BaseService {
     params?: HttpParams;
     reportProgress?: boolean; // make sure not to include if you want T
   }): Observable<T> {
-    const headers = options?.headers || new HttpHeaders({
-      'Content-Type': 'application/json' // Ensure it is set to JSON
-    });
-
-    return this.http.put<T>(this.getFullUrl(endpoint), body, { ...options, headers, withCredentials: true })
+    return this.http.put<T>(this.getFullUrl(endpoint), body, { ...options, withCredentials: true})
       .pipe(catchError(this.handleError));
   }
-
 
   protected delete<T>(endpoint: string, options?: {
     headers?: HttpHeaders;
