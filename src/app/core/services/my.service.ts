@@ -32,7 +32,7 @@ export class MyService extends BaseService {
 
 
     // Make the PUT request with the custom headers
-    return this.http.put<UserDTO>(`${this.endpoint}/update-password`, passwordDTO);
+    return this.put<UserDTO>(`${this.endpoint}/update-password`, passwordDTO);
   }
 
   unreadNotifications(): Observable<number> {
