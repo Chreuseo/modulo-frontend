@@ -6,10 +6,6 @@ pipeline {
         TARGET_DIR = '/opt/modulo/frontend'
     }
 
-    tools {
-        sonarRunner 'SonarScannerCLI'   // genau der Name aus der Global Tool Configuration
-    }
-
     stages {
 
         stage('Install Dependencies') {
@@ -26,17 +22,20 @@ pipeline {
             }
         }
 
-        stage('SonarQube Analysis') {
-          environment {
-            // Jenkins füllt SONAR_SCANNER_HOME automatisch, wenn Scanner konfiguriert ist
-            PATH = "${env.PATH}:${env.SONAR_SCANNER_HOME}/bin"
-          }
-          steps {
-            withSonarQubeEnv('SonarQube') {
-              sh 'sonar-scanner -Dsonar.projectKey=modulo'
+        stages {
+                stage('SonarQube Analysis') {
+                    steps {
+                        script {
+                            // Pfad zum Sonar Scanner holen
+                            def scannerHome = tool 'SonarScannerCLI'
+
+                            withSonarQubeEnv('SonarQube') {
+                                sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=modulo"
+                            }
+                        }
+                    }
+                }
             }
-          }
-        }
 
 
 
