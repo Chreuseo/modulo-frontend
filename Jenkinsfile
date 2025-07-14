@@ -6,6 +6,10 @@ pipeline {
         TARGET_DIR = '/opt/modulo/frontend'
     }
 
+    tools {
+        sonarScanner 'SonarScannerCLI'   // genau der Name aus der Global Tool Configuration
+    }
+
     stages {
 
         stage('Install Dependencies') {
