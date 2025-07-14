@@ -28,7 +28,7 @@ pipeline {
             PATH = "${env.PATH}:${env.SONAR_SCANNER_HOME}/bin"
           }
           steps {
-            withSonarQubeEnv('SonarScannerCLI') {
+            withSonarQubeEnv('SonarQube') {
               sh 'sonar-scanner -Dsonar.projectKey=modulo'
             }
           }
