@@ -22,23 +22,18 @@ pipeline {
             }
         }
 
-        stage('Code Analysis (SonarQube)') {
-            tools {
-                sonarScanner 'SonarScannerCLI'
+        stage('SonarQube Analysis') {
+          environment {
+            // Jenkins füllt SONAR_SCANNER_HOME automatisch, wenn Scanner konfiguriert ist
+            PATH = "${env.PATH}:${env.SONAR_SCANNER_HOME}/bin"
+          }
+          steps {
+            withSonarQubeEnv('SonarScannerCLI') {
+              sh 'sonar-scanner -Dsonar.projectKey=modulo'
             }
-            steps {
-                withSonarQubeEnv('SonarQubeServer') {
-                    sh '''
-                        npm run test -- --code-coverage
-                        sonar-scanner \
-                            -Dsonar.projectKey=frontend \
-                            -Dsonar.sources=src \
-                            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
-                            -Dsonar.sourceEncoding=UTF-8
-                    '''
-                }
-            }
+          }
         }
+
 
 
         stage('Deploy') {
