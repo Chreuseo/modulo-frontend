@@ -22,20 +22,18 @@ pipeline {
             }
         }
 
-        stages {
-                stage('SonarQube Analysis') {
-                    steps {
-                        script {
-                            // Pfad zum Sonar Scanner holen
-                            def scannerHome = tool 'SonarScannerCLI'
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    // Pfad zum Sonar Scanner holen
+                    def scannerHome = tool 'SonarScannerCLI'
 
-                            withSonarQubeEnv('SonarQube') {
-                                sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=modulo"
-                            }
-                        }
+                    withSonarQubeEnv('SonarQube') {
+                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=modulo"
                     }
                 }
             }
+        }
 
 
 
