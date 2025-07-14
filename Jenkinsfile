@@ -7,7 +7,7 @@ pipeline {
     }
 
     tools {
-        sonarScanner 'SonarScannerCLI'   // genau der Name aus der Global Tool Configuration
+        sonarRunner 'SonarScannerCLI'   // genau der Name aus der Global Tool Configuration
     }
 
     stages {
