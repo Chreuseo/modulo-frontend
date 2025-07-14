@@ -22,6 +22,25 @@ pipeline {
             }
         }
 
+        stage('Code Analysis (SonarQube)') {
+            tools {
+                sonarScanner 'SonarScannerCLI'
+            }
+            steps {
+                withSonarQubeEnv('SonarQubeServer') {
+                    sh '''
+                        npm run test -- --code-coverage
+                        sonar-scanner \
+                            -Dsonar.projectKey=frontend \
+                            -Dsonar.sources=src \
+                            -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info \
+                            -Dsonar.sourceEncoding=UTF-8
+                    '''
+                }
+            }
+        }
+
+
         stage('Deploy') {
             steps {
                 script {
