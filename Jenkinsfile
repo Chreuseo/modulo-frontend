@@ -25,12 +25,12 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 script {
-                    // Pfad zum Sonar Scanner holen
                     def scannerHome = tool 'SonarScannerCLI'
 
-                    withSonarQubeEnv('SonarQube') {
-                        sh 'gradle sonar -Dsonar.token=squ_70eeacfcdd8b2b9803a829690844dd52d4485437'                }
-
+                    withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
+                        withSonarQubeEnv('SonarQube') {
+                            sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=modulo -Dsonar.login=squ_70eeacfcdd8b2b9803a829690844dd52d4485437"
+                        }
                     }
                 }
             }
