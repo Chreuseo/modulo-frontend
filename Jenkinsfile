@@ -27,10 +27,8 @@ pipeline {
                 script {
                     def scannerHome = tool 'SonarScannerCLI'
 
-                    withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
-                        withSonarQubeEnv('SonarQube') {
-                            sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=modulo -Dsonar.login=squ_70eeacfcdd8b2b9803a829690844dd52d4485437"
-                        }
+                    withSonarQubeEnv('SonarQube') {
+                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=modulo -Dsonar.login=squ_70eeacfcdd8b2b9803a829690844dd52d4485437"
                     }
                 }
             }
