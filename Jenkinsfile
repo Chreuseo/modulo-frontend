@@ -29,7 +29,8 @@ pipeline {
                     def scannerHome = tool 'SonarScannerCLI'
 
                     withSonarQubeEnv('SonarQube') {
-                        sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=modulo"
+                        sh 'gradle sonar -Dsonar.token=squ_70eeacfcdd8b2b9803a829690844dd52d4485437'                }
+
                     }
                 }
             }
