@@ -26,7 +26,7 @@ pipeline {
             steps {
                 script {
                     def scannerHome = tool 'SonarScannerCLI'
-                    withCredentials([string(credentialsId='sonar-token', variable: 'SONAR_TOKEN')]) {
+                    withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
                         withSonarQubeEnv('SonarQube') {
                             sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=modulo -Dsonar.login=${SONAR_TOKEN}"
                         }
