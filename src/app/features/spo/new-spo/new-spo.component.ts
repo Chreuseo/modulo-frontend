@@ -68,12 +68,23 @@ export class NewSpoComponent implements OnInit {
     this.spoForm.reset();
   }
 
-  saveAndBack() {
-    this.saveSpo();
-    this.router.navigate(['/spo']).then(() => {
-      window.location.reload();
-    });
+  saveAndBack(): void {
+    const spoData: SpoDTOFlat = this.spoForm.value;
+
+    this.spoService.addSpo(spoData).subscribe(
+      (response: SpoDTOFlat) => {
+        console.log('Successfully saved:', response);
+        this.router.navigate(['/spo']).then(() => {
+          window.location.reload();
+        });
+      },
+      (error) => {
+        console.error('Error saving data', error);
+        // Optional: Benutzer über Fehler informieren
+      }
+    );
   }
+
 
   saveAndNew() {
     this.saveSpo();
