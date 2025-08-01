@@ -60,4 +60,18 @@ export class SpoListComponent implements OnInit {
   navigateToSpoDetail(id: number): void {
     this.router.navigate([`/spo/${id}/overview`]); // Update the route to your SPO detail path
   }
+
+  deleteSpo(id: number): void {
+    if (confirm('Are you sure you want to delete this SPO?')) {
+      this.spoService.deleteSpo(id).subscribe({
+        next: () => {
+          this.spoList = this.spoList.filter(spo => spo.id !== id); // Remove the deleted SPO from the list
+        },
+        error: (err) => {
+          console.error('Error deleting SPO:', err);
+          alert('An error occurred while deleting the SPO. Please try again later.');
+        }
+      });
+    }
+  }
 }

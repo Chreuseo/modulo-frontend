@@ -21,6 +21,7 @@
         <td>{{spo.validUntil | date: 'MM/yy' }}</td>
         <td>
           <button (click)="navigateToSpoDetail(spo.id)">View Details</button>
+          <button (click)="deleteSpo(spo.id)" class="btn-danger">Delete</button>
         </td>
       </tr>
       </tbody>
