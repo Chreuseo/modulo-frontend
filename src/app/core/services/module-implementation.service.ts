@@ -40,6 +40,10 @@ export class ModuleImplementationService extends BaseService {
     return this.put<ModuleImplementationDTO>(`${this.endpoint}/update`, moduleImplementation);
   }
 
+  deleteModuleImplementation(id: number): Observable<void> {
+    return this.delete<void>(`${this.endpoint}/remove/${id}`);
+  }
+
   // Add lecturer to module implementation
   addLecturer(moduleImplementationId: number, lecturerId: number): Observable<ModuleImplementationDTO> {
     return this.post<ModuleImplementationDTO>(`${this.endpoint}/${moduleImplementationId}/lecturer/add/${lecturerId}`, {});

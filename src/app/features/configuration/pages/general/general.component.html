@@ -35,7 +35,7 @@
         <td>{{ semester.abbreviation }}</td>
         <td>{{ semester.year }}</td>
         <td>
-          <button (click)="deleteSemester(semester.id)">Löschen</button>
+          <button class="btn-danger" (click)="deleteSemester(semester.id)">Löschen</button>
         </td>
       </tr>
       <tr>
@@ -70,7 +70,7 @@
   <ul>
     <li *ngFor="let language of languages">
       {{ language.name }}
-      <button (click)="deleteLanguage(language.id)">Löschen</button>
+      <button class="btn-danger" (click)="deleteLanguage(language.id)">Löschen</button>
     </li>
   </ul>
 
@@ -90,7 +90,7 @@
   <ul>
     <li *ngFor="let duration of durations">
       {{ duration.name }}
-      <button (click)="deleteDuration(duration.id)">Löschen</button>
+      <button class="btn-danger" (click)="deleteDuration(duration.id)">Löschen</button>
     </li>
   </ul>
 
@@ -110,7 +110,7 @@
   <ul>
     <li *ngFor="let protection of maternityProtections">
       {{ protection.name }}
-      <button (click)="deleteMaternityProtection(protection.id)">Delete</button>
+      <button class="btn-danger" (click)="deleteMaternityProtection(protection.id)">Löschen</button>
     </li>
   </ul>
 
@@ -140,7 +140,7 @@
       <td>{{ courseType.name }}</td>
       <td>{{ courseType.abbreviation }}</td>
       <td>
-        <button (click)="deleteCourseType(courseType.id)">Löschen</button>
+        <button class="btn-danger" (click)="deleteCourseType(courseType.id)">Löschen</button>
       </td>
     </tr>
     </tbody>
@@ -164,7 +164,7 @@
   <ul>
     <li *ngFor="let cycle of cycles">
       {{ cycle.name }}
-      <button (click)="deleteCycle(cycle.id)">Löschen</button>
+      <button class="btn-danger" (click)="deleteCycle(cycle.id)">Löschen</button>
     </li>
   </ul>
 

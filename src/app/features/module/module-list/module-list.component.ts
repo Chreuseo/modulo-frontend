@@ -38,4 +38,18 @@ export class ModuleListComponent implements OnInit {
   navigateToModuleDetail(id: number): void {
     this.router.navigate(['/module', id]);
   }
+
+  deleteModule(id: number): void {
+    if (confirm('Are you sure you want to delete this module?')) {
+      this.moduleService.deleteModuleImplementation(id).subscribe({
+        next: () => {
+          this.modules = this.modules.filter((module) => module.id !== id); // Remove the deleted module from the list
+        },
+        error: (err) => {
+          console.error('Error deleting module:', err);
+          alert('An error occurred. Please try again later.'); // Notify the user of the error
+        }
+      });
+    }
+  }
 }
