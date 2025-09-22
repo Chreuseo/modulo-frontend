@@ -223,13 +223,18 @@
 
   <div>
     <label>Allowed Resources:</label>
-    <div *ngIf="!isEditing" [innerHTML]="moduleImplementation.allowedResources"></div>
-    <div *ngIf="!isEditing && !moduleImplementation.allowedResources">-</div>
-    <quill-editor
-      *ngIf="isEditing"
-      [(ngModel)]="moduleImplementation.allowedResources"
-      [modules]="quillModules">
-    </quill-editor>
+    <input
+      type="text"
+      value="-"
+      *ngIf="!isEditing && !moduleImplementation.allowedResources" disabled="disabled">
+    <input
+      type="text"
+      [value]="moduleImplementation.allowedResources"
+      *ngIf="!isEditing && moduleImplementation.allowedResources" disabled="disabled">
+    <input
+      type="text"
+      [value]="moduleImplementation.allowedResources"
+      *ngIf="isEditing">
   </div>
 
   <div>
