@@ -222,19 +222,8 @@
   </div>
 
   <div>
-    <label>Allowed Resources:</label>
-    <input
-      type="text"
-      value="-"
-      *ngIf="!isEditing && !moduleImplementation.allowedResources" disabled="disabled">
-    <input
-      type="text"
-      [value]="moduleImplementation.allowedResources"
-      *ngIf="!isEditing && moduleImplementation.allowedResources" disabled="disabled">
-    <input
-      type="text"
-      [(ngModel)]="moduleImplementation.allowedResources"
-      *ngIf="isEditing">
+    <label>Allowed Ressources:</label>
+    <input [(ngModel)]="moduleImplementation.allowedResources" [disabled]="!isEditing">
   </div>
 
   <div>
