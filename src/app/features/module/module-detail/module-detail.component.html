@@ -233,7 +233,7 @@
       *ngIf="!isEditing && moduleImplementation.allowedResources" disabled="disabled">
     <input
       type="text"
-      [value]="moduleImplementation.allowedResources"
+      [ngModel]="moduleImplementation.allowedResources"
       *ngIf="isEditing">
   </div>
 
